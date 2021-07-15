@@ -41,7 +41,7 @@
 									$rowstore=mysqli_fetch_array($resultstore);
 								?>
 								<input name="" type="text" class="form-control" id="laptop" value="<?php echo $rowstore['name']; ?>" size="30" required readonly />
-								<input name="store_id" type="hidden" value="<?php echo $_SESSION["store_id"]; ?>" />
+								<input name="store_id" type="hidden" value="<?php echo $store_id; ?>" />
                             </div>
                         </div>
 						
