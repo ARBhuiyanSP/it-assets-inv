@@ -34,7 +34,7 @@
                                 </div>
                             </div>
 							<?php
-								$store_id = $_SESSION["store_id"];
+								$store_id = $_SESSION['logged']['store_id'];
 								$sqlpro	=	"select * from `ams_products` where `store_id`='$store_id' ";
 								$resultpro = mysqli_query($conn, $sqlpro);
 								$procount=mysqli_num_rows($resultpro);
@@ -117,7 +117,7 @@
 							?>
 							<div class="col-xl-2 col-md-2">
 								<?php
-									$store_id = $_SESSION["store_id"];
+									$store_id = $_SESSION['logged']['store_id'];
 									$assets_category	=	$row['assets_id'];
 									$sqlpro	=	"select * FROM `ams_products` WHERE `assets_category`='$assets_category' AND `store_id`='$store_id'";
 									$resultpro = mysqli_query($conn, $sqlpro);
@@ -127,7 +127,7 @@
                                     <div class="card-body"><span style="background-color:#AF4940;color:#ffffff;padding:3px;border-radius:5px;"><?php echo $row['assets_category']; ?></span>
 										</br><small>Total Item <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> <?php echo $procount; ?></small>
 										<?php
-											$store_id = $_SESSION["store_id"];
+											$store_id = $_SESSION['logged']['store_id'];
 											$assets_category	=	$row['assets_id'];
 											$sqlstock	=	"select * FROM `ams_products` WHERE `assets_category`='$assets_category' AND `store_id`='$store_id' AND `assign_status`!='assigned'";
 											$resultstock = mysqli_query($conn, $sqlstock);
