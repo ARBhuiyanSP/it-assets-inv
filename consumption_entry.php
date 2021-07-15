@@ -44,7 +44,7 @@
 													<label>Store </label>
 
 													<?php  
-														$store_id = $_SESSION["store_id"];
+														$store_id = $_SESSION['logged']['store_id'];
 														$sqlstore	= "select * from `store` where `id`='$store_id'";
 														$resultstore = mysqli_query($conn, $sqlstore);
 														$rowstore=mysqli_fetch_array($resultstore);
@@ -88,7 +88,7 @@
 												<div class="form-group">
 													<label for="id">Consumption By</label>
 													<?php 
-														$employee_id = $_SESSION["employee_id"];
+														$employee_id = $_SESSION['logged']['employee_id'];
 														$sqlemployee	= "select * from `employees` where `employee_id`='$employee_id'";
 														$resultemployee = mysqli_query($conn, $sqlemployee);
 														$rowemployee=mysqli_fetch_array($resultemployee);

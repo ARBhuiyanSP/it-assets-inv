@@ -105,14 +105,14 @@
                                 <label>Store</label>
 								
 								<?php  
-									$store_id = $_SESSION["store_id"];
+									$store_id = $_SESSION['logged']['store_id'];
 									$sqlstore	= "select * from `store` where `id`='$store_id'";
 									$resultstore = mysqli_query($conn, $sqlstore);
 									$rowstore=mysqli_fetch_array($resultstore);
 								?>
 								<input type="text" class="form-control" readonly="readonly" value="<?php echo $rowstore['name']; ?>">
 								
-								<input type="hidden" name="warehouse_id" id="warehouse_id" class="form-control" readonly="readonly" value="<?php echo $_SESSION["store_id"]; ?>">
+								<input type="hidden" name="warehouse_id" id="warehouse_id" class="form-control" readonly="readonly" value="<?php echo $_SESSION['logged']['store_id']; ?>">
 								
                             </div>
                         </div>
