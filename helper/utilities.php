@@ -2,7 +2,7 @@
 
 function getDefaultCategoryCodeByStore($table, $fieldName, $modifier, $defaultCode, $prefix){
     global $conn;
-	$store_id	=	$_SESSION["store_id"];
+	$store_id	=	$_SESSION['logged']['store_id']
     $sql    	= "SELECT count($fieldName) as total_row FROM $table WHERE store_id=$store_id";
     $result 	= $conn->query($sql);
     $name   	=   '';
