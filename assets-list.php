@@ -42,8 +42,8 @@
 									</thead>
 									<tbody>
 										 <?php
-											$role = $_SESSION["role"];
-											$store_id = $_SESSION["store_id"];
+											$role = $_SESSION['logged']['role'];
+											$store_id = $_SESSION['logged']['store_id'];
 											
 											if($role == 'user'){
 												$sql = "select * from ams_products where `store_id`='$store_id'";
