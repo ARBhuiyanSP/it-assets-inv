@@ -246,7 +246,7 @@ if(isset($_POST['assign_submit'])){
 		$conn->query($queryupdate);
 		
 		$_SESSION['success']    =   "Asset Assign process have been successfully Completed.";
-		header("location: assets-list.php");
+		header("location: assign-list.php");
 		exit();
 		
 		/* if ($conn->query($query) === TRUE) {

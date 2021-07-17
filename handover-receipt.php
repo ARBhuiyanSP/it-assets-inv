@@ -68,7 +68,7 @@ $id=$_GET['id']; ?>
 													</table>
 													<table style="" class="table table-bordered">
 														<tr>
-															<td style="width:20%">Assigned By:</td>
+															<td style="width:20%">Handover By:</td>
 																<?php if($row['assigned_by']){ 
 																	
 																		$employee_id = $row['assigned_by'];

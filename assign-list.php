@@ -26,7 +26,7 @@
 										<tbody>
 											<tr id="" bgcolor="#f2f2f2" class="edit_tr">
 											<?php
-											$sql	=	"select * from `product_assign`";
+											$sql	=	"select * from `product_assign` ORDER BY `id` DESC";
 											$result = mysqli_query($conn, $sql);
 											while($row=mysqli_fetch_array($result))
 											{
