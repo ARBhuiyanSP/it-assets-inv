@@ -110,7 +110,16 @@ $id=$_GET['id']; ?>
 												</center>
 											</div>
 												<center><div class="row">
-													<div class="col-xs-4"></br></br>--------------------</br>Handover By</div>
+													<div class="col-xs-4"></br>
+														<?php if($row['assigned_by']){ 
+																	
+																		$employee_id = $row['assigned_by'];
+																		$sqlemployee	= "select * from `employees` where `employee_id`='$employee_id'";
+																		$resultemployee = mysqli_query($conn, $sqlemployee);
+																		$rowemployee=mysqli_fetch_array($resultemployee);
+																?>
+															<?php echo $rowemployee["employee_name"]; }else{ ?>---<?php } ?>
+													</br>--------------------</br>Handover By</div>
 													<div class="col-xs-4"></br></br>--------------------</br>Checked By</div>
 													<div class="col-xs-4"></br></br>--------------------</br>Approved by</div>
 												</div></center></br>
