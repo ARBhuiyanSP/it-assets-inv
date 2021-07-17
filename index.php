@@ -61,7 +61,7 @@ include 'includes/login_process.php';
 												?>
                                                 <label for="inputPassword">Password</label>
                                             </div>
-                                            <input type="submit" name="login_submit" value="Login" class="btn btn-primary btn-block">
+                                            <input type="submit" name="login_submit" value="Login" class="btn btn-primary btn-block" style="width:100%">
                                         </form>
                                     </div>
                                 </div>
