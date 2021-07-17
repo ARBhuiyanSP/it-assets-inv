@@ -64,11 +64,8 @@
                             <div class="col-sm-7">
                                 <select class="form-control" id="type" name="type">
                                     <option value="">Select</option>
-                                    <option value="CIVIL">CIVIL</option>
-									<option value="ELECTRICAL">ELECTRICAL</option>
-									<option value="MACHANICAL">MACHANICAL</option>
-									<option value="SANITARY">SANITARY</option>
 									<option value="HARDWARE">HARDWARE</option>
+									<option value="CONSUMABLE">CONSUMABLE</option>
                                 </select>
                             </div>
                         </div>
