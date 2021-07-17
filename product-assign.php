@@ -74,7 +74,7 @@ $id = $_GET['id']; ?>
 								<h3 style="color:red;">Want To Assign This Product ?</h3>
 								<form action="" method="post" name="add_name" id="receive_entry_form" enctype="multipart/form-data" onsubmit="showFormIsProcessing('receive_entry_form');">
 									<div class="row">
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label>Assign To</label>
 												<select id="dv" name="employee_id" class="form-control material_select_2" required >
@@ -91,10 +91,23 @@ $id = $_GET['id']; ?>
 												</select>
 											</div>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-2">
 											<div class="form-group">
 												<label>Assign Date</label>
 												<input name="assign_date" type="text" class="form-control" id="rndate" value="" size="30" autocomplete="off"/>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label for="id">Assigned By</label>
+												<?php 
+													$employee_id = $_SESSION['logged']['employee_id'];
+													$sqlemployee	= "select * from `employees` where `employee_id`='$employee_id'";
+													$resultemployee = mysqli_query($conn, $sqlemployee);
+													$rowemployee=mysqli_fetch_array($resultemployee);
+												?>
+												<input type="text" class="form-control" id="" value="<?php echo $rowemployee["employee_name"]; ?>" readonly required />
+												<input name="assigned_by" type="hidden" id="assigned_by" value="<?php echo $rowemployee["employee_id"]; ?>" />
 											</div>
 										</div>
 									</div>

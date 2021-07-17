@@ -38,6 +38,10 @@ $id=$_GET['id']; ?>
 													<h3>Assets Handover Receipt</h3>
 													<table style="" class="table table-bordered">
 														<tr>
+															<th>S/L No:</th>
+															<td><?php echo $rowp['sl_no'] ?></td>
+														</tr>
+														<tr>
 															<th>Item Name:</th>
 															<td><?php echo $rowp['item_name'] ?></td>
 														</tr>
@@ -54,14 +58,6 @@ $id=$_GET['id']; ?>
 															<td><?php echo $rowp['rlp_no'] ?></td>
 														</tr>
 														<tr>
-															<th>Country Origin:</th>
-															<td><?php echo $rowp['origin'] ?></td>
-														</tr>
-														<tr>
-															<th>Vendor Name:</th>
-															<td><?php echo $rowp['vendor_name'] ?></td>
-														</tr>
-														<tr>
 															<th>Purchase Date:</th>
 															<td><?php echo $rowp['puchase_date'] ?></td>
 														</tr>
@@ -72,7 +68,21 @@ $id=$_GET['id']; ?>
 													</table>
 													<table style="" class="table table-bordered">
 														<tr>
-															<th>Assign date:</th>
+															<td style="width:20%">Assigned By:</td>
+																<?php if($row['assigned_by']){ 
+																	
+																		$employee_id = $row['assigned_by'];
+																		$sqlemployee	= "select * from `employees` where `employee_id`='$employee_id'";
+																		$resultemployee = mysqli_query($conn, $sqlemployee);
+																		$rowemployee=mysqli_fetch_array($resultemployee);
+																?>
+															<td><?php echo $row['assigned_by']; ?> || <?php echo $rowemployee["employee_name"]; ?> || <?php echo $rowemployee["division"]; ?>-<?php echo $rowemployee["department"]; ?></td>
+																<?php }else{ ?>
+															<td>---</td>
+															<?php } ?>
+														</tr>
+														<tr>
+															<td style="width:20%">Handover date:</td>
 															<td><?php 
 															$cDate = strtotime($row['assign_date']);
 															$dDate = date("jS \of F Y",$cDate);
@@ -80,21 +90,7 @@ $id=$_GET['id']; ?>
 															
 														</tr>
 														<tr>
-															<th>Refund date:</th>
-															<td><?php 
-															if($row['refund_date']){
-																$rDate = strtotime($row['refund_date']);
-																$rfDate = date("jS \of F Y",$rDate);
-																echo $rfDate;
-															}else{
-																echo '--';
-															}
-															?>
-															</td>
-
-														</tr>
-														<tr>
-															<th>Assign To:</th>
+															<td style="width:20%">Handover To:</td>
 															<td><?php 
 															$employee_id=$row['employee_id'];
 															$sql4	=	"select * from `employees` where `employee_id`='$employee_id'";
@@ -106,7 +102,7 @@ $id=$_GET['id']; ?>
 															 ?></td>
 														</tr>
 														<tr>
-															<th>Remarks:</th>
+															<td style="width:20%">Remarks:</td>
 															<td><?php echo $row['remarks']; ?></td>
 														</tr>
 													</table>
@@ -114,8 +110,9 @@ $id=$_GET['id']; ?>
 												</center>
 											</div>
 												<center><div class="row">
-													<div class="col-xs-6"></br></br>--------------------</br>Receiver Signature</div>
-													<div class="col-xs-6"></br></br>--------------------</br>Authorised Signature</div>
+													<div class="col-xs-4"></br></br>--------------------</br>Handover By</div>
+													<div class="col-xs-4"></br></br>--------------------</br>Checked By</div>
+													<div class="col-xs-4"></br></br>--------------------</br>Approved by</div>
 												</div></center></br>
 												<div class="row">
 													<div class="col-sm-12" style="border:1px solid gray;border-radius:5px;padding:10px;color:#f26522;">

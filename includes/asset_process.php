@@ -232,10 +232,11 @@ if(isset($_POST['assign_submit'])){
 		$remarks 		= $_POST['remarks'];
 		$status 		= 'Active';
 		$create 		= date('Y-m-d');
+		$assigned_by 		= $_POST['assigned_by'];
 		
 		/* Insert Data Into product_assign Table: */
 		
-		$query = "INSERT INTO `product_assign`(`product_id`,`employee_id`,`assign_date`,`remarks`,`status`,`created_at`) VALUES ('$product_id','$employee_id','$assign_date','$remarks','$status','$create')";
+		$query = "INSERT INTO `product_assign`(`product_id`,`employee_id`,`assign_date`,`remarks`,`assigned_by`,`status`,`created_at`) VALUES ('$product_id','$employee_id','$assign_date','$remarks','$assigned_by','$status','$create')";
         $conn->query($query);
 		$last_id = $conn->insert_id;
 		
