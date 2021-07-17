@@ -48,7 +48,8 @@
 												<td><span class="text"><?php echo $rowemp['location'] ?></span></td>
 												<td><span class="text"><?php echo $row['assign_date'] ?></span></td>
 												<td class='text-center'> 
-												<button onclick="window.location.href = 'assignqrview.php?id=<?php echo $row['id'] ?>'" class=''>Details <i class="fa fa-eye text-success"></i></button>
+												<button onclick="window.location.href = 'assignqrview.php?id=<?php echo $row['id'] ?>'" class='' title="Details"> <i class="fa fa-eye text-success"></i></button>
+												<button onclick="window.location.href = 'handover-receipt.php?id=<?php echo $row['id'] ?>'" class='' title="Handover Receipt"> <i class="fa fa-chart-area text-success"></i></button>
 												</td>
 											</tr>
 

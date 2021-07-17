@@ -237,6 +237,7 @@ if(isset($_POST['assign_submit'])){
 		
 		$query = "INSERT INTO `product_assign`(`product_id`,`employee_id`,`assign_date`,`remarks`,`status`,`created_at`) VALUES ('$product_id','$employee_id','$assign_date','$remarks','$status','$create')";
         $conn->query($query);
+		$last_id = $conn->insert_id;
 		
 		/* Update Data Into ams_products Table: */
 		
@@ -246,6 +247,15 @@ if(isset($_POST['assign_submit'])){
 		$_SESSION['success']    =   "Asset Assign process have been successfully Completed.";
 		header("location: assets-list.php");
 		exit();
+		
+		/* if ($conn->query($query) === TRUE) {
+				  $_SESSION['success']    =   "Asset Assign process have been successfully Completed.";
+					header("location: handover-receipt.php?id='$last_id'");
+					exit();
+				} else {
+				  header("location: product-assign.php?id='$product_id'");
+					exit();
+				} */
 }
 
 /* if(isset($_POST['transfer_submit'])){
