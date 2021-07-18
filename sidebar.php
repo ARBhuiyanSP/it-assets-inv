@@ -9,6 +9,7 @@
 		<!-- =============================++++ Settings Area ++++=============================-->
 		<!-- =============================++++ Settings Area ++++=============================-->
 		<!-- =============================++++ Settings Area ++++=============================-->
+		<?php if($_SESSION["role"] == 'admin'){ ?>
 		<div class="sb-sidenav-menu-heading" style="background-color:#AF4940;color:#ffffff;">Settings</div>
 		<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 			<div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
@@ -21,6 +22,7 @@
 				<a class="nav-link" href="assets-category.php">Assets Category</a>
 			</nav>
 		</div>
+		<?php } ?>
 		<!-- =============================++++ User Area ++++=============================-->
 		<!-- =============================++++ User Area ++++=============================-->
 		<!-- =============================++++ User Area ++++=============================-->
