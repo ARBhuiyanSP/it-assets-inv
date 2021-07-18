@@ -9,7 +9,7 @@
 		<!-- =============================++++ Settings Area ++++=============================-->
 		<!-- =============================++++ Settings Area ++++=============================-->
 		<!-- =============================++++ Settings Area ++++=============================-->
-		<?php if($_SESSION["role"] == 'admin'){ ?>
+		<?php if($_SESSION['logged']['role']; == 'admin'){ ?>
 		<div class="sb-sidenav-menu-heading" style="background-color:#AF4940;color:#ffffff;">Settings</div>
 		<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 			<div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
