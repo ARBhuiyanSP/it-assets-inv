@@ -52,7 +52,7 @@ if (isset($_POST['receive_submit']) && !empty($_POST['receive_submit'])) {
         $material_name      = $_POST['material_name'][$count];
         $material_id        = $_POST['material_id'][$count];
         $unit               = $_POST['unit'][$count];
-        $brand            = $_POST['brand'][$count];
+        $brand              = $_POST['unit'][$count];
         $quantity           = $_POST['quantity'][$count];
         $no_of_material     = $no_of_material+$quantity;
         $unit_price         = $_POST['unit_price'][$count];
@@ -202,7 +202,7 @@ if(isset($_POST['receive_update_submit']) && !empty($_POST['receive_update_submi
 			$material_name      = $_POST['material_name'][$count];
 			$material_id        = $_POST['material_id'][$count];
 			$unit               = $_POST['unit'][$count];
-			$brand            = $_POST['brand'][$count];
+			$brand              = $_POST['unit'][$count];
 			$quantity           = $_POST['quantity'][$count];
 			$no_of_material     = $no_of_material+$quantity;
 			$unit_price         = $_POST['unit_price'][$count];

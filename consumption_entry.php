@@ -51,7 +51,7 @@
 													?>
 													<input type="text" class="form-control" readonly="readonly" value="<?php echo $rowstore['name']; ?>">
 
-													<input type="hidden" name="warehouse_id" id="warehouse_id" class="form-control" readonly="readonly" value="<?php echo $_SESSION["store_id"]; ?>">
+													<input type="hidden" name="warehouse_id" id="warehouse_id" class="form-control" readonly="readonly" value="<?php echo $_SESSION['logged']['store_id']; ?>">
 
 												</div>
 
@@ -146,10 +146,8 @@
 													<th width="30%">Material Name<span class="reqfield"> ***required</span></th>
 													<th width="10%">Material ID</th>
 													<th width="10%">Unit</th>
-													<th width="10%">Brand</th>
 													<th width="10%">In Stock</th>
 													<th width="10%">Qty<span class="reqfield"> ***required</span></th>
-													<th width="15%">Site</th>
 													<th width="5%"></th>
 													</thead>
 													<tbody>
@@ -185,48 +183,8 @@
 																	?>
 																</select>
 															</td>
-															<td>
-																<select class="form-control" id="brand0" name="brand[]" readonly>
-																	<option value="">Select Brand</option>
-																	<?php
-																	$brandData = getmaterialbrand();
-																	if (isset($brandData) && !empty($brandData)) {
-																		foreach ($brandData as $data) {
-																			?>
-																			<option value="<?php echo $data['brand_name']; ?>"><?php echo $data['brand_name']; ?></option>
-																			<?php
-																		}
-																	}
-																	?>
-																</select>
-															</td>
 															<td><input type="text" name="material_total_stock[]" id="material_total_stock0" class="form-control" readonly ></td>
 															<td><input type="text" name="quantity[]" id="quantity0" onchange="sum(0)" onkeyup="check_stock_quantity_validation(0)" class="form-control common_issue_quantity" required></td>
-															<td>
-																<?php
-																	if ($_SESSION['logged']['user_type'] == 'whm') {
-																	$warehouse_id = $_SESSION['logged']['warehouse_id'];
-																	$dataresult = getDataRowByTableAndId('inv_warehosueinfo', $warehouse_id);
-																	?>
-																	<input type="text" class="form-control" readonly="readonly" value="<?php echo (isset($dataresult) && !empty($dataresult) ? $dataresult->name : ''); ?>">
-																	<input type="hidden" name="site_id[]" id="site_id0" class="form-control" readonly="readonly" value="<?php echo $_SESSION['logged']['warehouse_id']; ?>">
-																<?php } else { ?>
-																<select class="form-control" id="site_id0" name="site_id[]" required>
-																	<option value="">Select</option>
-																	<?php
-																	$projectsData = getTableDataByTableName('inv_warehosueinfo');
-
-																	if (isset($projectsData) && !empty($projectsData)) {
-																		foreach ($projectsData as $data) {
-																			?>
-																			<option value="<?php echo $data['id']; ?>"><?php echo $data['name']; ?></option>
-																			<?php
-																		}
-																	}
-																	?>
-																</select>
-																<?php } ?>
-															</td>
 															<td><button type="button" name="add" id="add" class="btn" style="background-color:#198754;color:#ffffff;">+</button></td>
 														</tr>
 													</tbody>
@@ -276,14 +234,7 @@
                                             ?><option value="<?php echo $data['id']; ?>"><?php echo $data['unit_name']; ?></option><?php
                                         }
                                     }
-                                    ?></select></td><td><select class="form-control select2" id="brand' + i + '" name="brand[]' + i + '"><option value="">Select</option><?php
-                                    $projectsData = getmaterialbrand();
-                                    if (isset($projectsData) && !empty($projectsData)) {
-                                        foreach ($projectsData as $data) {
-                                            ?><option value="<?php echo $data['brand_name']; ?>"><?php echo $data['brand_name']; ?></option><?php
-                                        }
-                                    }
-                                    ?></select></td><td><input type="text" name="material_total_stock[]" id="material_total_stock' + i + '" class="form-control" readonly></td><td><input type="text" name="quantity[]" id="quantity' + i + '" onchange="sum(0)"  onkeyup="check_stock_quantity_validation(' + i + ')" class="form-control common_issue_quantity" required></td><td><?php if ($_SESSION['logged']['user_type'] == 'whm') {$warehouse_id = $_SESSION['logged']['warehouse_id'];$dataresult = getDataRowByTableAndId('inv_warehosueinfo', $warehouse_id); ?><input type="text" class="form-control" readonly="readonly" value="<?php echo (isset($dataresult) && !empty($dataresult) ? $dataresult->name : ''); ?>"><input type="hidden" name="site_id[]" id="site_id' + i + '" class="form-control" readonly="readonly" value="<?php echo $_SESSION['logged']['warehouse_id']; ?>"><?php } else { ?> <select class="form-control" id="site_id' + i + '" name="site_id[]" required><option value="">Select</option><?php $projectsData = getTableDataByTableName('inv_warehosueinfo');if (isset($projectsData) && !empty($projectsData)) { foreach ($projectsData as $data) { ?><option value="<?php echo $data['id']; ?>"><?php echo $data['name']; ?></option><?php } } ?></select><?php } ?></td><td><button type="button" name="remove" id="' + i + '" class="btn btn_remove" style="background-color:#AF4940;color:#ffffff;">X</button></td></tr>');
+                                    ?></select></td><td><input type="text" name="material_total_stock[]" id="material_total_stock' + i + '" class="form-control" readonly></td><td><input type="text" name="quantity[]" id="quantity' + i + '" onchange="sum(0)"  onkeyup="check_stock_quantity_validation(' + i + ')" class="form-control common_issue_quantity" required></td><td><button type="button" name="remove" id="' + i + '" class="btn btn_remove" style="background-color:#AF4940;color:#ffffff;">X</button></td></tr>');
             $('#quantity' + i + ', #unit_price' + i).change(function () {
                 sum(i)
             });

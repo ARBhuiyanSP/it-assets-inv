@@ -40,7 +40,7 @@ if (isset($_POST['consumption_submit']) && !empty($_POST['consumption_submit']))
 				$material_name      = $_POST['material_name'][$count];
 				$material_id        = $_POST['material_id'][$count];
 				$unit               = $_POST['unit'][$count];
-				$brand            	= $_POST['brand'][$count];
+				$brand            	= $_POST['unit'][$count];
 				$quantity           = $_POST['quantity'][$count];
 				$package_id   		= $_POST['package_id'][$count];     
 				$remarks            = $_POST['remarks'];     
@@ -166,7 +166,7 @@ if(isset($_POST['issue_update_submit']) && !empty($_POST['issue_update_submit'])
 				$material_name      = $_POST['material_name'][$count];
 				$material_id        = $_POST['material_id'][$count];
 				$unit               = $_POST['unit'][$count];
-				$brand            	= $_POST['brand'][$count];
+				$brand            	= $_POST['unit'][$count];
 				$quantity           = $_POST['quantity'][$count];
 				$package_id   		= $_POST['package_id'][$count];
 

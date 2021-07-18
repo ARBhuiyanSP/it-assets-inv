@@ -121,10 +121,10 @@
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dynamic_field">
                                 <thead>
-									<th width="35%">Material Name<span class="reqfield"> ***</span></th>
+									<th width="45%">Material Name<span class="reqfield"> ***</span></th>
 									<th width="10%">Material ID</th>
 									<th width="10%">Unit</th>
-									<th width="10%">Brand</th>
+									<!-- <th width="10%">Brand</th> -->
 									<th width="10%">Qty<span class="reqfield"> ***</span></th>
 									<th width="10%">Unit Price<span class="reqfield"> ***</span></th>
 									<th width="10%">Total Amount</th>
@@ -163,7 +163,7 @@
                                                 ?>
                                             </select>
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <select class="form-control material_select_2" id="brand0" name="brand[]">
                                                 <option value="">Select</option>
                                                 <?php
@@ -177,7 +177,7 @@
                                                 }
                                                 ?>
                                             </select>
-                                        </td>
+                                        </td> -->
                                         <td><input type="text" name="quantity[]" id="quantity0" onchange="sum(0)" class="form-control" required></td>
                                         <td><input type="text" name="unit_price[]" id="unit_price0" onchange="sum(0)" class="form-control" required></td>
                                         <td><input type="text" name="totalamount[]" id="sum0" class="form-control"></td>
@@ -260,12 +260,6 @@
                                                 if (isset($projectsData) && !empty($projectsData)) {
                                                     foreach ($projectsData as $data) {
                                                         ?><option value="<?php echo $data['id']; ?>"><?php echo $data['unit_name']; ?></option><?php }
-                                                }
-                                                ?></select></td><td><select class="form-control material_select_2" id="brand' + i + '" name="brand[]' + i + '" ><option value="">Select</option><?php
-                                                $projectsData = getmaterialbrand();
-                                                if (isset($projectsData) && !empty($projectsData)) {
-                                                    foreach ($projectsData as $data) {
-                                                        ?><option value="<?php echo $data['brand_name']; ?>"><?php echo $data['brand_name']; ?></option><?php }
                                                 }
                                                 ?></select></td><td><input type="text" name="quantity[]" id="quantity' + i + '" onchange="sum(0)" class="form-control" required></td><td><input type="text" name="unit_price[]" id="unit_price' + i + '" onchange="sum(0)" class="form-control" required></td><td><input type="text" name="totalamount[]" id="sum' + i + '" class="form-control"></td><td><button type="button" name="remove" id="' + i + '" class="btn btn_remove" style="background-color:#AF4940;color:#ffffff;">X</button></td></tr>');
 												$(".material_select_2").select2();
