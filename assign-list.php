@@ -7,7 +7,7 @@
                         <div class="card mt-4 mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Receive List
+                                Assign List
                             </div>
                             <div class="card-body">
 								<div class="table-responsive data-table-wrapper">

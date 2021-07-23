@@ -59,9 +59,12 @@ if (isset($_POST['store_transfer_submit']) && !empty($_POST['store_transfer_subm
         $mbfrom_out_qty      = $quantity;
         $mbfrom_type         = 'Transfer Out';
         $mbserial       = '1.1';
-        $mbunit_id      = $project_id;
+        $mbunit_id      = $unit;
         $mbserial_id    = 0;
-        $jvno           = $transfer_id;       
+        $jvno           = $transfer_id;    
+		$mbin_val	=	0;		
+		$mbout_val	=	0;		
+		$mbprice	=	0;		
         
         $query_outmb = "INSERT INTO `inv_materialbalance` (`mb_ref_id`,`mb_materialid`,`mb_date`,`mbin_qty`,`mbin_val`,`mbout_qty`,`mbout_val`,`mbprice`,`mbtype`,`mbserial`,`mbserial_id`,`mbunit_id`,`jvno`, `warehouse_id`) VALUES ('$mb_ref_id','$mb_materialid','$mb_date','$mbfrom_in_qty','$mbin_val','$mbfrom_out_qty','$mbout_val','$mbprice','$mbfrom_type','$mbserial','$mbunit_id','$mbserial_id','$jvno','$from_store')";
         $conn->query($query_outmb);
