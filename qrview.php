@@ -54,6 +54,10 @@ $id=$_GET['id'];?>
 										<td><?php echo $row['model'] ?></td>
 									</tr>
 									<tr>
+										<th>Manufacturing SL No:</th>
+										<td><?php echo $row['manu_sl'] ?></td>
+									</tr>
+									<tr>
 										<th>Description:</th>
 										<td><?php echo $row['assets_description'] ?></td>
 									</tr>

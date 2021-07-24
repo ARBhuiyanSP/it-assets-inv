@@ -58,6 +58,10 @@ $id=$_GET['id']; ?>
 															<td><?php echo $rowp['model'] ?></td>
 														</tr>
 														<tr>
+															<th>Manufacturing SL No:</th>
+															<td><?php echo $rowp['manu_sl'] ?></td>
+														</tr>
+														<tr>
 															<th>RLP No:</th>
 															<td><?php echo $rowp['rlp_no'] ?></td>
 														</tr>
@@ -114,7 +118,7 @@ $id=$_GET['id']; ?>
 												</center>
 											</div>
 												<center><div class="row">
-													<div class="col-xs-4"></br>
+													<div class="col-xs-3"></br>
 														<?php if($row['assigned_by']){ 
 																	
 																		$employee_id = $row['assigned_by'];
@@ -124,8 +128,9 @@ $id=$_GET['id']; ?>
 																?>
 															<?php echo $rowemployee["employee_name"]; }else{ ?>---<?php } ?>
 													</br>--------------------</br>Handover By</div>
-													<div class="col-xs-4"></br></br>--------------------</br>Checked By</div>
-													<div class="col-xs-4"></br></br>--------------------</br>Approved by</div>
+													<div class="col-xs-3"></br></br>--------------------</br>Received By</div>
+													<div class="col-xs-3"></br></br>--------------------</br>Checked By</div>
+													<div class="col-xs-3"></br></br>--------------------</br>Approved by</div>
 												</div></center></br>
 												<div class="row">
 													<div class="col-sm-12" style="border:1px solid gray;border-radius:5px;padding:10px;color:#f26522;">
