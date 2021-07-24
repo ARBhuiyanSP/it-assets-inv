@@ -34,13 +34,13 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                             <div class="form-group">
                                 <label>Store</label>
                                 <?php 
-									$store_id = $_SESSION["store_id"];
+									$store_id = $_SESSION['logged']['store_id'];
 									$sqlstore	= "select * from `store` where `id`='$store_id'";
 									$resultstore = mysqli_query($conn, $sqlstore);
 									$rowstore=mysqli_fetch_array($resultstore);
 								?>
 								<input name="" type="text" class="form-control" id="laptop" value="<?php echo $rowstore['name']; ?>" size="30" required readonly />
-								<input name="store_id" type="hidden" value="<?php echo $_SESSION["store_id"]; ?>" />
+								<input name="store_id" type="hidden" value="<?php echo $_SESSION['logged']['store_id']; ?>" />
                             </div>
                         </div>
 						
