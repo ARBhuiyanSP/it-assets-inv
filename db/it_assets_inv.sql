@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2021 at 05:52 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Jul 24, 2021 at 07:28 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -6504,13 +6505,6 @@ CREATE TABLE `inv_consumption` (
   `consumption_image` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `inv_consumption`
---
-
-INSERT INTO `inv_consumption` (`id`, `consumption_id`, `consumption_date`, `received_by`, `receiver_phone`, `remarks`, `project_id`, `warehouse_id`, `consumption_by`, `approval_status`, `approved_by`, `approved_at`, `approval_remarks`, `consumption_image`) VALUES
-(5187, 'CSM-CIT001', '2021-07-15', '', '', 'Test', '', '4', 'SPL-007729', 0, '', NULL, '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -6533,14 +6527,6 @@ CREATE TABLE `inv_consumptiondetails` (
   `building_id` varchar(100) NOT NULL,
   `approval_status` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `inv_consumptiondetails`
---
-
-INSERT INTO `inv_consumptiondetails` (`id`, `consumption_id`, `consumption_date`, `material_id`, `material_name`, `unit`, `consumption_qty`, `consumption_price`, `part_no`, `project_id`, `warehouse_id`, `package_id`, `building_id`, `approval_status`) VALUES
-(21173, 'CSM-CIT001', '2021-07-15', '02-03-001', '339', '3', 2, 0, '', '', '4', '', '', 0),
-(21174, 'CSM-CIT001', '2021-07-15', '02-01-001', '341', '3', 1, 0, '', '', '4', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -6749,9 +6735,9 @@ CREATE TABLE `inv_item_brand` (
 --
 
 INSERT INTO `inv_item_brand` (`id`, `brand_name`) VALUES
-(1, 'BSRM'),
-(2, 'KSRM'),
-(3, 'GPH');
+(1, 'Toshiba'),
+(2, 'EPSON'),
+(3, 'HP');
 
 -- --------------------------------------------------------
 
@@ -6769,20 +6755,12 @@ CREATE TABLE `inv_item_unit` (
 --
 
 INSERT INTO `inv_item_unit` (`id`, `unit_name`) VALUES
-(1, 'kg'),
-(2, 'bag'),
 (3, 'pcs'),
-(4, 'Ton'),
-(6, 'ltr'),
-(7, 'Drum'),
-(8, 'CFT'),
-(9, 'Nos'),
-(12, 'RFT'),
 (13, 'Coil '),
-(14, 'SFT'),
-(15, 'Gallon'),
-(16, 'Bundle'),
-(17, 'Dozn');
+(17, 'Dozn'),
+(18, 'Set'),
+(19, 'Meter'),
+(20, 'Box');
 
 -- --------------------------------------------------------
 
@@ -6848,10 +6826,109 @@ CREATE TABLE `inv_material` (
 --
 
 INSERT INTO `inv_material` (`id`, `material_id_code`, `material_id`, `material_sub_id`, `material_description`, `brand_name`, `type`, `material_min_stock`, `avg_con_sump`, `lead_time`, `re_order_level`, `qty_unit`, `op_balance_qty`, `op_balance_val`, `chk_print`, `cur_qty`, `cur_price`, `cur_value`, `last_issue`, `last_receive`, `part_no`) VALUES
-(339, '02-03-001', '45', '124', 'Cartridge', '', 'HARDWARE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(340, '02-04-001', '45', '125', 'Cartridge Model', '', 'HARDWARE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(341, '02-01-001', '45', '122', 'Toner', '', 'HARDWARE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(342, '02-02-001', '45', '123', 'Toner Model', '', 'HARDWARE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, '');
+(345, '01-01-001', '46', '128', '5018P', 'Toshiba', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(346, '01-01-002', '46', '128', '5018C', 'Toshiba', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(347, '01-01-003', '46', '128', 'T-3008P', 'Toshiba', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(348, '01-01-004', '46', '128', 'T-2309A', 'Toshiba', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(349, '02-04-001', '47', '132', 'LQ-310', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(350, '02-04-002', '47', '132', 'LQ-300', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(351, '02-04-003', '47', '132', 'LQ-2190', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(352, '02-03-001', '47', '131', 'HP-680', 'China', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(353, '02-03-002', '47', '131', 'HP-425', 'China', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(354, '02-03-003', '47', '131', 'BK-810', 'Canon', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(355, '02-03-004', '47', '131', 'BK-811', 'Canon', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(356, '02-03-005', '47', '131', 'CLR-810', 'Canon', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(357, '02-03-006', '47', '131', 'CLR-811', 'Canon', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(358, '02-03-007', '47', '131', 'BK-680', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(359, '02-03-008', '47', '131', 'CLR-680', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(360, '02-03-009', '47', '131', 'BK-955', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(361, '02-03-010', '47', '131', 'C-955', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(362, '02-03-011', '47', '131', 'M-955', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(363, '02-03-012', '47', '131', 'Y-955', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(364, '02-01-001', '47', '129', '26A-ORG', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(365, '02-01-002', '47', '129', '26A-CHI', 'China', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(366, '02-01-003', '47', '129', '05A-CHI', 'China', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(367, '02-01-004', '47', '129', '05A-ORG', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(368, '02-01-005', '47', '129', '79A', 'China', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(369, '02-01-006', '47', '129', '44A', 'China', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(370, '02-01-007', '47', '129', 'MLT-D111S', 'China', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(371, '02-01-008', '47', '129', '85A', 'China', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(372, '02-03-013', '47', '131', '644', 'China', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(373, '02-01-009', '47', '129', '12A', 'China', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(374, '02-03-014', '47', '131', 'BK-72', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(375, '02-03-015', '47', '131', 'C-72', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(376, '02-03-016', '47', '131', 'M-72', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(377, '02-03-017', '47', '131', 'Y-72', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(378, '02-01-010', '47', '129', '308', 'China', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(379, '02-01-011', '47', '129', '107A', 'China', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(380, '02-01-012', '47', '129', '76A', 'China', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(381, '02-01-013', '47', '129', '326', 'China', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(382, '02-02-001', '47', '130', 'BK-T6641', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(383, '02-02-002', '47', '130', 'BK-T6642', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(384, '02-02-003', '47', '130', 'BK-T6643', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(385, '02-02-004', '47', '130', 'BK-T6644', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(386, '02-02-005', '47', '130', 'C-T6641', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(387, '02-02-006', '47', '130', 'C-T6642', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(388, '02-02-007', '47', '130', 'C-T6643', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(389, '02-02-008', '47', '130', 'C-T6644', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(390, '02-02-009', '47', '130', 'M-T6641', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(391, '02-02-010', '47', '130', 'M-T6643', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(392, '02-02-011', '47', '130', 'M-T6644', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(393, '02-02-012', '47', '130', 'Y-T6641', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(394, '02-02-013', '47', '130', 'Y-T6642', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(395, '02-02-014', '47', '130', 'Y-T6643', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(396, '02-02-015', '47', '130', 'Y-T6644', 'Epson', 'CONSUMABLE', 2, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(397, '02-02-016', '47', '130', 'BK-310', 'BROTHER', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(398, '02-02-017', '47', '130', 'C-310', 'BROTHER', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(399, '02-02-018', '47', '130', 'M-310', 'BROTHER', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(400, '02-02-019', '47', '130', 'Y-310', 'BROTHER', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(401, '02-02-020', '47', '130', 'BK-664', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(402, '02-02-021', '47', '130', 'C-664', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(403, '02-02-022', '47', '130', 'M-664', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(404, '02-02-023', '47', '130', 'Y-664', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(405, '02-02-024', '47', '130', 'BK-790', 'Canon', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(406, '02-02-025', '47', '130', 'C-790', 'Canon', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(407, '02-02-026', '47', '130', 'M-790', 'Canon', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(408, '02-02-027', '47', '130', 'Y-790', 'Canon', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(409, '02-03-018', '47', '131', 'BK-650', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(410, '02-03-019', '47', '131', 'CLR-650', 'HP', 'CONSUMABLE', 1, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(411, '02-02-028', '47', '130', 'BK-003', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(412, '02-02-029', '47', '130', 'C-003', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(413, '02-02-030', '47', '130', 'M-003', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(414, '02-02-031', '47', '130', 'Y-003', 'Epson', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(415, '02-02-032', '47', '130', 'BK-GT51', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(416, '02-02-033', '47', '130', 'BK-GT52', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(417, '02-02-034', '47', '130', 'BK-GT53', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(418, '02-02-035', '47', '130', 'BK-GT54', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(419, '02-02-036', '47', '130', 'BK-GT51XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(420, '02-02-037', '47', '130', 'BK-GT52XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(421, '02-02-038', '47', '130', 'BK-GT53XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(422, '02-02-039', '47', '130', 'BK-GT54XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(423, '02-02-040', '47', '130', 'C-GT51', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(424, '02-02-041', '47', '130', 'C-GT52', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(425, '02-02-042', '47', '130', 'C-GT54', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(426, '02-02-043', '47', '130', 'C-GT53', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(427, '02-02-044', '47', '130', 'C-GT51XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(428, '02-02-045', '47', '130', 'C-GT52XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(429, '02-02-046', '47', '130', 'C-GT53XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(430, '02-02-047', '47', '130', 'C-GT54XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(431, '02-02-048', '47', '130', 'M-GT51', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(432, '02-02-049', '47', '130', 'M-GT51XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(433, '02-02-050', '47', '130', 'M-GT52', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(434, '02-02-051', '47', '130', 'M-GT52XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(435, '02-02-052', '47', '130', 'M-GT53', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(436, '02-02-053', '47', '130', 'M-GT53XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(437, '02-02-054', '47', '130', 'M-GT54', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(438, '02-02-055', '47', '130', 'M-GT54XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(439, '02-02-056', '47', '130', 'Y-GT51', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(440, '02-02-057', '47', '130', 'Y-GT51XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(441, '02-02-058', '47', '130', 'Y-GT52', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(442, '02-02-059', '47', '130', 'Y-GT52XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(443, '02-02-060', '47', '130', 'Y-GT53', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(444, '02-02-061', '47', '130', 'Y-53XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(445, '02-02-062', '47', '130', 'Y-GT54', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(446, '02-02-063', '47', '130', 'Y-GT54XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+(447, '02-02-064', '47', '130', 'Y-GT53XL', 'HP', 'CONSUMABLE', 5, NULL, NULL, 0, '3', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -6888,14 +6965,47 @@ CREATE TABLE `inv_materialbalance` (
 --
 
 INSERT INTO `inv_materialbalance` (`id`, `mb_ref_id`, `mb_materialid`, `mb_date`, `mbin_qty`, `mbin_val`, `mbout_qty`, `mbout_val`, `mbprice`, `mbtype`, `mbserial`, `mbserial_id`, `mbunit_id`, `jvno`, `part_no`, `project_id`, `warehouse_id`, `package_id`, `building_id`, `site_id`, `approval_status`) VALUES
-(31982, 'MRR-CIT001', '02-03-001', '2021-07-15', 20, 5000, 0, 0, 250, 'Receive', 1.1, '', '0', 'MRR-CIT001', '', '', '4', '', '', '', 0),
-(31983, 'MRR-CIT001', '02-01-001', '2021-07-15', 15, 5250, 0, 0, 350, 'Receive', 1.1, '', '0', 'MRR-CIT001', '', '', '4', '', '', '', 0),
-(31986, 'CSM-CIT001', '02-03-001', '2021-07-15', 0, 0, 2, 0, 0, 'Consumption', 1.1, '', '0', 'CSM-CIT001', '', '', '4', '', '', '', 0),
-(31987, 'CSM-CIT001', '02-01-001', '2021-07-15', 0, 0, 1, 0, 0, 'Consumption', 1.1, '', '0', 'CSM-CIT001', '', '', '4', '', '', '', 0),
-(31996, 'CSM-CIT001', '02-03-001', '2021-07-15', 0, 0, 3, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(31997, 'CSM-CIT001', '02-03-001', '2021-07-15', 3, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(31998, 'CSM-CIT001', '02-01-001', '2021-07-15', 0, 0, 2, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(31999, 'CSM-CIT001', '02-01-001', '2021-07-15', 2, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0);
+(32008, 'MRR-CIT001', '02-01-012', '2021-07-18', 3, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
+(32009, 'MRR-CIT001', '02-01-002', '2021-07-18', 10, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
+(32010, 'MRR-CIT001', '02-01-004', '2021-07-18', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
+(32011, 'MRR-CIT001', '02-01-003', '2021-07-18', 5, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
+(32012, 'MRR-CIT001', '02-03-007', '2021-07-18', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
+(32013, 'MRR-CIT001', '02-03-008', '2021-07-18', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
+(32014, 'MRR-CIT001', '02-04-001', '2021-07-18', 10, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
+(32015, 'MRR-CIT002', '02-01-005', '2021-07-19', 2, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT002', '3', '', '4', '', '', '', 0),
+(32016, 'MRR-CIT003', '02-01-008', '2021-07-19', 2, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT003', '3', '', '4', '', '', '', 0),
+(32017, 'MRR-CIT004', '02-01-008', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT004', '3', '', '4', '', '', '', 0),
+(32018, 'MRR-CIT005', '02-01-002', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
+(32019, 'MRR-CIT005', '02-02-032', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
+(32020, 'MRR-CIT005', '02-02-040', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
+(32021, 'MRR-CIT005', '02-02-048', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
+(32022, 'MRR-CIT005', '02-02-056', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
+(32023, 'CSM-CIT001', '02-01-005', '2021-07-19', 0, 0, 2, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32024, 'CSM-CIT001', '02-01-005', '2021-07-19', 2, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32025, 'CSM-CIT001', '02-01-008', '2021-07-19', 0, 0, 3, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32026, 'CSM-CIT001', '02-01-008', '2021-07-19', 3, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32027, 'CSM-CIT001', '02-01-002', '2021-07-19', 0, 0, 11, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32028, 'CSM-CIT001', '02-01-002', '2021-07-19', 11, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32029, 'CSM-CIT001', '02-02-032', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32030, 'CSM-CIT001', '02-02-032', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32031, 'CSM-CIT001', '02-02-040', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32032, 'CSM-CIT001', '02-02-040', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32033, 'CSM-CIT001', '02-02-048', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32034, 'CSM-CIT001', '02-02-048', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32035, 'CSM-CIT001', '02-02-056', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32036, 'CSM-CIT001', '02-02-056', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32037, 'CSM-CIT001', '02-01-012', '2021-07-19', 0, 0, 3, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32038, 'CSM-CIT001', '02-01-012', '2021-07-19', 3, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32039, 'CSM-CIT001', '02-01-004', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32040, 'CSM-CIT001', '02-01-004', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32041, 'CSM-CIT001', '02-01-003', '2021-07-19', 0, 0, 5, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32042, 'CSM-CIT001', '02-01-003', '2021-07-19', 5, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32043, 'CSM-CIT001', '02-03-007', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32044, 'CSM-CIT001', '02-03-007', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32045, 'CSM-CIT001', '02-03-008', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32046, 'CSM-CIT001', '02-03-008', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
+(32047, 'CSM-CIT001', '02-04-001', '2021-07-19', 0, 0, 10, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
+(32048, 'CSM-CIT001', '02-04-001', '2021-07-19', 10, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -6915,10 +7025,11 @@ CREATE TABLE `inv_materialcategory` (
 --
 
 INSERT INTO `inv_materialcategory` (`id`, `material_sub_id`, `category_id`, `material_sub_description`) VALUES
-(122, '02-01-000', '45', 'Toner'),
-(123, '02-02-000', '45', 'Toner Model'),
-(124, '02-03-000', '45', 'Cartridge'),
-(125, '02-04-000', '45', 'Cartridge Model');
+(128, '01-01-000', '46', 'Toner'),
+(129, '02-01-000', '47', 'Toner'),
+(130, '02-02-000', '47', 'INK'),
+(131, '02-03-000', '47', 'Cartridge'),
+(132, '02-04-000', '47', 'Ribbon');
 
 -- --------------------------------------------------------
 
@@ -6940,8 +7051,8 @@ CREATE TABLE `inv_materialcategorysub` (
 --
 
 INSERT INTO `inv_materialcategorysub` (`id`, `category_id`, `category_description`, `stock_acct_id`, `chk_sbalance`, `consumption_ac`) VALUES
-(44, '01-00-000', 'Photocopier', NULL, NULL, NULL),
-(45, '02-00-000', 'Printer', NULL, NULL, NULL);
+(46, '01-00-000', 'Photocopier', NULL, NULL, NULL),
+(47, '02-00-000', 'Printer', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -7098,7 +7209,11 @@ CREATE TABLE `inv_receive` (
 --
 
 INSERT INTO `inv_receive` (`id`, `mrr_no`, `mrr_date`, `purchase_id`, `receive_acct_id`, `supplier_id`, `postedtogl`, `vat_challan_no`, `remarks`, `receive_type`, `project_id`, `warehouse_id`, `receive_unit_id`, `chk_year_end`, `receive_total`, `no_of_material`, `challanno`, `challan_date`, `jv_no`, `part_no`, `requisitionno`, `requisition_date`, `received_by`, `approval_status`, `approved_by`, `approved_at`, `approval_remarks`, `mrr_image`) VALUES
-(1768, 'MRR-CIT001', '2021-07-15', 'PID-001', '6-14-010', 'SID-001', 0, 'VT-001', 'Test', 'Credit', '', '4', '1', NULL, 10250, 35, 'SCN-001', '2021-07-15', NULL, '', 'RLP-001', '2021-07-15', '1', 0, '', '0000-00-00 00:00:00', '', '');
+(1770, 'MRR-CIT001', '2021-07-18', 'N/A', '6-14-010', 'SID-001', 0, '..', 'For CTG Port. Received at Dhaka.', 'Credit', '', '4', '1', NULL, 0, 31, '8015C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-14', '11', 0, '', '0000-00-00 00:00:00', '', ''),
+(1771, 'MRR-CIT002', '2021-07-19', 'N/A', '6-14-010', 'SID-001', 0, '..', 'EEL-Waterlog Project.', 'Credit', '', '4', '1', NULL, 0, 2, '8016C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-19', '11', 0, '', '0000-00-00 00:00:00', '', ''),
+(1772, 'MRR-CIT003', '2021-07-19', 'N/A', '6-14-010', 'SID-001', 0, '..', 'EEL-RAOZAN Project.', 'Credit', '', '4', '1', NULL, 0, 2, '8017C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-14', '11', 0, '', '0000-00-00 00:00:00', '', ''),
+(1773, 'MRR-CIT004', '2021-07-19', 'N/A', '6-14-010', 'SID-001', 0, '..', 'EEL-GOHIRA Project.', 'Credit', '', '4', '1', NULL, 0, 1, '8018C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-14', '11', 0, '', '0000-00-00 00:00:00', '', ''),
+(1774, 'MRR-CIT005', '2021-07-19', 'N/A', '6-14-010', 'SID-001', 0, '..', 'EEL-Dredging Project.', 'Credit', '', '4', '1', NULL, 0, 5, '8019C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-14', '11', 0, '', '0000-00-00 00:00:00', '', '');
 
 -- --------------------------------------------------------
 
@@ -7129,8 +7244,21 @@ CREATE TABLE `inv_receivedetail` (
 --
 
 INSERT INTO `inv_receivedetail` (`id`, `mrr_no`, `material_id`, `material_name`, `brand_id`, `unit_id`, `receive_qty`, `unit_price`, `sl_no`, `total_receive`, `rd_serial_id`, `part_no`, `project_id`, `warehouse_id`, `approval_status`) VALUES
-(2629, 'MRR-CIT001', '02-03-001', '339', '', 3, 20, 250, 1, 5000, '', '', '', '4', 0),
-(2630, 'MRR-CIT001', '02-01-001', '341', '', 3, 15, 350, 1, 5250, '', '', '', '4', 0);
+(2633, 'MRR-CIT001', '02-01-012', '380', '3', 3, 3, 0, 1, 0, '', '3', '', '4', 0),
+(2634, 'MRR-CIT001', '02-01-002', '365', '3', 3, 10, 0, 1, 0, '', '3', '', '4', 0),
+(2635, 'MRR-CIT001', '02-01-004', '367', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
+(2636, 'MRR-CIT001', '02-01-003', '366', '3', 3, 5, 0, 1, 0, '', '3', '', '4', 0),
+(2637, 'MRR-CIT001', '02-03-007', '358', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
+(2638, 'MRR-CIT001', '02-03-008', '359', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
+(2639, 'MRR-CIT001', '02-04-001', '349', '3', 3, 10, 0, 1, 0, '', '3', '', '4', 0),
+(2640, 'MRR-CIT002', '02-01-005', '368', '3', 3, 2, 0, 1, 0, '', '3', '', '4', 0),
+(2641, 'MRR-CIT003', '02-01-008', '371', '3', 3, 2, 0, 1, 0, '', '3', '', '4', 0),
+(2642, 'MRR-CIT004', '02-01-008', '371', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
+(2643, 'MRR-CIT005', '02-01-002', '365', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
+(2644, 'MRR-CIT005', '02-02-032', '415', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
+(2645, 'MRR-CIT005', '02-02-040', '423', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
+(2646, 'MRR-CIT005', '02-02-048', '431', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
+(2647, 'MRR-CIT005', '02-02-056', '439', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0);
 
 -- --------------------------------------------------------
 
@@ -7262,7 +7390,11 @@ CREATE TABLE `inv_supplierbalance` (
 --
 
 INSERT INTO `inv_supplierbalance` (`id`, `sb_ref_id`, `warehouse_id`, `sb_date`, `sb_supplier_id`, `sb_dr_amount`, `sb_cr_amount`, `sb_remark`, `sb_partac_id`, `approval_status`) VALUES
-(1563, 'MRR-CIT001', '4', '2021-07-15', 'SID-001', 0, 10250, 'Test', 'MRR-CIT001', 0);
+(1565, 'MRR-CIT001', '4', '2021-07-18', 'SID-001', 0, 0, 'For CTG Port. Received at Dhaka.', 'MRR-CIT001', 0),
+(1566, 'MRR-CIT002', '4', '2021-07-19', 'SID-001', 0, 0, 'EEL-Waterlog Project.', 'MRR-CIT002', 0),
+(1567, 'MRR-CIT003', '4', '2021-07-19', 'SID-001', 0, 0, 'EEL-RAOZAN Project.', 'MRR-CIT003', 0),
+(1568, 'MRR-CIT004', '4', '2021-07-19', 'SID-001', 0, 0, 'EEL-GOHIRA Project.', 'MRR-CIT004', 0),
+(1569, 'MRR-CIT005', '4', '2021-07-19', 'SID-001', 0, 0, 'EEL-Dredging Project.', 'MRR-CIT005', 0);
 
 -- --------------------------------------------------------
 
@@ -7317,8 +7449,19 @@ CREATE TABLE `inv_tranferdetail` (
 --
 
 INSERT INTO `inv_tranferdetail` (`id`, `transfer_id`, `material_id`, `material_name`, `transfer_qty`, `unit`, `type`, `inwarehouse`, `outwarehouse`) VALUES
-(407, 'CSM-CIT001', '02-03-001', '339', '3', '3', '1', '2', '4'),
-(408, 'CSM-CIT001', '02-01-001', '341', '2', '3', '1', '2', '4');
+(411, 'CSM-CIT001', '02-01-005', '368', '2', '3', '1', '2', '4'),
+(412, 'CSM-CIT001', '02-01-008', '371', '3', '3', '1', '2', '4'),
+(413, 'CSM-CIT001', '02-01-002', '365', '11', '3', '1', '2', '4'),
+(414, 'CSM-CIT001', '02-02-032', '415', '1', '3', '1', '2', '4'),
+(415, 'CSM-CIT001', '02-02-040', '423', '1', '3', '1', '2', '4'),
+(416, 'CSM-CIT001', '02-02-048', '431', '1', '3', '1', '2', '4'),
+(417, 'CSM-CIT001', '02-02-056', '439', '1', '3', '1', '2', '4'),
+(418, 'CSM-CIT001', '02-01-012', '380', '3', '3', '1', '2', '4'),
+(419, 'CSM-CIT001', '02-01-004', '367', '1', '3', '1', '2', '4'),
+(420, 'CSM-CIT001', '02-01-003', '366', '5', '3', '1', '2', '4'),
+(421, 'CSM-CIT001', '02-03-007', '358', '1', '3', '1', '2', '4'),
+(422, 'CSM-CIT001', '02-03-008', '359', '1', '3', '1', '2', '4'),
+(423, 'CSM-CIT001', '02-04-001', '349', '10', '3', '1', '2', '4');
 
 -- --------------------------------------------------------
 
@@ -7340,7 +7483,7 @@ CREATE TABLE `inv_transfermaster` (
 --
 
 INSERT INTO `inv_transfermaster` (`id`, `transfer_id`, `transfer_date`, `from_warehouse`, `to_warehouse`, `remarks`) VALUES
-(165, 'CSM-CIT001', '2021-07-15', '4', '2', 'test');
+(167, 'CSM-CIT001', '2021-07-19', '4', '2', 'Transfer to CTG for EEL & Port.');
 
 -- --------------------------------------------------------
 
@@ -8470,6 +8613,7 @@ CREATE TABLE `product_assign` (
   `assign_date` varchar(100) NOT NULL,
   `refund_date` varchar(100) NOT NULL,
   `remarks` longtext NOT NULL,
+  `assigned_by` varchar(30) NOT NULL,
   `status` varchar(100) NOT NULL,
   `created_at` varchar(100) NOT NULL,
   `updated_at` varchar(100) NOT NULL
@@ -8479,36 +8623,36 @@ CREATE TABLE `product_assign` (
 -- Dumping data for table `product_assign`
 --
 
-INSERT INTO `product_assign` (`id`, `product_id`, `employee_id`, `assign_date`, `refund_date`, `remarks`, `status`, `created_at`, `updated_at`) VALUES
-(9, '290', 'SPL-000014', '2021-06-06', '', 'Replacement of Existing one.', 'Active', '2021-06-22', ''),
-(10, '292', 'SPL-006355', '2021-05-17', '', 'New Laptop Provided with Replace of Old Laptop and His old laptop given to   Mr. Jahed  Hossain - Head of CTMS.', 'Active', '2021-06-23', ''),
-(12, '294', 'SPL-000653', '2016-11-01', '', 'New laptop given to new user', 'Active', '2021-06-23', ''),
-(13, '300', 'SPL-006249', '2021-05-20', '', 'The Laptop has been received from Saiful Alam Bhuiyan (Babu), Deputy Manager- Billing Logistics.  And his use laptop has been transferred to Nahidur Rahman-Billing Assistant.', 'Active', '2021-06-23', ''),
-(14, '302', 'SPL-006348', '2016-11-15', '', 'New Laptop', 'Active', '2021-06-23', ''),
-(15, '304', 'SPL-006352', '2017-04-10', '', 'Before he had a desktop computer. The desktop has been using for CTMS operation purposes in  (CPA CTMS). As well he has been using the Laptop for our own platform (SPL).\r\n', 'Active', '2021-06-23', ''),
-(16, '305', 'SPL-006350', '2020-05-14', '', 'The Laptop Lenovo -310 was Malfunction, ', 'Active', '2021-06-23', ''),
-(17, '308', 'SPL-006349', '2020-12-15', '', 'Transferred with another Laptop.', 'Active', '2021-06-24', ''),
-(18, '307', 'SPL-000303', '2016-06-01', '', 'New laptop were provided For new user ', 'Active', '2021-06-24', ''),
-(19, '311', 'SPL-006348', '2021-01-31', '', ' It has been transferred with the printer (Canon 2700) and the old printer has been provided to  Mr. Shahinul Alam-Deputy manager-Documentation.\r\n', 'Active', '2021-06-24', ''),
-(20, '312', 'SPL-006349', '2020-02-01', '', 'New Printer', 'Refund', '2021-06-24', ''),
-(21, '316', 'SPL-005512', '2017-09-06', '', 'New laptop for new User', 'Active', '2021-06-24', ''),
-(22, '317', 'SPL-006897', '2019-11-06', '', 'SERVER ROOM at CCTO-SPOT', 'Active', '2021-06-24', ''),
-(23, '318', 'SPL-005525', '2020-09-01', '', 'Previous User Mr.Shovon (Admin)', 'Active', '2021-06-26', ''),
-(24, '320', 'SPL-000764', '2017-06-01', '', 'New laptop For new User ', 'Active', '2021-06-26', ''),
-(25, '319', 'SPL-000483', '2016-02-17', '', 'New Laptop For New User ', 'Active', '2021-06-27', ''),
-(26, '306', 'SPL-007364', '2018-11-12', '', 'New laptop given to new user', 'Active', '2021-06-27', ''),
-(27, '321', 'SPL-007480', '2021-04-01', '', 'Old laptops have been provided for old staff ', 'Refund', '2021-06-27', ''),
-(28, '303', 'SPL-006897', '2020-11-10', '', 'Server for TIMS at SPOT.', 'Active', '2021-06-27', ''),
-(29, '322', 'SPL-007239', '2018-08-01', '', 'New Desktop were provided For new user', 'Active', '2021-06-27', ''),
-(30, '323', 'SPL-005872', '2017-10-15', '', 'New Desktop pc were provided For new user', 'Active', '2021-06-27', ''),
-(31, '324', 'SPL-000472', '2015-06-03', '', 'New laptop given to new user', 'Active', '2021-06-27', ''),
-(32, '325', 'SPL-006234', '2018-01-01', '', 'New Desktop given to new user', 'Active', '2021-06-27', ''),
-(33, '326', 'SPL-007318', '2018-12-01', '', 'New Desktop were provided For new user\r\n', 'Active', '2021-06-27', ''),
-(34, '327', 'SPL-005891', '2017-10-03', '', 'New laptop were provided For new user', 'Active', '2021-06-27', ''),
-(35, '328', 'SPL-000372', '2016-01-03', '', 'New Desktop were provided For new user', 'Active', '2021-06-28', ''),
-(36, '329', 'SPL-005932', '2018-01-01', '', 'New Laptop were provided For Old user', 'Active', '2021-06-28', ''),
-(37, '330', 'SPL-005873', '2017-10-15', '', 'New laptop were provided For new user', 'Active', '2021-06-28', ''),
-(38, '331', 'ENG-000285', '2021-06-28', '', 'Existing one is out of order.', 'Active', '2021-06-28', '');
+INSERT INTO `product_assign` (`id`, `product_id`, `employee_id`, `assign_date`, `refund_date`, `remarks`, `assigned_by`, `status`, `created_at`, `updated_at`) VALUES
+(9, '290', 'SPL-000014', '2021-06-06', '', 'Replacement of Existing one.', '', 'Active', '2021-06-22', ''),
+(10, '292', 'SPL-006355', '2021-05-17', '', 'New Laptop Provided with Replace of Old Laptop and His old laptop given to   Mr. Jahed  Hossain - Head of CTMS.', '', 'Active', '2021-06-23', ''),
+(12, '294', 'SPL-000653', '2016-11-01', '', 'New laptop given to new user', '', 'Active', '2021-06-23', ''),
+(13, '300', 'SPL-006249', '2021-05-20', '', 'The Laptop has been received from Saiful Alam Bhuiyan (Babu), Deputy Manager- Billing Logistics.  And his use laptop has been transferred to Nahidur Rahman-Billing Assistant.', '', 'Active', '2021-06-23', ''),
+(14, '302', 'SPL-006348', '2016-11-15', '', 'New Laptop', '', 'Active', '2021-06-23', ''),
+(15, '304', 'SPL-006352', '2017-04-10', '', 'Before he had a desktop computer. The desktop has been using for CTMS operation purposes in  (CPA CTMS). As well he has been using the Laptop for our own platform (SPL).\r\n', '', 'Active', '2021-06-23', ''),
+(16, '305', 'SPL-006350', '2020-05-14', '', 'The Laptop Lenovo -310 was Malfunction, ', '', 'Active', '2021-06-23', ''),
+(17, '308', 'SPL-006349', '2020-12-15', '', 'Transferred with another Laptop.', '', 'Active', '2021-06-24', ''),
+(18, '307', 'SPL-000303', '2016-06-01', '', 'New laptop were provided For new user ', '', 'Active', '2021-06-24', ''),
+(19, '311', 'SPL-006348', '2021-01-31', '', ' It has been transferred with the printer (Canon 2700) and the old printer has been provided to  Mr. Shahinul Alam-Deputy manager-Documentation.\r\n', '', 'Active', '2021-06-24', ''),
+(20, '312', 'SPL-006349', '2020-02-01', '', 'New Printer', '', 'Refund', '2021-06-24', ''),
+(21, '316', 'SPL-005512', '2017-09-06', '', 'New laptop for new User', '', 'Active', '2021-06-24', ''),
+(22, '317', 'SPL-006897', '2019-11-06', '', 'SERVER ROOM at CCTO-SPOT', '', 'Active', '2021-06-24', ''),
+(23, '318', 'SPL-005525', '2020-09-01', '', 'Previous User Mr.Shovon (Admin)', '', 'Active', '2021-06-26', ''),
+(24, '320', 'SPL-000764', '2017-06-01', '', 'New laptop For new User ', '', 'Active', '2021-06-26', ''),
+(25, '319', 'SPL-000483', '2016-02-17', '', 'New Laptop For New User ', '', 'Active', '2021-06-27', ''),
+(26, '306', 'SPL-007364', '2018-11-12', '', 'New laptop given to new user', '', 'Active', '2021-06-27', ''),
+(27, '321', 'SPL-007480', '2021-04-01', '', 'Old laptops have been provided for old staff ', '', 'Refund', '2021-06-27', ''),
+(28, '303', 'SPL-006897', '2020-11-10', '', 'Server for TIMS at SPOT.', '', 'Active', '2021-06-27', ''),
+(29, '322', 'SPL-007239', '2018-08-01', '', 'New Desktop were provided For new user', '', 'Active', '2021-06-27', ''),
+(30, '323', 'SPL-005872', '2017-10-15', '', 'New Desktop pc were provided For new user', '', 'Active', '2021-06-27', ''),
+(31, '324', 'SPL-000472', '2015-06-03', '', 'New laptop given to new user', '', 'Active', '2021-06-27', ''),
+(32, '325', 'SPL-006234', '2018-01-01', '', 'New Desktop given to new user', '', 'Active', '2021-06-27', ''),
+(33, '326', 'SPL-007318', '2018-12-01', '', 'New Desktop were provided For new user\r\n', '', 'Active', '2021-06-27', ''),
+(34, '327', 'SPL-005891', '2017-10-03', '', 'New laptop were provided For new user', '', 'Active', '2021-06-27', ''),
+(35, '328', 'SPL-000372', '2016-01-03', '', 'New Desktop were provided For new user', '', 'Active', '2021-06-28', ''),
+(36, '329', 'SPL-005932', '2018-01-01', '', 'New Laptop were provided For Old user', '', 'Active', '2021-06-28', ''),
+(37, '330', 'SPL-005873', '2017-10-15', '', 'New laptop were provided For new user', '', 'Active', '2021-06-28', ''),
+(38, '331', 'ENG-000285', '2021-06-28', '', 'Existing one is out of order.', '', 'Active', '2021-06-28', '');
 
 -- --------------------------------------------------------
 
@@ -8649,7 +8793,7 @@ CREATE TABLE `qry_inv_issue` (
 CREATE TABLE `qry_inv_receive` (
 `mrr_no` varchar(25)
 ,`mrr_date` date
-,`purchase_id` varchar(15)
+,`purchase_id` varchar(115)
 ,`challanno` varchar(500)
 ,`material_id` varchar(25)
 ,`receive_qty` float
@@ -9388,7 +9532,8 @@ INSERT INTO `users` (`id`, `role_id`, `name`, `first_name`, `last_name`, `user_t
 (18, 2, '---', '---', '---', 'user', '3', '3', 'SPL-007797', 'user', '3', 'test@test.com', 'SPL-007797', 'e10adc3949ba59abbe56e057f20f883e', 1, 'b1970adb3f301c8440c81e45b526060c', 1, 0, 'PCgsDtfHhHDhADntGcj7D97A9e4U0gtx0hlLn2heuaMyQBq5Gaa2sP55BPGr', 1, 1, '2019-01-14 00:17:02', '2019-01-20 20:36:38', NULL),
 (19, 2, '---', '---', '---', 'admin', '4', '4', 'SPL-000796', 'admin', '4', 'test@test.com', 'SPL-000796', 'e10adc3949ba59abbe56e057f20f883e', 1, 'b1970adb3f301c8440c81e45b526060c', 1, 0, 'PCgsDtfHhHDhADntGcj7D97A9e4U0gtx0hlLn2heuaMyQBq5Gaa2sP55BPGr', 1, 1, '2019-01-14 00:17:02', '2019-01-20 20:36:38', NULL),
 (20, 2, '---', '---', '---', 'user', '4', '4', 'SPL-000081', 'user', '4', 'test@test.com', 'SPL-000081', 'e10adc3949ba59abbe56e057f20f883e', 1, 'b1970adb3f301c8440c81e45b526060c', 1, 0, 'PCgsDtfHhHDhADntGcj7D97A9e4U0gtx0hlLn2heuaMyQBq5Gaa2sP55BPGr', 1, 1, '2019-01-14 00:17:02', '2019-01-20 20:36:38', NULL),
-(21, 2, '---', '---', '---', 'admin', '4', '4', 'SPL-000023', 'admin', '4', 'test@test.com', 'SPL-000023', 'e10adc3949ba59abbe56e057f20f883e', 1, 'b1970adb3f301c8440c81e45b526060c', 1, 0, 'PCgsDtfHhHDhADntGcj7D97A9e4U0gtx0hlLn2heuaMyQBq5Gaa2sP55BPGr', 1, 1, '2019-01-14 00:17:02', '2019-01-20 20:36:38', NULL);
+(21, 2, '---', '---', '---', 'admin', '4', '4', 'SPL-000023', 'admin', '4', 'test@test.com', 'SPL-000023', 'e10adc3949ba59abbe56e057f20f883e', 1, 'b1970adb3f301c8440c81e45b526060c', 1, 0, 'PCgsDtfHhHDhADntGcj7D97A9e4U0gtx0hlLn2heuaMyQBq5Gaa2sP55BPGr', 1, 1, '2019-01-14 00:17:02', '2019-01-20 20:36:38', NULL),
+(22, 2, '---', '---', '---', 'admin', '4', '4', 'SPL-007438', 'admin', '4', 'test@test.com', 'SPL-007438', 'e10adc3949ba59abbe56e057f20f883e', 1, 'b1970adb3f301c8440c81e45b526060c', 1, 0, 'PCgsDtfHhHDhADntGcj7D97A9e4U0gtx0hlLn2heuaMyQBq5Gaa2sP55BPGr', 1, 1, '2019-01-14 00:17:02', '2019-01-20 20:36:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -9426,7 +9571,7 @@ INSERT INTO `vendors` (`id`, `vendor_id`, `vendor_name`, `address`, `email`, `ph
 --
 DROP TABLE IF EXISTS `qry_inv_issue`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_inv_issue`  AS SELECT `eel_wlp`.`inv_issue`.`issue_id` AS `issue_id`, `eel_wlp`.`inv_issue`.`issue_date` AS `issue_date`, `eel_wlp`.`inv_issuedetail`.`material_id` AS `material_id`, `eel_wlp`.`inv_issuedetail`.`unit` AS `unit`, `eel_wlp`.`inv_issuedetail`.`issue_qty` AS `issue_qty`, `eel_wlp`.`inv_issue`.`warehouse_id` AS `warehouse_id`, `eel_wlp`.`inv_issue`.`to_warehouse_id` AS `to_warehouse_id`, `eel_wlp`.`inv_issue`.`project_id` AS `project_id`, `eel_wlp`.`inv_issuedetail`.`package_id` AS `package_id`, `eel_wlp`.`inv_issuedetail`.`building_id` AS `building_id`, `eel_wlp`.`inv_material`.`type` AS `type` FROM ((`eel_wlp`.`inv_issue` join `eel_wlp`.`inv_issuedetail` on(`eel_wlp`.`inv_issue`.`issue_id` = `eel_wlp`.`inv_issuedetail`.`issue_id`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_issuedetail`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_inv_issue`  AS  select `eel_wlp`.`inv_issue`.`issue_id` AS `issue_id`,`eel_wlp`.`inv_issue`.`issue_date` AS `issue_date`,`eel_wlp`.`inv_issuedetail`.`material_id` AS `material_id`,`eel_wlp`.`inv_issuedetail`.`unit` AS `unit`,`eel_wlp`.`inv_issuedetail`.`issue_qty` AS `issue_qty`,`eel_wlp`.`inv_issue`.`warehouse_id` AS `warehouse_id`,`eel_wlp`.`inv_issue`.`to_warehouse_id` AS `to_warehouse_id`,`eel_wlp`.`inv_issue`.`project_id` AS `project_id`,`eel_wlp`.`inv_issuedetail`.`package_id` AS `package_id`,`eel_wlp`.`inv_issuedetail`.`building_id` AS `building_id`,`eel_wlp`.`inv_material`.`type` AS `type` from ((`eel_wlp`.`inv_issue` join `eel_wlp`.`inv_issuedetail` on(`eel_wlp`.`inv_issue`.`issue_id` = `eel_wlp`.`inv_issuedetail`.`issue_id`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_issuedetail`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
 
 -- --------------------------------------------------------
 
@@ -9435,7 +9580,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `qry_inv_receive`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_inv_receive`  AS SELECT `eel_wlp`.`inv_receive`.`mrr_no` AS `mrr_no`, `eel_wlp`.`inv_receive`.`mrr_date` AS `mrr_date`, `eel_wlp`.`inv_receive`.`purchase_id` AS `purchase_id`, `eel_wlp`.`inv_receive`.`challanno` AS `challanno`, `eel_wlp`.`inv_receivedetail`.`material_id` AS `material_id`, `eel_wlp`.`inv_receivedetail`.`receive_qty` AS `receive_qty`, `eel_wlp`.`inv_receivedetail`.`unit_price` AS `unit_price`, `eel_wlp`.`inv_receivedetail`.`unit_id` AS `unit_id`, `eel_wlp`.`inv_receivedetail`.`total_receive` AS `total_receive`, `eel_wlp`.`inv_receive`.`warehouse_id` AS `warehouse_id`, `eel_wlp`.`inv_material`.`type` AS `type`, `eel_wlp`.`inv_material`.`material_id` AS `category_id` FROM ((`eel_wlp`.`inv_receive` join `eel_wlp`.`inv_receivedetail` on(`eel_wlp`.`inv_receive`.`mrr_no` = `eel_wlp`.`inv_receivedetail`.`mrr_no`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_receivedetail`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_inv_receive`  AS  select `eel_wlp`.`inv_receive`.`mrr_no` AS `mrr_no`,`eel_wlp`.`inv_receive`.`mrr_date` AS `mrr_date`,`eel_wlp`.`inv_receive`.`purchase_id` AS `purchase_id`,`eel_wlp`.`inv_receive`.`challanno` AS `challanno`,`eel_wlp`.`inv_receivedetail`.`material_id` AS `material_id`,`eel_wlp`.`inv_receivedetail`.`receive_qty` AS `receive_qty`,`eel_wlp`.`inv_receivedetail`.`unit_price` AS `unit_price`,`eel_wlp`.`inv_receivedetail`.`unit_id` AS `unit_id`,`eel_wlp`.`inv_receivedetail`.`total_receive` AS `total_receive`,`eel_wlp`.`inv_receive`.`warehouse_id` AS `warehouse_id`,`eel_wlp`.`inv_material`.`type` AS `type`,`eel_wlp`.`inv_material`.`material_id` AS `category_id` from ((`eel_wlp`.`inv_receive` join `eel_wlp`.`inv_receivedetail` on(`eel_wlp`.`inv_receive`.`mrr_no` = `eel_wlp`.`inv_receivedetail`.`mrr_no`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_receivedetail`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
 
 -- --------------------------------------------------------
 
@@ -9444,7 +9589,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `qry_typewiseconsumption`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_typewiseconsumption`  AS SELECT `eel_wlp`.`inv_consumption`.`consumption_id` AS `consumption_id`, `eel_wlp`.`inv_consumption`.`consumption_date` AS `consumption_date`, `eel_wlp`.`inv_consumptiondetails`.`material_id` AS `material_id`, `eel_wlp`.`inv_consumptiondetails`.`consumption_qty` AS `consumption_qty`, `eel_wlp`.`inv_consumption`.`warehouse_id` AS `warehouse_id`, `eel_wlp`.`inv_consumption`.`project_id` AS `project_id`, `eel_wlp`.`inv_consumptiondetails`.`package_id` AS `package_id`, `eel_wlp`.`inv_consumptiondetails`.`building_id` AS `building_id`, `eel_wlp`.`inv_material`.`type` AS `type` FROM ((`eel_wlp`.`inv_consumption` join `eel_wlp`.`inv_consumptiondetails` on(`eel_wlp`.`inv_consumption`.`consumption_id` = `eel_wlp`.`inv_consumptiondetails`.`consumption_id`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_consumptiondetails`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_typewiseconsumption`  AS  select `eel_wlp`.`inv_consumption`.`consumption_id` AS `consumption_id`,`eel_wlp`.`inv_consumption`.`consumption_date` AS `consumption_date`,`eel_wlp`.`inv_consumptiondetails`.`material_id` AS `material_id`,`eel_wlp`.`inv_consumptiondetails`.`consumption_qty` AS `consumption_qty`,`eel_wlp`.`inv_consumption`.`warehouse_id` AS `warehouse_id`,`eel_wlp`.`inv_consumption`.`project_id` AS `project_id`,`eel_wlp`.`inv_consumptiondetails`.`package_id` AS `package_id`,`eel_wlp`.`inv_consumptiondetails`.`building_id` AS `building_id`,`eel_wlp`.`inv_material`.`type` AS `type` from ((`eel_wlp`.`inv_consumption` join `eel_wlp`.`inv_consumptiondetails` on(`eel_wlp`.`inv_consumption`.`consumption_id` = `eel_wlp`.`inv_consumptiondetails`.`consumption_id`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_consumptiondetails`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
 
 -- --------------------------------------------------------
 
@@ -9453,7 +9598,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `qry_typewisestock`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_typewisestock`  AS SELECT `eel_wlp`.`inv_materialbalance`.`mb_ref_id` AS `mb_ref_id`, `eel_wlp`.`inv_materialbalance`.`mb_materialid` AS `mb_materialid`, `eel_wlp`.`inv_materialbalance`.`mb_date` AS `mb_date`, `eel_wlp`.`inv_materialbalance`.`mbin_qty` AS `mbin_qty`, `eel_wlp`.`inv_materialbalance`.`mbin_val` AS `mbin_val`, `eel_wlp`.`inv_materialbalance`.`mbout_qty` AS `mbout_qty`, `eel_wlp`.`inv_materialbalance`.`mbout_val` AS `mbout_val`, `eel_wlp`.`inv_materialbalance`.`mbtype` AS `mbtype`, `eel_wlp`.`inv_materialbalance`.`project_id` AS `project_id`, `eel_wlp`.`inv_materialbalance`.`warehouse_id` AS `warehouse_id`, `eel_wlp`.`inv_materialbalance`.`package_id` AS `package_id`, `eel_wlp`.`inv_material`.`type` AS `type` FROM (`eel_wlp`.`inv_material` join `eel_wlp`.`inv_materialbalance` on(`eel_wlp`.`inv_material`.`material_id_code` = `eel_wlp`.`inv_materialbalance`.`mb_materialid`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_typewisestock`  AS  select `eel_wlp`.`inv_materialbalance`.`mb_ref_id` AS `mb_ref_id`,`eel_wlp`.`inv_materialbalance`.`mb_materialid` AS `mb_materialid`,`eel_wlp`.`inv_materialbalance`.`mb_date` AS `mb_date`,`eel_wlp`.`inv_materialbalance`.`mbin_qty` AS `mbin_qty`,`eel_wlp`.`inv_materialbalance`.`mbin_val` AS `mbin_val`,`eel_wlp`.`inv_materialbalance`.`mbout_qty` AS `mbout_qty`,`eel_wlp`.`inv_materialbalance`.`mbout_val` AS `mbout_val`,`eel_wlp`.`inv_materialbalance`.`mbtype` AS `mbtype`,`eel_wlp`.`inv_materialbalance`.`project_id` AS `project_id`,`eel_wlp`.`inv_materialbalance`.`warehouse_id` AS `warehouse_id`,`eel_wlp`.`inv_materialbalance`.`package_id` AS `package_id`,`eel_wlp`.`inv_material`.`type` AS `type` from (`eel_wlp`.`inv_material` join `eel_wlp`.`inv_materialbalance` on(`eel_wlp`.`inv_material`.`material_id_code` = `eel_wlp`.`inv_materialbalance`.`mb_materialid`)) ;
 
 --
 -- Indexes for dumped tables
@@ -9994,13 +10139,13 @@ ALTER TABLE `inv_complaindetails`
 -- AUTO_INCREMENT for table `inv_consumption`
 --
 ALTER TABLE `inv_consumption`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5188;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5189;
 
 --
 -- AUTO_INCREMENT for table `inv_consumptiondetails`
 --
 ALTER TABLE `inv_consumptiondetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21175;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21177;
 
 --
 -- AUTO_INCREMENT for table `inv_designation`
@@ -10048,7 +10193,7 @@ ALTER TABLE `inv_item_brand`
 -- AUTO_INCREMENT for table `inv_item_unit`
 --
 ALTER TABLE `inv_item_unit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `inv_job_card`
@@ -10066,25 +10211,25 @@ ALTER TABLE `inv_job_card_details`
 -- AUTO_INCREMENT for table `inv_material`
 --
 ALTER TABLE `inv_material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=448;
 
 --
 -- AUTO_INCREMENT for table `inv_materialbalance`
 --
 ALTER TABLE `inv_materialbalance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32000;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32049;
 
 --
 -- AUTO_INCREMENT for table `inv_materialcategory`
 --
 ALTER TABLE `inv_materialcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `inv_materialcategorysub`
 --
 ALTER TABLE `inv_materialcategorysub`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `inv_particulars`
@@ -10126,13 +10271,13 @@ ALTER TABLE `inv_purchasedetail`
 -- AUTO_INCREMENT for table `inv_receive`
 --
 ALTER TABLE `inv_receive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1769;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1775;
 
 --
 -- AUTO_INCREMENT for table `inv_receivedetail`
 --
 ALTER TABLE `inv_receivedetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2631;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2648;
 
 --
 -- AUTO_INCREMENT for table `inv_return`
@@ -10162,7 +10307,7 @@ ALTER TABLE `inv_supplier`
 -- AUTO_INCREMENT for table `inv_supplierbalance`
 --
 ALTER TABLE `inv_supplierbalance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1564;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1570;
 
 --
 -- AUTO_INCREMENT for table `inv_technicianinfo`
@@ -10174,13 +10319,13 @@ ALTER TABLE `inv_technicianinfo`
 -- AUTO_INCREMENT for table `inv_tranferdetail`
 --
 ALTER TABLE `inv_tranferdetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=409;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=424;
 
 --
 -- AUTO_INCREMENT for table `inv_transfermaster`
 --
 ALTER TABLE `inv_transfermaster`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT for table `inv_voucher`
@@ -10324,7 +10469,7 @@ ALTER TABLE `tb_ledger`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `vendors`

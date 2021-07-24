@@ -42,6 +42,10 @@ $id=$_GET['id'];?>
 										<td><?php echo $row['item_name'] ?></td>
 									</tr>
 									<tr>
+										<th>Item Description:</th>
+										<td><?php echo $row['assets_description'] ?></td>
+									</tr>
+									<tr>
 										<th>Brand:</th>
 										<td><?php echo $row['brand'] ?></td>
 									</tr>
