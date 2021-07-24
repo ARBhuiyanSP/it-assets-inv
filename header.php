@@ -28,6 +28,7 @@ include 'includes/payment_process.php';
 include 'includes/consumption_process.php';
 include 'includes/asset_process.php';
 //include 'includes/assign_process.php';
+include ('action.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

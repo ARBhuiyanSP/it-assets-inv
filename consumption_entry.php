@@ -153,7 +153,7 @@
 													<tbody>
 														<tr>
 															<td>
-																<select class="form-control" id="material_name" name="material_name[]" required onchange="getItemCodeByParam(this.value, 'inv_material', 'material_id_code', 'material_id0', 'qty_unit');">
+																<select class="form-control material_select_2" id="material_name" name="material_name[]" required onchange="getItemCodeByParam(this.value, 'inv_material', 'material_id_code', 'material_id0', 'qty_unit');">
 																	<option value="">Select</option>
 																	<?php
 																	$projectsData = get_product_with_category();
@@ -220,7 +220,7 @@
     $(document).ready(function () {
         $('#add').click(function () {
             i++;
-            $('#dynamic_field').append('<tr id="row' + i + '"><td><select class="form-control select2" id="material_name' + i + '" name="material_name[]' + i + '" required onchange="getAppendItemCodeByParam(' + i + ",'inv_material'," + "'material_id_code'," + "'material_id'," + "'qty_unit'" + ')"><option value="">Select</option><?php
+            $('#dynamic_field').append('<tr id="row' + i + '"><td><select class="form-control material_select_2" id="material_name' + i + '" name="material_name[]' + i + '" required onchange="getAppendItemCodeByParam(' + i + ",'inv_material'," + "'material_id_code'," + "'material_id'," + "'qty_unit'" + ')"><option value="">Select</option><?php
                                     $projectsData = get_product_with_category();
                                     if (isset($projectsData) && !empty($projectsData)) {
                                         foreach ($projectsData as $data) {
@@ -235,6 +235,7 @@
                                         }
                                     }
                                     ?></select></td><td><input type="text" name="material_total_stock[]" id="material_total_stock' + i + '" class="form-control" readonly></td><td><input type="text" name="quantity[]" id="quantity' + i + '" onchange="sum(0)"  onkeyup="check_stock_quantity_validation(' + i + ')" class="form-control common_issue_quantity" required></td><td><button type="button" name="remove" id="' + i + '" class="btn btn_remove" style="background-color:#AF4940;color:#ffffff;">X</button></td></tr>');
+									$(".material_select_2").select2();
             $('#quantity' + i + ', #unit_price' + i).change(function () {
                 sum(i)
             });
