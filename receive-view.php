@@ -81,10 +81,10 @@ $mrr_no=$_GET['no']; ?>
 										<td>
 											<?php 
 											$supplier_id = $rowd['supplier_id'];
-											$sqlunit	=	"SELECT * FROM `suppliers` WHERE `code` = '$supplier_id' ";
+											$sqlunit	=	"SELECT * FROM `vendors` WHERE `id` = '$supplier_id' ";
 											$resultunit = mysqli_query($conn, $sqlunit);
 											$rowunit=mysqli_fetch_array($resultunit);
-											echo $rowunit['name'];
+											echo $rowunit['vendor_name'];
 											?>
 										</td>
 									</tr>
@@ -140,11 +140,14 @@ $mrr_no=$_GET['no']; ?>
 							</tbody>
 						</table>
 						<div class="row" style="text-align:center">
-							<div class="col-xs-6"></br><?php 
-										if($rowd['received_by']){
-										$dataresult =   getDataRowByTableAndId('users', $rowd['received_by']);
-										echo (isset($dataresult) && !empty($dataresult) ? $dataresult->first_name . ' ' .$dataresult->last_name : '');	
-										}?></br>--------------------</br>Receiver Signature</div>
+							<div class="col-xs-6"></br><?php if($rowd['received_by']){ 
+																	
+																		$employee_id = $rowd['received_by'];
+																		$sqlemployee	= "select * from `employees` where `employee_id`='$employee_id'";
+																		$resultemployee = mysqli_query($conn, $sqlemployee);
+																		$rowemployee=mysqli_fetch_array($resultemployee);
+																?>
+															<?php echo $rowemployee["employee_name"]; }else{ ?>---<?php } ?></br>--------------------</br>Receiver Signature</div>
 										
 									
 							

@@ -77,16 +77,16 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="id">Supplier</label><span class="reqfield"> ***required</span>
-                                <select class="form-control" id="supplier_name" name="supplier_name" required onchange="getItemCodeByParam(this.value, 'suppliers', 'code', 'supplier_id');">
+                                <label for="id">Vendor</label><span class="reqfield"> ***required</span>
+                                <select class="form-control" id="vendor_name" name="vendor_name" required >
                                     <option value="">Select</option>
                                     <?php
-                                    $projectsData = getTableDataByTableName('suppliers');
+                                    $projectsData = getTableDataByTableName('vendors');
 
                                     if (isset($projectsData) && !empty($projectsData)) {
                                         foreach ($projectsData as $data) {
                                             ?>
-                                            <option value="<?php echo $data['id']; ?>"><?php echo $data['name']; ?></option>
+                                            <option value="<?php echo $data['id']; ?>"><?php echo $data['vendor_name']; ?></option>
                                             <?php
                                         }
                                     }
@@ -94,13 +94,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="id">Supplier ID</label>
-                                <input type="text" name="supplier_id" id="supplier_id" class="form-control" required>
-                            </div>
-                        </div>
-						<div class="col-md-3">
+						<div class="col-md-2">
                             <div class="form-group">
                                 <label>Store</label>
 								
@@ -114,6 +108,19 @@
 								
 								<input type="hidden" name="warehouse_id" id="warehouse_id" class="form-control" readonly="readonly" value="<?php echo $_SESSION['logged']['store_id']; ?>">
 								
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="id">Received By</label>
+								<?php 
+									$employee_id = $_SESSION['logged']['employee_id'];
+									$sqlemployee	= "select * from `employees` where `employee_id`='$employee_id'";
+									$resultemployee = mysqli_query($conn, $sqlemployee);
+									$rowemployee=mysqli_fetch_array($resultemployee);
+								?>
+                                <input type="text" class="form-control" id="" value="<?php echo $rowemployee["employee_name"]; ?>" readonly required />
+                                <input name="received_by" type="hidden" id="received_by" value="<?php echo $rowemployee["employee_id"]; ?>" />
                             </div>
                         </div>
                     </div>

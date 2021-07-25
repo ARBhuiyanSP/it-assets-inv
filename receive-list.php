@@ -17,7 +17,7 @@
 												<th>MRR No</th>
 												<th>MRR Date</th>
 												<th>Purchase ID</th>
-												<th>Supplier name</th>
+												<th>Vendor name</th>
 												<th>Challan No</th>
 												<th>Total Qty</th>
 												<th>Total Amount</th>
@@ -46,10 +46,10 @@
 														<td>
 															<?php 
 															$supplier_id = $item['supplier_id'];
-															$sqlunit	=	"SELECT * FROM `suppliers` WHERE `code` = '$supplier_id' ";
+															$sqlunit	=	"SELECT * FROM `vendors` WHERE `id` = '$supplier_id' ";
 															$resultunit = mysqli_query($conn, $sqlunit);
 															$rowunit=mysqli_fetch_array($resultunit);
-															echo $rowunit['name'];
+															echo $rowunit['vendor_name'];
 															?>
 														</td>
 														<td><?php echo $item['challanno']; ?></td>

@@ -43,8 +43,8 @@ if (isset($_POST['receive_submit']) && !empty($_POST['receive_submit'])) {
         $challan_date       = $_POST['challan_date'];
         $requisition_no     = $_POST['requisition_no'];
         $requisition_date   = $_POST['requisition_date'];
-        $supplier_name      = $_POST['supplier_name'];
-        $supplier_id        = $_POST['supplier_id'];
+        // $supplier_name      = $_POST['supplier_name'];
+        $vendor_name        = $_POST['vendor_name'];
         $project_id			= $_POST['project_id'];
         $warehouse_id		= $_POST['warehouse_id'];
 
@@ -62,7 +62,7 @@ if (isset($_POST['receive_submit']) && !empty($_POST['receive_submit'])) {
         $vat_challan_no     = $_POST['vat_challan_no'];  
         $remarks            = $_POST['remarks'];  
 		
-        $received_by            = $_SESSION['logged']['user_id'];        
+        $received_by		= $_POST['received_by'];        
         $approval_status		= '';        
         $approved_by            = '';        
         $approved_at            = '';        
@@ -110,12 +110,12 @@ if (isset($_POST['receive_submit']) && !empty($_POST['receive_submit'])) {
     /*
     *  Insert Data Into inv_receive Table:
     */
-    $query2 = "INSERT INTO `inv_receive` (`mrr_no`,`mrr_date`,`purchase_id`,`receive_acct_id`,`supplier_id`,`postedtogl`,`vat_challan_no`,`remarks`,`receive_type`,`project_id`,`warehouse_id`,`receive_unit_id`,`receive_total`,`no_of_material`,`challanno`,`challan_date`,`part_no`,`requisitionno`,`requisition_date`,`received_by`,`approval_status`,`approved_by`,`approved_at`,`approval_remarks`,`mrr_image`) VALUES ('$mrr_no','$mrr_date','$purchase_id','6-14-010','$supplier_id','0','$vat_challan_no','$remarks','Credit','$project_id','$warehouse_id','1','$receive_total','$no_of_material','$challan_no','$challan_date','$part_no','$requisition_no','$requisition_date','$received_by','$approval_status','$approved_by','$approved_at','$approval_remarks','$mrr_image')";
+    $query2 = "INSERT INTO `inv_receive` (`mrr_no`,`mrr_date`,`purchase_id`,`receive_acct_id`,`supplier_id`,`postedtogl`,`vat_challan_no`,`remarks`,`receive_type`,`project_id`,`warehouse_id`,`receive_unit_id`,`receive_total`,`no_of_material`,`challanno`,`challan_date`,`part_no`,`requisitionno`,`requisition_date`,`received_by`,`approval_status`,`approved_by`,`approved_at`,`approval_remarks`,`mrr_image`) VALUES ('$mrr_no','$mrr_date','$purchase_id','6-14-010','$vendor_name','0','$vat_challan_no','$remarks','Credit','$project_id','$warehouse_id','1','$receive_total','$no_of_material','$challan_no','$challan_date','$part_no','$requisition_no','$requisition_date','$received_by','$approval_status','$approved_by','$approved_at','$approval_remarks','$mrr_image')";
     $result2 = $conn->query($query2);    
     /*
     *  Insert Data Into inv_supplierbalance Table:
     */
-    $query3 = "INSERT INTO `inv_supplierbalance` (`sb_ref_id`,`warehouse_id`,`sb_date`,`sb_supplier_id`,`sb_dr_amount`,`sb_cr_amount`,`sb_remark`,`sb_partac_id`,`approval_status`) VALUES ('$mrr_no','$warehouse_id','$mrr_date','$supplier_id','0','$receive_total','$remarks','$mrr_no','$approval_status')";
+    $query3 = "INSERT INTO `inv_supplierbalance` (`sb_ref_id`,`warehouse_id`,`sb_date`,`sb_supplier_id`,`sb_dr_amount`,`sb_cr_amount`,`sb_remark`,`sb_partac_id`,`approval_status`) VALUES ('$mrr_no','$warehouse_id','$mrr_date','$vendor_name','0','$receive_total','$remarks','$mrr_no','$approval_status')";
     $result2 = $conn->query($query3);
     
     $_SESSION['success']    =   "Receive process have been successfully completed.";
