@@ -33,6 +33,14 @@ include('header.php');
 									  
 									  <!--- New Form Suppliers as Vendors--->
 									  <!--- New Form Suppliers as Vendors--->
+										<?php
+										$vendor_code= 'V-';
+										if(isset($_GET['edit'])){
+											$vendor_id		=	$row['vendor_id']; 
+										}else{
+											$vendor_id		=	getDefaultVendorCode('vendors', 'vendor_id', '03d', '001', $vendor_code);
+										} 
+										?>
 									  <div class="form-group">
 										<input type="text" name="vendor_id" value="<?= $vendor_id; ?>" class="form-control" placeholder="Enter ID" required>
 									  </div></br>
