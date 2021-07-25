@@ -69,8 +69,9 @@ include('header.php');
 									<table class="table table-hover" id="datatablesSimple">
 										<thead>
 											<tr>
+												<th width="10%"> ID</th>
 												<th width="25%">Vendor Name</th>
-												<th width="40%">Address</th>
+												<th width="30%">Address</th>
 												<th width="10%">Phone</th>
 												<th width="25%">Action</th>
 											</tr>
@@ -83,6 +84,7 @@ include('header.php');
 												foreach ($projectsData as $data) {
 													?>
 											<tr>
+												<td><?php echo $data['vendor_id']; ?></td>
 												<td><?php echo $data['vendor_name']; ?></td>
 												<td><?php echo $data['address']; ?></td>
 												<td><?php echo $data['phone']; ?></td>
