@@ -4,37 +4,39 @@ include 'connection/connect.php';
 
 	$update=false;
 	$id="";
-	$code="";
-	$name="";
+	$vendor_id="";
+	$vendor_name="";
 	$address="";
-	$contact_person="";
-	$supplier_phone="";
-	$supplier_op_balance="";
+	$email="";
+	$phone="";
+	$web="";
 
 	if(isset($_POST['add'])){
-		$code					=$_POST['code'];
-		$name					=$_POST['name'];
-		$address				=$_POST['address'];
-		$contact_person			=$_POST['contact_person'];
-		$supplier_phone			=$_POST['supplier_phone'];
-		$supplier_op_balance	=$_POST['supplier_op_balance'];
+		$id				=	$_POST['id'];
+		$vendor_id		=	$_POST['vendor_id'];
+		$vendor_name	=	$_POST['vendor_name'];
+		$address		=	$_POST['address'];
+		$email			=	$_POST['email'];
+		$phone			=	$_POST['phone'];
+		$web			=	$_POST['web'];
+		$date			=	date('Y-m-d');
+		$status			=	'1';
 
 		
 		
-		$query = "INSERT INTO `suppliers` (`code`,`name`,`address`,`contact_person`,`supplier_phone`,`supplier_op_balance`) VALUES ('$code','$name','$address','$contact_person','$supplier_phone','$supplier_op_balance')";
+		$query = "INSERT INTO `vendors` (`vendor_id`,`vendor_name`,`address`,`email`,`phone`,`web`,`status`) VALUES ('$vendor_id','$vendor_name','$address','$email','$phone','$web','$status')";
         $conn->query($query);
 		
-		$query3 = "INSERT INTO `inv_supplierbalance` (`sb_ref_id`,`sb_date`,`sb_supplier_id`,`sb_dr_amount`,`sb_cr_amount`,`sb_remark`,`sb_partac_id`) VALUES ('OP','$date','$supplier_id','0','$supplier_op_balance','$remarks','OP')";
-		$result2 = $conn->query($query3);
 		
-		$_SESSION['success']    =   "Supplier has been added successfully.";
+		$_SESSION['success']    =   "Vendor has been added successfully.";
 		header("location: vendors.php");
 		exit();
 	}
+	
 	if(isset($_GET['delete'])){
 		$id=$_GET['delete'];
 
-		$query="DELETE FROM suppliers WHERE id=?";
+		$query="DELETE FROM vendors WHERE id=?";
 		$stmt=$conn->prepare($query);
 		$stmt->bind_param("i",$id);
 		$stmt->execute();
@@ -43,62 +45,73 @@ include 'connection/connect.php';
 		$_SESSION['response']="Successfully Deleted!";
 		$_SESSION['res_type']="danger";
 	}
+	
 	if(isset($_GET['edit'])){
 		$id=$_GET['edit'];
-
-		$query="SELECT * FROM crud WHERE id=?";
-		$stmt=$conn->prepare($query);
-		$stmt->bind_param("i",$id);
-		$stmt->execute();
-		$result=$stmt->get_result();
-		$row=$result->fetch_assoc();
-
-		$id=$row['id'];
-		$name=$row['name'];
-		$email=$row['email'];
-		$phone=$row['phone'];
-		$photo=$row['photo'];
+		$query = "select * from `vendors` where `id`='$id'";
+		$resultd = mysqli_query($conn, $query);
+		$row = mysqli_fetch_array($resultd);
+		
+		
+		$id				=	$row['id'];
+		$vendor_id		=	$row['vendor_id'];
+		$vendor_name	=	$row['vendor_name'];
+		$address		=	$row['address'];
+		$email			=	$row['email'];
+		$phone			=	$row['phone'];
+		$web			=	$row['web'];
+		$date			=	$row['date'];
+		$status			=	$row['status'];
 
 		$update=true;
 	}
 	if(isset($_POST['update'])){
-		$id=$_POST['id'];
-		$name=$_POST['name'];
-		$email=$_POST['email'];
-		$phone=$_POST['phone'];
-		$oldimage=$_POST['oldimage'];
-
-		if(isset($_FILES['image']['name'])&&($_FILES['image']['name']!="")){
-			$newimage="uploads/".$_FILES['image']['name'];
-			unlink($oldimage);
-			move_uploaded_file($_FILES['image']['tmp_name'], $newimage);
-		}
-		else{
-			$newimage=$oldimage;
-		}
-		$query="UPDATE crud SET name=?,email=?,phone=?,photo=? WHERE id=?";
-		$stmt=$conn->prepare($query);
-		$stmt->bind_param("ssssi",$name,$email,$phone,$newimage,$id);
-		$stmt->execute();
-
+		
+		$id				=	$_POST['id'];
+		$vendor_id		=	$_POST['vendor_id'];
+		$vendor_name	=	$_POST['vendor_name'];
+		$address		=	$_POST['address'];
+		$email			=	$_POST['email'];
+		$phone			=	$_POST['phone'];
+		$web			=	$_POST['web'];
+		$date			=	date('Y-m-d');
+		$status			=	'1';
+		
+		 /*
+        *  Update Data Into inv_receive Table:
+		*/
+		
+		$query2    = "UPDATE vendors SET vendor_id='$vendor_id',vendor_name='$vendor_name',address='$address',email='$email',phone='$phone',web='$web' WHERE id=$id";
+		$result2 = $conn->query($query2);
+		
+		/* $query    = "UPDATE inv_supplierbalance SET code='$code',name='$name',address='$address',contact_person='$contact_person',supplier_phone='$supplier_phone',supplier_op_balance='$supplier_op_balance' WHERE id=$id";
+		$result = $conn->query($query); */
+	
+/* 
 		$_SESSION['response']="Updated Successfully!";
 		$_SESSION['res_type']="primary";
-		header('location:vendors.php');
+		header('location:vendors.php'); */
+		
+		$_SESSION['success']    =   "Updated Successfully!";
+		header("location: vendors.php");
+		exit();
 	}
 
 	if(isset($_GET['details'])){
 		$id=$_GET['details'];
-		$query="SELECT * FROM crud WHERE id=?";
-		$stmt=$conn->prepare($query);
-		$stmt->bind_param("i",$id);
-		$stmt->execute();
-		$result=$stmt->get_result();
-		$row=$result->fetch_assoc();
+		
+		$query = "select * from `vendors` where `id`='$id'";
+		$resultd = mysqli_query($conn, $query);
+		$row = mysqli_fetch_array($resultd);
 
-		$vid=$row['id'];
-		$vname=$row['name'];
-		$vemail=$row['email'];
-		$vphone=$row['phone'];
-		$vphoto=$row['photo'];
+		$id				=	$row['id'];
+		$vendor_id		=	$row['vendor_id'];
+		$vendor_name	=	$row['vendor_name'];
+		$address		=	$row['address'];
+		$email			=	$row['email'];
+		$phone			=	$row['phone'];
+		$web			=	$row['web'];
+		$date			=	$row['date'];
+		$status			=	$row['status'];
 	}
 ?>

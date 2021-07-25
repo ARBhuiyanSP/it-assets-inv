@@ -50,13 +50,13 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 mt-3 bg-info p-4 rounded">
-        <h2 class="bg-light p-2 rounded text-center text-dark">ID : <?= $vid; ?></h2>
+        <h2 class="bg-light p-2 rounded text-center text-dark">ID : <?= $id; ?></h2>
         <div class="text-center">
           <img src="<?= $vphoto; ?>" width="300" class="img-thumbnail">
         </div>
-        <h4 class="text-light">Name : <?= $vname; ?></h4>
-        <h4 class="text-light">Email : <?= $vemail; ?></h4>
-        <h4 class="text-light">Phone : <?= $vphone; ?></h4>
+        <h4 class="text-light">Name : <?= $name; ?></h4>
+        <h4 class="text-light">Email : <?= $address; ?></h4>
+        <h4 class="text-light">Phone : <?= $contact_person; ?></h4>
       </div>
     </div>
   </div>

@@ -34,22 +34,22 @@ include('header.php');
 									  <!--- New Form Suppliers as Vendors--->
 									  <!--- New Form Suppliers as Vendors--->
 									  <div class="form-group">
-										<input type="text" name="code" value="<?= $code; ?>" class="form-control" placeholder="Enter Code" required>
+										<input type="text" name="vendor_id" value="<?= $vendor_id; ?>" class="form-control" placeholder="Enter ID" required>
 									  </div></br>
 									  <div class="form-group">
-										<input type="text" name="name" value="<?= $name; ?>" class="form-control" placeholder="Enter Name" required>
+										<input type="text" name="vendor_name" value="<?= $vendor_name; ?>" class="form-control" placeholder="Enter Name" required>
 									  </div></br>
 									  <div class="form-group">
 										<input type="text" name="address" value="<?= $address; ?>" class="form-control" placeholder="Enter Adderss" required>
 									  </div></br>
 									  <div class="form-group">
-										<input type="text" name="contact_person" value="<?= $contact_person; ?>" class="form-control" placeholder="Enter Contact Person" required>
+										<input type="text" name="email" value="<?= $email; ?>" class="form-control" placeholder="Enter Contact email" >
 									  </div></br>
 									  <div class="form-group">
-										<input type="text" name="supplier_phone" value="<?= $supplier_phone; ?>" class="form-control" placeholder="Enter Supplier Phone" required>
+										<input type="text" name="phone" value="<?= $phone; ?>" class="form-control" placeholder="Enter Supplier Phone" >
 									  </div></br>
 									  <div class="form-group">
-										<input type="text" name="supplier_op_balance" value="<?= $supplier_op_balance; ?>" class="form-control" placeholder="Enter OP Balance" required>
+										<input type="text" name="web" value="<?= $web; ?>" class="form-control" placeholder="Enter web" >
 									  </div></br>
 									  <!--- New Form Suppliers as Vendors--->
 									  <!--- New Form Suppliers as Vendors--->
@@ -69,27 +69,27 @@ include('header.php');
 									<table class="table table-hover" id="datatablesSimple">
 										<thead>
 											<tr>
-												<th>Supplier ID</th>
-												<th>Supplier Name</th>
-												<th>Address</th>
-												<th width="20%">Action</th>
+												<th width="25%">Vendor Name</th>
+												<th width="40%">Address</th>
+												<th width="10%">Phone</th>
+												<th width="25%">Action</th>
 											</tr>
 										</thead>
 										<tbody>
 										<?php
-											$projectsData = getTableDataByTableName('suppliers');
+											$projectsData = getTableDataByTableName('vendors');
 											;
 											if (isset($projectsData) && !empty($projectsData)) {
 												foreach ($projectsData as $data) {
 													?>
 											<tr>
-												<td><?php echo $data['code']; ?></td>
-												<td><?php echo $data['name']; ?></td>
+												<td><?php echo $data['vendor_name']; ?></td>
 												<td><?php echo $data['address']; ?></td>
+												<td><?php echo $data['phone']; ?></td>
 												<td>
-													<a href="vendor-details.php?details=<?php echo $item['id']; ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-													<a href="action.php?delete=<?php echo $item['id']; ?>" class="btn btn-danger" onclick="return confirm('Do you want delete this record?');"><i class="fa fa-trash"></i></a>
-													<a href="vendors.php?edit=<?= $row['id']; ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
+													<a href="vendor-details.php?details=<?php echo $data['id']; ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+													<a href="action.php?delete=<?php echo $data['id']; ?>" class="btn btn-danger" onclick="return confirm('Do you want delete this record?');"><i class="fa fa-trash"></i></a>
+													<a href="vendors.php?edit=<?= $data['id']; ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
 												</td>
 											</tr>
 											<?php
