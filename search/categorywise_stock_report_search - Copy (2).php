@@ -99,6 +99,8 @@ if(isset($_GET['submit'])){
 							<th>Material Name</th>
 							<th>Unit</th>
 							<th>In Stock</th>
+							<th>Unit Price</th>
+							<th>Total Price</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -115,7 +117,7 @@ if(isset($_GET['submit'])){
 								echo (isset($dataresult) && !empty($dataresult) ? $dataresult->category_description : '');
 								?>
 							</td>
-							<td colspan="4"></td>
+							<td colspan="6"></td>
 						</tr>
 								<?php 
 									$material_id = $row['material_id'];
@@ -132,7 +134,7 @@ if(isset($_GET['submit'])){
 										echo (isset($dataresult) && !empty($dataresult) ? $dataresult->material_sub_description : '');
 										?>
 									</td>
-									<td colspan="3"></td>
+									<td colspan="5"></td>
 								</tr>
 										<?php 
 											$material_sub_id = $rowall['material_sub_id'];
@@ -167,7 +169,28 @@ if(isset($_GET['submit'])){
 													
 													
 													$instock = $rowinqty->totalin -$rowoutqty->totalout;
-													echo number_format((float)$instock, 1, '.', '');
+													echo number_format((float)$instock, 2, '.', '');
+												?>
+											</td>
+											<td>
+												<?php
+												
+												
+													$sqlinval = "SELECT SUM(`mbin_val`) AS totalinval FROM `inv_materialbalance` WHERE warehouse_id = $warehouse_id AND `mb_materialid` = '$mb_materialid' AND mb_date <= '$to_date'";
+												
+												
+												
+												$resultinval= mysqli_query($conn, $sqlinval);
+												$rowinval = mysqli_fetch_object($resultinval) ;								
+												if($rowinqty->totalin){
+												$avgprice = $rowinval->totalinval / $rowinqty->totalin;
+												echo number_format((float)$avgprice, 2, '.', '');
+												} ?>
+											</td>
+											<td>
+												<?php
+												$totalinvalue = $rowinval->totalinval;
+												echo $english_format_number = number_format($totalinvalue);
 												?>
 											</td>
 										</tr>

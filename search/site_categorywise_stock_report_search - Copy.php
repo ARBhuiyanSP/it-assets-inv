@@ -10,15 +10,14 @@
 <div class="card mb-3">
     <div class="card-header" style="background-color: #ffffff;">
 		<button class="btn btn-primary linktext" onclick="window.location.href='stock_report.php';"> Stock Report Search</button>
-		<button class="btn btn-success linktext"> Categorywise Stock Report </button>
+		<button class="btn btn-primary linktext" onclick="window.location.href='categorywise_stock_report.php';"> Categorywise Stock Report </button>
 		<button class="btn btn-primary linktext" onclick="window.location.href='typewise_stock_report.php';"> Typeywise Stock Report </button>
 		<?php if($_SESSION['logged']['user_type'] !== 'user') {?>
 		<!-- <button class="btn btn-info linktext" onclick="window.location.href='total_stock_report.php';"> Total Stock Report</button> -->
 		<button class="btn btn-primary linktext" onclick="window.location.href='site_stock_report.php';"> Site Stock Report </button>
-		<button class="btn btn-primary linktext" onclick="window.location.href='site_categorywise_stock_report.php';"> Site Categorywise Stock Report </button>
-		<?php } ?>  
+		<button class="btn btn-success linktext"> Site Categorywise Stock Report </button>
+		<?php } ?> 
 	</div>
-
     <div class="card-body">
         <form class="form-horizontal" action="" id="warehouse_stock_search_form" method="GET">
             <div class="table-responsive">          
@@ -27,8 +26,29 @@
                         <tr>  
 							<td>
                                 <div class="form-group">
+									<label for="sel1">Site:</label>
+									<select class="form-control select2" id="warehouse_id" name="warehouse_id">
+										<option value="">Select</option>
+										<?php
+										$warehouse = getTableDataByTableName('store','','name');
+										if (isset($warehouse) && !empty($warehouse)) {
+											foreach ($warehouse as $data) {
+													if($_GET['warehouse_id'] == $data['id']){
+													$selected	= 'selected';
+													}else{
+													$selected	= '';
+													}
+												?>
+												<option value="<?php  echo $data['id'] ?>" <?php echo $selected; ?>><?php echo $data['name'] ?></option>
+											<?php }
+										} ?>
+									</select>
+								</div>
+                            </td>
+							<td>
+                                <div class="form-group">
 									<label for="sel1">Material Category:</label>
-									<select class="form-control material_select_2" id="material_id" name="material_id">
+									<select class="form-control select2" id="material_id" name="material_id">
 										<option value="">Select</option>
 										<?php
 										$parentCats = getTableDataByTableName('inv_materialcategorysub', '', 'category_description');
@@ -68,10 +88,9 @@
 </div>
 <?php
 if(isset($_GET['submit'])){
-	
 	$material_id	=	$_GET['material_id'];
 	$to_date		=	$_GET['to_date'];
-	$warehouse_id	=	$_SESSION['logged']['warehouse_id'];
+	$warehouse_id	=	$_GET['warehouse_id'];
 	
 	
 ?>
@@ -99,6 +118,8 @@ if(isset($_GET['submit'])){
 							<th>Material Name</th>
 							<th>Unit</th>
 							<th>In Stock</th>
+							<th>Unit Price</th>
+							<th>Total Price</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -115,7 +136,7 @@ if(isset($_GET['submit'])){
 								echo (isset($dataresult) && !empty($dataresult) ? $dataresult->category_description : '');
 								?>
 							</td>
-							<td colspan="4"></td>
+							<td colspan="6"></td>
 						</tr>
 								<?php 
 									$material_id = $row['material_id'];
@@ -132,7 +153,7 @@ if(isset($_GET['submit'])){
 										echo (isset($dataresult) && !empty($dataresult) ? $dataresult->material_sub_description : '');
 										?>
 									</td>
-									<td colspan="3"></td>
+									<td colspan="5"></td>
 								</tr>
 										<?php 
 											$material_sub_id = $rowall['material_sub_id'];
@@ -149,25 +170,35 @@ if(isset($_GET['submit'])){
 											<td>
 												<?php 
 													$mb_materialid = $rowmat['material_id_code'];
-													
-													
-														$sqlinqty = "SELECT SUM(`mbin_qty`) AS totalin FROM `inv_materialbalance` WHERE warehouse_id = $warehouse_id AND `mb_materialid` = '$mb_materialid' AND mb_date <= '$to_date'";
-													
-													
-													
+													$sqlinqty = "SELECT SUM(`mbin_qty`) AS totalin FROM `inv_materialbalance` WHERE warehouse_id = $warehouse_id AND `mb_materialid` = '$mb_materialid' AND mb_date <= '$to_date'";
 													$resultinqty = mysqli_query($conn, $sqlinqty);
 													$rowinqty = mysqli_fetch_object($resultinqty) ;
 													
 													
-														$sqloutqty = "SELECT SUM(`mbout_qty`) AS totalout FROM `inv_materialbalance` WHERE warehouse_id = $warehouse_id AND `mb_materialid` = '$mb_materialid' AND mb_date <= '$to_date'";
-													
-													
+													$sqloutqty = "SELECT SUM(`mbout_qty`) AS totalout FROM `inv_materialbalance` WHERE warehouse_id = $warehouse_id AND `mb_materialid` = '$mb_materialid' AND mb_date <= '$to_date'";
 													$resultoutqty = mysqli_query($conn, $sqloutqty);
 													$rowoutqty = mysqli_fetch_object($resultoutqty) ;
 													
+													//echo $rowinqty->totalin -$rowoutqty->totalout;
 													
 													$instock = $rowinqty->totalin -$rowoutqty->totalout;
-													echo number_format((float)$instock, 1, '.', '');
+													echo number_format((float)$instock, 2, '.', '');
+												?>
+											</td>
+											<td>
+												<?php
+												$sqlinval = "SELECT SUM(`mbin_val`) AS totalinval FROM `inv_materialbalance` WHERE warehouse_id = $warehouse_id AND `mb_materialid` = '$mb_materialid' AND mb_date <= '$to_date'";
+												$resultinval= mysqli_query($conn, $sqlinval);
+												$rowinval = mysqli_fetch_object($resultinval) ;								
+												if($rowinqty->totalin){
+												$avgprice = $rowinval->totalinval / $rowinqty->totalin;
+												echo number_format((float)$avgprice, 2, '.', '');
+												} ?>
+											</td>
+											<td>
+												<?php
+												$totalinvalue = $rowinval->totalinval;
+												echo $english_format_number = number_format($totalinvalue);
 												?>
 											</td>
 										</tr>
