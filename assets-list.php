@@ -46,7 +46,7 @@
 											$store_id = $_SESSION['logged']['store_id'];
 											
 											if($role == 'user'){
-												$sql = "select * from ams_products where `store_id`='$store_id'";
+												$sql = "select * from ams_products where `current_store`='$store_id'";
 											}else{
 												$sql = "select * from ams_products";
 											}
@@ -83,10 +83,11 @@
 													
 													
 													<?php if($row['assign_status']=='assigned'){ ?>
-													<button onclick="window.location.href = 'transfer.php?id=<?php echo $row['id'] ?>'" title="Transfer"><i class="fa fa-user text-success"></i></button>
-													<button onclick="window.location.href = 'refund.php?id=<?php echo $row['id'] ?>'"  title="Return"><i class="fa fa-outdent text-success"></i></button>
+													<button onclick="window.location.href = 'transfer.php?id=<?php echo $row['id'] ?>'" title="Transfer"><i class="fa fa-user text-warning"></i></button>
+													<button onclick="window.location.href = 'refund.php?id=<?php echo $row['id'] ?>'"  title="Return"><i class="fa fa-outdent text-danger"></i></button>
 													<?php }else{ ?>
 													<button onclick="window.location.href = 'product-assign.php?id=<?php echo $row['id'] ?>'" title="Assign"><i class="fa fa-user text-success"></i></button>
+													<button onclick="window.location.href = 'store-transfer.php?id=<?php echo $row['id'] ?>'" title="S2S Transfer"><i class="fa fa-terminal text-warning"></i></button>
 													<?php } ?>
 												</td>
 											</tr>

@@ -1,4 +1,31 @@
 <?php
+
+
+if (isset($_POST['s_transfer_submit'])) {
+        /*
+         *  Insert Data Into inv_transferdetail Table:
+        */ 
+        $product_id		= $_POST['product_id'];
+        $from_store		= $_POST['from_store'];
+        $to_store		= $_POST['to_store'];
+        $transfer_date	= $_POST['transfer_date'];
+        $remarks		= $_POST['remarks'];        
+        $transfer_by  	= $_POST['transfer_by'];        
+        /* Insert Data Into store_transfer Table: */       
+        $query = "INSERT INTO `store_transfer` (`product_id`,`from_store`,`to_store`,`transfer_date`,`transfer_by`,`remarks`) VALUES ('$product_id','$from_store','$to_store','$transfer_date','$transfer_by','$remarks')";
+        $conn->query($query);
+    
+		/* Update Data Into ams_products Table: */
+		$query2 = "UPDATE `ams_products` SET `current_store`='$to_store' WHERE `id`='$product_id'";
+		$result2 = $conn->query($query2);    
+  
+    
+    $_SESSION['success']    =   "S2S transfer process have been successfully completed.";
+    header("location: store-transfer.php?id=$product_id");
+    exit();
+	}
+
+
 /*******************************************************************************
  * The following code will
  * Store Receive entry data.
