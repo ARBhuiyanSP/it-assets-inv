@@ -45,7 +45,7 @@ if (isset($_POST['receive_submit']) && !empty($_POST['receive_submit'])) {
         $requisition_date   = $_POST['requisition_date'];
         // $supplier_name      = $_POST['supplier_name'];
         $vendor_name        = $_POST['vendor_name'];
-        $project_id			= $_POST['project_id'];
+        $project_id			= $_POST['warehouse_id'];
         $warehouse_id		= $_POST['warehouse_id'];
 
 
@@ -58,7 +58,7 @@ if (isset($_POST['receive_submit']) && !empty($_POST['receive_submit'])) {
         $unit_price         = $_POST['unit_price'][$count];
         $totalamount        = $_POST['totalamount'][$count];
         $receive_total      = $receive_total+$totalamount;
-        $project_id         = $_POST['project_id'];
+        $project_id         = $_POST['warehouse_id'];
         $vat_challan_no     = $_POST['vat_challan_no'];  
         $remarks            = $_POST['remarks'];  
 		
@@ -99,7 +99,7 @@ if (isset($_POST['receive_submit']) && !empty($_POST['receive_submit'])) {
         $mbprice        = $unit_price;
         $mbtype         = 'Receive';
         $mbserial       = '1.1';
-        $mbunit_id      = $project_id;
+        $mbunit_id      = $unit;
         $mbserial_id    = 0;
         $jvno           = $mrr_no;
         $part_no        = $brand;        
@@ -186,16 +186,17 @@ if(isset($_POST['receive_update_submit']) && !empty($_POST['receive_update_submi
 		$conn->query($delsq2);
 		
 		for ($count = 0; $count < count($_POST['quantity']); $count++) {
-			$mrr_date           = $_POST['mrr_date'];        
+			$mrr_date           = $_POST['mrr_date'];
+			$mrr_no             = $_POST['mrr_no'];
 			$purchase_id        = $_POST['purchase_id'];
 			$Purchase_date      = $_POST['Purchase_date'];
 			$challan_no         = $_POST['challan_no'];
 			$challan_date       = $_POST['challan_date'];
 			$requisition_no     = $_POST['requisition_no'];
 			$requisition_date   = $_POST['requisition_date'];
-			$supplier_name      = $_POST['supplier_name'];
-			$supplier_id        = $_POST['supplier_id'];
-			$project_id			= $_POST['project_id'];
+			// $supplier_name      = $_POST['supplier_name'];
+			$vendor_name        = $_POST['vendor_name'];
+			$project_id			= $_POST['warehouse_id'];
 			$warehouse_id		= $_POST['warehouse_id'];
 
 
@@ -208,9 +209,15 @@ if(isset($_POST['receive_update_submit']) && !empty($_POST['receive_update_submi
 			$unit_price         = $_POST['unit_price'][$count];
 			$totalamount        = $_POST['totalamount'][$count];
 			$receive_total      = $receive_total+$totalamount;
-			$project_id         = $_POST['project_id'];
-			$vat_challan_no     = $_POST['vat_challan_no'];
-			$remarks            = $_POST['remarks'];
+			$project_id         = $_POST['warehouse_id'];
+			$vat_challan_no     = $_POST['vat_challan_no'];  
+			$remarks            = $_POST['remarks'];  
+			
+			$received_by		= $_POST['received_by'];        
+			$approval_status		= '';        
+			$approved_by            = '';        
+			$approved_at            = '';        
+			$approval_remarks		= ''; 
 			
 			
 			if (is_uploaded_file($_FILES['sn_prt_image']['tmp_name'])) 
@@ -245,13 +252,13 @@ if(isset($_POST['receive_update_submit']) && !empty($_POST['receive_update_submi
 			$jvno           = $mrr_no;
 			$part_no        = $part_no;        
 			
-			$query_inmb = "INSERT INTO `inv_materialbalance` (`mb_ref_id`,`mb_materialid`,`mb_date`,`mbin_qty`,`mbin_val`,`mbout_qty`,`mbout_val`,`mbprice`,`mbtype`,`mbserial`,`mbserial_id`,`mbunit_id`,`jvno`,`part_no`,`project_id`,`warehouse_id`) VALUES ('$mb_ref_id','$mb_materialid','$mb_date','$mbin_qty','$mbin_val','$mbout_qty','$mbout_val','$mbprice','$mbtype','$mbserial','$mbunit_id','$mbserial_id','$jvno','$part_no','$project_id','$warehouse_id')";
+			$query_inmb = "INSERT INTO `inv_materialbalance` (`mb_ref_id`,`mb_materialid`,`mb_date`,`mbin_qty`,`mbin_val`,`mbout_qty`,`mbout_val`,`mbprice`,`mbtype`,`mbserial`,`mbserial_id`,`mbunit_id`,`jvno`,`part_no`,`project_id`,`warehouse_id`,`approval_status`) VALUES ('$mb_ref_id','$mb_materialid','$mb_date','$mbin_qty','$mbin_val','$mbout_qty','$mbout_val','$mbprice','$mbtype','$mbserial','$mbunit_id','$mbserial_id','$jvno','$part_no','$project_id','$warehouse_id','$approval_status')";
 			$conn->query($query_inmb);
 		}
 		/*
 			*  Update Data Into inv_receive Table:
 		*/
-		$query2    = "UPDATE `inv_receive` SET `mrr_no`='$mrr_no',`mrr_date`='$mrr_date',`purchase_id`='$purchase_id',`receive_acct_id`='16-001-001',`supplier_id`='$supplier_id',`postedtogl`='0',`vat_challan_no`='$vat_challan_no',`remarks`='$remarks',`receive_type`='Credit',`project_id`='$project_id',`warehouse_id`='$warehouse_id',`receive_unit_id`='1',`receive_total`='$receive_total',`no_of_material`='$no_of_material',`challanno`='$challan_no',`challan_date`='$challan_date',`requisitionno`='$requisition_no',`requisition_date`='$requisition_date' ,`mrr_image`='$mrr_image' WHERE `id`='$edit_id'";
+		$query2    = "UPDATE `inv_receive` SET `mrr_no`='$mrr_no',`mrr_date`='$mrr_date',`purchase_id`='$purchase_id',`receive_acct_id`='16-001-001',`supplier_id`='$vendor_name',`postedtogl`='0',`vat_challan_no`='$vat_challan_no',`remarks`='$remarks',`receive_type`='Credit',`project_id`='$project_id',`warehouse_id`='$warehouse_id',`receive_unit_id`='1',`receive_total`='$receive_total',`no_of_material`='$no_of_material',`challanno`='$challan_no',`challan_date`='$challan_date',`requisitionno`='$requisition_no',`requisition_date`='$requisition_date' ,`mrr_image`='$mrr_image' WHERE `id`='$edit_id'";
 		$result2 = $conn->query($query2);
 		
 		
@@ -260,7 +267,7 @@ if(isset($_POST['receive_update_submit']) && !empty($_POST['receive_update_submi
 		/*
 			*  Update Data Into inv_supplierbalance Table:
 		*/
-		$query4    = "UPDATE `inv_supplierbalance` SET `sb_ref_id`='$mrr_no',`warehouse_id`='$warehouse_id',`sb_date`='$mrr_date',`sb_supplier_id`='$supplier_id',`sb_dr_amount`='0',`sb_cr_amount`='$receive_total',`sb_remark`='$remarks',`sb_partac_id`='$mrr_no' WHERE `sb_ref_id`='$mrr_no'";
+		$query4    = "UPDATE `inv_supplierbalance` SET `sb_ref_id`='$mrr_no',`warehouse_id`='$warehouse_id',`sb_date`='$mrr_date',`sb_supplier_id`='$vendor_name',`sb_dr_amount`='0',`sb_cr_amount`='$receive_total',`sb_remark`='$remarks',`sb_partac_id`='$mrr_no' WHERE `sb_ref_id`='$mrr_no'";
 		$result2 = $conn->query($query4);
 		
 		$_SESSION['success']    =   "Receive UPDATE process have been successfully updated.";

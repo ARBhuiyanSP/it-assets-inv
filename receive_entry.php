@@ -194,9 +194,7 @@
                             </table>
 							<table class="table table-bordered">
 								<tr>
-									<td width="" style="">VAT Challan No<span class="reqfield"> ***required</span></td>
-									<td><input type="text" class="form-control" maxlength="30" name="vat_challan_no" required /></td>
-									<td width="" style="text-align:right;">Total Amount</td>
+									<td width="80%" style="text-align:right;">Total Amount</td>
 									<td><input type="text" class="form-control" maxlength="30" name="sub_total_amount" id="allsum" readonly /></td>
 								</tr>
 							</table>
@@ -206,6 +204,7 @@
                         <div class="col-xs-6">
                             <div class="form-group">
                                 <input type="file" accept="image/*"  name="file" id="picture">
+								<p style="color:red;">*** Select an image file like .jpg or .png</p>
 								<p id="error1" style="display:none; color:#FF0000;">
 								Invalid Image Format! Image Format Must Be JPG, JPEG, PNG or GIF.
 								</p>
@@ -321,6 +320,17 @@
 <script>
     $(function () {
         $("#challan_date").datepicker({
+            inline: true,
+            dateFormat: "yy-mm-dd",
+            yearRange: "-50:+10",
+            changeYear: true,
+            changeMonth: true
+        });
+    });
+</script>
+<script>
+    $(function () {
+        $("#Purchase_date").datepicker({
             inline: true,
             dateFormat: "yy-mm-dd",
             yearRange: "-50:+10",
