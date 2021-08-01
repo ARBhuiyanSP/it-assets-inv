@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2021 at 07:28 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.2.22
+-- Generation Time: Jul 31, 2021 at 03:27 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -70,7 +69,7 @@ INSERT INTO `ams_products` (`id`, `sl_no`, `assets_category`, `item_name`, `asse
 (291, 'CIT-002', 'A-0004', 'TV', 'Samsung 75 inch 4K UHD Smart TV.', 'Samsung', 'RU7100', 'N/A', 'N/A', '', 'N/A', 'N/A', 'V-001', '2021-05-29', 'N/A', '180000.00', 'Malaysia', 'MD. Babul Farajee', 'active', 'good', '', '', 'images/qr_images/1624352623qrimage.png', '', '', '4', '4', 'SPL-000608', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (292, 'CTG-001', 'A-0001', 'ASUS LAPTOP', 'Intel Core i7 11th Gen, 16 GB RAM, SSD 512GB, 13.3  TOUCH Display,\r\nWith Carry Bag, Charger, Laptop Stand,4port usb Hub with LAN, ', 'ASUS', 'ZENBOOK FLIP UX363EA', 'MM2N0CX00W94005F', 'N/A', '', 'N/A', '7872C', 'V-001', '2021-05-12', '02 YRS', 'N/A', 'China', 'MD. Babul Farajee', 'active', 'good', '1624424102_BB.jpeg', '1624424102_laptop of Babu bhai.jpeg', 'images/qr_images/1624424102qrimage.png', 'assigned', '', '2', '2', 'SPL-006897', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (293, 'CTG-002', 'A-0001', 'Laptop', 'Intel corei3, 6th Gen, RAM 4GB, HDD 01TB, 14\" Display. ', 'Asus', 'X441UA', 'WX283D', 'N/A', '', 'N/A', 'N/A', 'V-001', '2019-10-13', 'N/A', 'N/A', 'China', 'MD. Babul Farajee', 'active', 'good', '1624427020_SL.jpeg', '1624427020_Display.jpeg', 'images/qr_images/1624430523qrimage.png', '', '', '2', '2', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(294, 'BIT-001', 'A-0001', 'Lenovo Laptop ', 'Core i5,Ram-8gb, HDD-1TB With Wireless Mouse , Portable HDD-500Gb', 'lenovo', 'Ideapad ', 'PF0K0CSR', 'N/A', '', 'N/A', 'N/A', 'V-001', '2020-10-20', 'N/A', 'N/A', 'China', 'MD. Babul Farajee', 'active', 'good', '', '', 'images/qr_images/1624764886qrimage.png', 'assigned', '', '3', '3', 'SPL-007797', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(294, 'BIT-001', 'A-0001', 'Lenovo Laptop ', 'Core i5,Ram-8gb, HDD-1TB With Wireless Mouse , Portable HDD-500Gb', 'lenovo', 'Ideapad ', 'PF0K0CSR', 'R#0', '', 'N/A', 'N/A', 'V-001', '2020-10-20', 'N/A', 'N/A', 'China', 'MD. Babul Farajee', 'active', 'good', '', '', 'images/qr_images/1627129458qrimage.png', 'assigned', '', '4', '4', 'SPL-007797', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (295, 'CIT-003', 'A-0001', 'Acer Aspire3 Laptop', 'Intel Corei3 10th Gen, RAM: 8GB, HDD:1TB, SSD: 120GB, 15.6\" Display.', 'Acer', 'N19C1', 'NXHS5SI00C1080EBDD3400', 'EEL-194', '', '24', 'N/A', 'V-001', '2021-06-19', '2 Years', 'N/A', 'Taiwan', 'MD. Babul Farajee', 'active', 'good', '1624432635_Laptop Serial Photo.jpeg', '1624432635_Laptop full photo.jpeg', 'images/qr_images/1624432635qrimage.png', '', '', '4', '4', 'SPL-007175', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (296, 'CIT-004', 'A-0003', 'MacBook Pro', 'MacBook Pro 2020\r\nIntel Core i5 1.5 GHz\r\n8GB RAM, 512 GB SSD\r\n13.3\" Retina Display, Touch Bar\r\nColor: Silver ', 'Apple', 'MacBook Pro 2020', 'SFVFCQ0FPP3Y2', 'N/A', '', 'N/A', 'N/A', 'V-001', '2020-09-09', '1 Years', '173000.00', 'USA', 'MD. Babul Farajee', 'active', 'good', '1624432948_MacBook Pro-CTG.jpeg', '', 'images/qr_images/1624432948qrimage.png', '', '', '4', '4', 'SPL-000608', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (297, 'CIT-005', 'A-0004', 'TV', 'Samsung TU7000 75\" Smart 4K UHD\r\nWall Mount.', 'Samsung', 'TU7000', 'N/A', 'N/A', '', 'N/A', '7954', 'V-001', '2021-06-19', 'N/A', '190000.00', 'Malaysia', 'MD. Babul Farajee', 'active', 'good', '', '', 'images/qr_images/1624433697qrimage.png', '', '', '4', '4', 'SPL-000608', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -6292,7 +6291,8 @@ INSERT INTO `employees` (`id`, `employee_id`, `employee_name`, `designation`, `d
 (3348, 'SPPL-000119', 'Shohagi Akhter', 'Helper', 'Production', 'Grade-01', 'Non Management', 'Saif Plastic and Polymer Industries Ltd.', 'Blank', 'Factory', 'Blow Moulding', 'Pubail', '2019-06-11', 'Active', 'Female'),
 (3349, 'SPPL-000120', 'Md Rabiul  Islam', 'Quality Control Inspector', 'Quality Assurance', 'Grade-05', 'Management', 'Saif Plastic and Polymer Industries Ltd.', 'Blank', 'Factory', 'Blank', 'Pubail', '2019-06-11', 'Active', 'Male'),
 (3350, 'SPPL-000121', 'Mst Parvin Begum', 'Helper', 'Production', 'Grade-01', 'Non Management', 'Saif Plastic and Polymer Industries Ltd.', 'Blank', 'Factory', 'Blow Moulding', 'Pubail', '2019-06-17', 'Active', 'Female'),
-(3351, 'SPL-007967', 'Subrata Halder', 'Officer', 'IT', NULL, NULL, NULL, 'Corporate', NULL, NULL, 'Chattogram', NULL, NULL, NULL);
+(3351, 'SPL-007967', 'Subrata Halder', 'Officer', 'IT', NULL, NULL, NULL, 'Corporate', NULL, NULL, 'Chattogram', NULL, NULL, NULL),
+(3352, 'SPL-008578', 'Md Anisul Haque', 'Executive', 'IT', 'Grade-07', 'Non-Management', 'Saif Powertec Ltd.', 'Blank', 'Blank', 'Admin', 'Khawja Tower', '2017-01-21', 'Active', 'Male');
 
 -- --------------------------------------------------------
 
@@ -6965,47 +6965,8 @@ CREATE TABLE `inv_materialbalance` (
 --
 
 INSERT INTO `inv_materialbalance` (`id`, `mb_ref_id`, `mb_materialid`, `mb_date`, `mbin_qty`, `mbin_val`, `mbout_qty`, `mbout_val`, `mbprice`, `mbtype`, `mbserial`, `mbserial_id`, `mbunit_id`, `jvno`, `part_no`, `project_id`, `warehouse_id`, `package_id`, `building_id`, `site_id`, `approval_status`) VALUES
-(32008, 'MRR-CIT001', '02-01-012', '2021-07-18', 3, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
-(32009, 'MRR-CIT001', '02-01-002', '2021-07-18', 10, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
-(32010, 'MRR-CIT001', '02-01-004', '2021-07-18', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
-(32011, 'MRR-CIT001', '02-01-003', '2021-07-18', 5, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
-(32012, 'MRR-CIT001', '02-03-007', '2021-07-18', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
-(32013, 'MRR-CIT001', '02-03-008', '2021-07-18', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
-(32014, 'MRR-CIT001', '02-04-001', '2021-07-18', 10, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT001', '3', '', '4', '', '', '', 0),
-(32015, 'MRR-CIT002', '02-01-005', '2021-07-19', 2, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT002', '3', '', '4', '', '', '', 0),
-(32016, 'MRR-CIT003', '02-01-008', '2021-07-19', 2, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT003', '3', '', '4', '', '', '', 0),
-(32017, 'MRR-CIT004', '02-01-008', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT004', '3', '', '4', '', '', '', 0),
-(32018, 'MRR-CIT005', '02-01-002', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
-(32019, 'MRR-CIT005', '02-02-032', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
-(32020, 'MRR-CIT005', '02-02-040', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
-(32021, 'MRR-CIT005', '02-02-048', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
-(32022, 'MRR-CIT005', '02-02-056', '2021-07-19', 1, 0, 0, 0, 0, 'Receive', 1.1, '', '0', 'MRR-CIT005', '3', '', '4', '', '', '', 0),
-(32023, 'CSM-CIT001', '02-01-005', '2021-07-19', 0, 0, 2, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32024, 'CSM-CIT001', '02-01-005', '2021-07-19', 2, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32025, 'CSM-CIT001', '02-01-008', '2021-07-19', 0, 0, 3, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32026, 'CSM-CIT001', '02-01-008', '2021-07-19', 3, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32027, 'CSM-CIT001', '02-01-002', '2021-07-19', 0, 0, 11, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32028, 'CSM-CIT001', '02-01-002', '2021-07-19', 11, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32029, 'CSM-CIT001', '02-02-032', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32030, 'CSM-CIT001', '02-02-032', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32031, 'CSM-CIT001', '02-02-040', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32032, 'CSM-CIT001', '02-02-040', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32033, 'CSM-CIT001', '02-02-048', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32034, 'CSM-CIT001', '02-02-048', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32035, 'CSM-CIT001', '02-02-056', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32036, 'CSM-CIT001', '02-02-056', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32037, 'CSM-CIT001', '02-01-012', '2021-07-19', 0, 0, 3, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32038, 'CSM-CIT001', '02-01-012', '2021-07-19', 3, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32039, 'CSM-CIT001', '02-01-004', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32040, 'CSM-CIT001', '02-01-004', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32041, 'CSM-CIT001', '02-01-003', '2021-07-19', 0, 0, 5, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32042, 'CSM-CIT001', '02-01-003', '2021-07-19', 5, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32043, 'CSM-CIT001', '02-03-007', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32044, 'CSM-CIT001', '02-03-007', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32045, 'CSM-CIT001', '02-03-008', '2021-07-19', 0, 0, 1, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32046, 'CSM-CIT001', '02-03-008', '2021-07-19', 1, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0),
-(32047, 'CSM-CIT001', '02-04-001', '2021-07-19', 0, 0, 10, 0, 0, 'Transfer Out', 1.1, '', '0', 'CSM-CIT001', NULL, '', '4', '', '', '', 0),
-(32048, 'CSM-CIT001', '02-04-001', '2021-07-19', 10, 0, 0, 0, 0, 'Transfer In', 1.1, '', '0', 'CSM-CIT001', NULL, '', '2', '', '', '', 0);
+(32059, 'MRR-CIT001', '01-01-002', '2021-07-30', 20, 0, 0, 0, 0, 'Receive', 1.1, '4', '0', 'MRR-CIT001', '', '4', '4', '', '', '', 0),
+(32060, 'MRR-CIT001', '01-01-001', '2021-07-30', 10, 0, 0, 0, 0, 'Receive', 1.1, '4', '0', 'MRR-CIT001', '', '4', '4', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -7209,11 +7170,7 @@ CREATE TABLE `inv_receive` (
 --
 
 INSERT INTO `inv_receive` (`id`, `mrr_no`, `mrr_date`, `purchase_id`, `receive_acct_id`, `supplier_id`, `postedtogl`, `vat_challan_no`, `remarks`, `receive_type`, `project_id`, `warehouse_id`, `receive_unit_id`, `chk_year_end`, `receive_total`, `no_of_material`, `challanno`, `challan_date`, `jv_no`, `part_no`, `requisitionno`, `requisition_date`, `received_by`, `approval_status`, `approved_by`, `approved_at`, `approval_remarks`, `mrr_image`) VALUES
-(1770, 'MRR-CIT001', '2021-07-18', 'N/A', '6-14-010', 'SID-001', 0, '..', 'For CTG Port. Received at Dhaka.', 'Credit', '', '4', '1', NULL, 0, 31, '8015C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-14', '11', 0, '', '0000-00-00 00:00:00', '', ''),
-(1771, 'MRR-CIT002', '2021-07-19', 'N/A', '6-14-010', 'SID-001', 0, '..', 'EEL-Waterlog Project.', 'Credit', '', '4', '1', NULL, 0, 2, '8016C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-19', '11', 0, '', '0000-00-00 00:00:00', '', ''),
-(1772, 'MRR-CIT003', '2021-07-19', 'N/A', '6-14-010', 'SID-001', 0, '..', 'EEL-RAOZAN Project.', 'Credit', '', '4', '1', NULL, 0, 2, '8017C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-14', '11', 0, '', '0000-00-00 00:00:00', '', ''),
-(1773, 'MRR-CIT004', '2021-07-19', 'N/A', '6-14-010', 'SID-001', 0, '..', 'EEL-GOHIRA Project.', 'Credit', '', '4', '1', NULL, 0, 1, '8018C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-14', '11', 0, '', '0000-00-00 00:00:00', '', ''),
-(1774, 'MRR-CIT005', '2021-07-19', 'N/A', '6-14-010', 'SID-001', 0, '..', 'EEL-Dredging Project.', 'Credit', '', '4', '1', NULL, 0, 5, '8019C', '2021-07-17', NULL, '3', 'July-001/21', '2021-07-14', '11', 0, '', '0000-00-00 00:00:00', '', '');
+(1779, 'MRR-CIT001', '2021-07-30', 'PID-001', '16-001-001', '12', 0, '', 'Test', 'Credit', '4', '4', '1', NULL, 0, 30, 'SCN-001', '2021-07-30', NULL, '3', 'RLP-001', '2021-07-30', 'SPL-007729', 0, '', '0000-00-00 00:00:00', '', '');
 
 -- --------------------------------------------------------
 
@@ -7244,21 +7201,8 @@ CREATE TABLE `inv_receivedetail` (
 --
 
 INSERT INTO `inv_receivedetail` (`id`, `mrr_no`, `material_id`, `material_name`, `brand_id`, `unit_id`, `receive_qty`, `unit_price`, `sl_no`, `total_receive`, `rd_serial_id`, `part_no`, `project_id`, `warehouse_id`, `approval_status`) VALUES
-(2633, 'MRR-CIT001', '02-01-012', '380', '3', 3, 3, 0, 1, 0, '', '3', '', '4', 0),
-(2634, 'MRR-CIT001', '02-01-002', '365', '3', 3, 10, 0, 1, 0, '', '3', '', '4', 0),
-(2635, 'MRR-CIT001', '02-01-004', '367', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
-(2636, 'MRR-CIT001', '02-01-003', '366', '3', 3, 5, 0, 1, 0, '', '3', '', '4', 0),
-(2637, 'MRR-CIT001', '02-03-007', '358', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
-(2638, 'MRR-CIT001', '02-03-008', '359', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
-(2639, 'MRR-CIT001', '02-04-001', '349', '3', 3, 10, 0, 1, 0, '', '3', '', '4', 0),
-(2640, 'MRR-CIT002', '02-01-005', '368', '3', 3, 2, 0, 1, 0, '', '3', '', '4', 0),
-(2641, 'MRR-CIT003', '02-01-008', '371', '3', 3, 2, 0, 1, 0, '', '3', '', '4', 0),
-(2642, 'MRR-CIT004', '02-01-008', '371', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
-(2643, 'MRR-CIT005', '02-01-002', '365', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
-(2644, 'MRR-CIT005', '02-02-032', '415', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
-(2645, 'MRR-CIT005', '02-02-040', '423', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
-(2646, 'MRR-CIT005', '02-02-048', '431', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0),
-(2647, 'MRR-CIT005', '02-02-056', '439', '3', 3, 1, 0, 1, 0, '', '3', '', '4', 0);
+(2656, 'MRR-CIT001', '01-01-002', '346', '3', 3, 20, 0, 1, 0, '', '3', '4', '4', 0),
+(2657, 'MRR-CIT001', '01-01-001', '345', '3', 3, 10, 0, 1, 0, '', '3', '4', '4', 0);
 
 -- --------------------------------------------------------
 
@@ -7390,11 +7334,7 @@ CREATE TABLE `inv_supplierbalance` (
 --
 
 INSERT INTO `inv_supplierbalance` (`id`, `sb_ref_id`, `warehouse_id`, `sb_date`, `sb_supplier_id`, `sb_dr_amount`, `sb_cr_amount`, `sb_remark`, `sb_partac_id`, `approval_status`) VALUES
-(1565, 'MRR-CIT001', '4', '2021-07-18', 'SID-001', 0, 0, 'For CTG Port. Received at Dhaka.', 'MRR-CIT001', 0),
-(1566, 'MRR-CIT002', '4', '2021-07-19', 'SID-001', 0, 0, 'EEL-Waterlog Project.', 'MRR-CIT002', 0),
-(1567, 'MRR-CIT003', '4', '2021-07-19', 'SID-001', 0, 0, 'EEL-RAOZAN Project.', 'MRR-CIT003', 0),
-(1568, 'MRR-CIT004', '4', '2021-07-19', 'SID-001', 0, 0, 'EEL-GOHIRA Project.', 'MRR-CIT004', 0),
-(1569, 'MRR-CIT005', '4', '2021-07-19', 'SID-001', 0, 0, 'EEL-Dredging Project.', 'MRR-CIT005', 0);
+(1574, 'MRR-CIT001', '4', '2021-07-30', '12', 0, 0, 'Test', 'MRR-CIT001', 0);
 
 -- --------------------------------------------------------
 
@@ -7444,25 +7384,6 @@ CREATE TABLE `inv_tranferdetail` (
   `outwarehouse` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `inv_tranferdetail`
---
-
-INSERT INTO `inv_tranferdetail` (`id`, `transfer_id`, `material_id`, `material_name`, `transfer_qty`, `unit`, `type`, `inwarehouse`, `outwarehouse`) VALUES
-(411, 'CSM-CIT001', '02-01-005', '368', '2', '3', '1', '2', '4'),
-(412, 'CSM-CIT001', '02-01-008', '371', '3', '3', '1', '2', '4'),
-(413, 'CSM-CIT001', '02-01-002', '365', '11', '3', '1', '2', '4'),
-(414, 'CSM-CIT001', '02-02-032', '415', '1', '3', '1', '2', '4'),
-(415, 'CSM-CIT001', '02-02-040', '423', '1', '3', '1', '2', '4'),
-(416, 'CSM-CIT001', '02-02-048', '431', '1', '3', '1', '2', '4'),
-(417, 'CSM-CIT001', '02-02-056', '439', '1', '3', '1', '2', '4'),
-(418, 'CSM-CIT001', '02-01-012', '380', '3', '3', '1', '2', '4'),
-(419, 'CSM-CIT001', '02-01-004', '367', '1', '3', '1', '2', '4'),
-(420, 'CSM-CIT001', '02-01-003', '366', '5', '3', '1', '2', '4'),
-(421, 'CSM-CIT001', '02-03-007', '358', '1', '3', '1', '2', '4'),
-(422, 'CSM-CIT001', '02-03-008', '359', '1', '3', '1', '2', '4'),
-(423, 'CSM-CIT001', '02-04-001', '349', '10', '3', '1', '2', '4');
-
 -- --------------------------------------------------------
 
 --
@@ -7477,13 +7398,6 @@ CREATE TABLE `inv_transfermaster` (
   `to_warehouse` varchar(100) NOT NULL,
   `remarks` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `inv_transfermaster`
---
-
-INSERT INTO `inv_transfermaster` (`id`, `transfer_id`, `transfer_date`, `from_warehouse`, `to_warehouse`, `remarks`) VALUES
-(167, 'CSM-CIT001', '2021-07-19', '4', '2', 'Transfer to CTG for EEL & Port.');
 
 -- --------------------------------------------------------
 
@@ -8793,7 +8707,7 @@ CREATE TABLE `qry_inv_issue` (
 CREATE TABLE `qry_inv_receive` (
 `mrr_no` varchar(25)
 ,`mrr_date` date
-,`purchase_id` varchar(115)
+,`purchase_id` varchar(15)
 ,`challanno` varchar(500)
 ,`material_id` varchar(25)
 ,`receive_qty` float
@@ -9131,7 +9045,9 @@ CREATE TABLE `store_transfer` (
   `product_id` varchar(30) NOT NULL,
   `from_store` varchar(30) NOT NULL,
   `to_store` varchar(30) NOT NULL,
-  `transfer_date` date NOT NULL DEFAULT current_timestamp()
+  `transfer_date` date NOT NULL DEFAULT current_timestamp(),
+  `transfer_by` varchar(30) NOT NULL,
+  `remarks` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -9365,7 +9281,7 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `code`, `name`, `address`, `contact_person`, `supplier_phone`, `supplier_op_balance`, `supplier_type`, `material_type`) VALUES
-(186, 'SID-001', 'AST', 'N/A', 'N/A', '01700705818', '000', 'credit', '14');
+(186, 'SID-001', 'AST', 'Dhaka', 'Abir Chowdhury', '01700705818', '0', 'credit', '14');
 
 -- --------------------------------------------------------
 
@@ -9559,10 +9475,10 @@ CREATE TABLE `vendors` (
 --
 
 INSERT INTO `vendors` (`id`, `vendor_id`, `vendor_name`, `address`, `email`, `phone`, `web`, `status`, `created_at`, `updated_at`) VALUES
-(7, 'V-001', 'Archives Solution', 'Zinnat Mansion(3rd Floor)\n95, New Elephant Road\nDhaka-1205.', 'naimulabir@outlook.com', '01717175350, 01906613470', '', 1, NULL, NULL),
-(8, 'V-002', 'Thakral Information Systems Private Limited', '11th Floor (East), BDBL (Former-BSRS) Bhaban\n12 Kawran Bazar, Dhaka-1215, Bangladesh.\n', 'info@thakral-bd.com', '88029129375, 9146051', 'www.thakral.com.bd', 1, NULL, NULL),
-(9, 'V-003', 'Remake Computer System', 'Paramount Heights, 65/2/1 Purana Palton\nBox Culvert Road (Ground Floor)\nSuite #105, Dhaka-1000.\n', '', '', '', 1, NULL, NULL),
-(10, 'V-004', 'Bright Apollo Electronics Trading LLC', 'Shop No.:27, Ground Floor\nAl Ain Center, Bur Dubai', 'info@brightapollo.com', '043550766', 'www.brightapollo.com', 1, NULL, NULL);
+(8, 'V-001', 'Thakral Information Systems Private Limited', '11th Floor (East), BDBL (Former-BSRS) Bhaban12 Kawran Bazar, Dhaka-1215, Bangladesh.', 'info@thakral-bd.com', '88029129375, 9146051', 'www.thakral.com.bd', 1, NULL, NULL),
+(9, 'V-002', 'Remake Computer System', 'Paramount Heights, 65/2/1 Purana PaltonBox Culvert Road (Ground Floor)Suite #105, Dhaka-1000.', '', '', '', 1, NULL, NULL),
+(10, 'V-003', 'Bright Apollo Electronics Trading LLC', 'Shop No.:27, Ground FloorAl Ain Center, Bur Dubai', 'info@brightapollo.com', '043550766', 'www.brightapollo.com', 1, NULL, NULL),
+(12, 'V-004', 'Global Soft Park', '7/20[1st Floor],Block-B,lalmatia', 'arbhuiyan.pits@gmail.com', '01515672889', 'www.globalsoftpark.com', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -9571,7 +9487,7 @@ INSERT INTO `vendors` (`id`, `vendor_id`, `vendor_name`, `address`, `email`, `ph
 --
 DROP TABLE IF EXISTS `qry_inv_issue`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_inv_issue`  AS  select `eel_wlp`.`inv_issue`.`issue_id` AS `issue_id`,`eel_wlp`.`inv_issue`.`issue_date` AS `issue_date`,`eel_wlp`.`inv_issuedetail`.`material_id` AS `material_id`,`eel_wlp`.`inv_issuedetail`.`unit` AS `unit`,`eel_wlp`.`inv_issuedetail`.`issue_qty` AS `issue_qty`,`eel_wlp`.`inv_issue`.`warehouse_id` AS `warehouse_id`,`eel_wlp`.`inv_issue`.`to_warehouse_id` AS `to_warehouse_id`,`eel_wlp`.`inv_issue`.`project_id` AS `project_id`,`eel_wlp`.`inv_issuedetail`.`package_id` AS `package_id`,`eel_wlp`.`inv_issuedetail`.`building_id` AS `building_id`,`eel_wlp`.`inv_material`.`type` AS `type` from ((`eel_wlp`.`inv_issue` join `eel_wlp`.`inv_issuedetail` on(`eel_wlp`.`inv_issue`.`issue_id` = `eel_wlp`.`inv_issuedetail`.`issue_id`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_issuedetail`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_inv_issue`  AS SELECT `eel_wlp`.`inv_issue`.`issue_id` AS `issue_id`, `eel_wlp`.`inv_issue`.`issue_date` AS `issue_date`, `eel_wlp`.`inv_issuedetail`.`material_id` AS `material_id`, `eel_wlp`.`inv_issuedetail`.`unit` AS `unit`, `eel_wlp`.`inv_issuedetail`.`issue_qty` AS `issue_qty`, `eel_wlp`.`inv_issue`.`warehouse_id` AS `warehouse_id`, `eel_wlp`.`inv_issue`.`to_warehouse_id` AS `to_warehouse_id`, `eel_wlp`.`inv_issue`.`project_id` AS `project_id`, `eel_wlp`.`inv_issuedetail`.`package_id` AS `package_id`, `eel_wlp`.`inv_issuedetail`.`building_id` AS `building_id`, `eel_wlp`.`inv_material`.`type` AS `type` FROM ((`eel_wlp`.`inv_issue` join `eel_wlp`.`inv_issuedetail` on(`eel_wlp`.`inv_issue`.`issue_id` = `eel_wlp`.`inv_issuedetail`.`issue_id`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_issuedetail`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
 
 -- --------------------------------------------------------
 
@@ -9580,7 +9496,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `qry_inv_receive`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_inv_receive`  AS  select `eel_wlp`.`inv_receive`.`mrr_no` AS `mrr_no`,`eel_wlp`.`inv_receive`.`mrr_date` AS `mrr_date`,`eel_wlp`.`inv_receive`.`purchase_id` AS `purchase_id`,`eel_wlp`.`inv_receive`.`challanno` AS `challanno`,`eel_wlp`.`inv_receivedetail`.`material_id` AS `material_id`,`eel_wlp`.`inv_receivedetail`.`receive_qty` AS `receive_qty`,`eel_wlp`.`inv_receivedetail`.`unit_price` AS `unit_price`,`eel_wlp`.`inv_receivedetail`.`unit_id` AS `unit_id`,`eel_wlp`.`inv_receivedetail`.`total_receive` AS `total_receive`,`eel_wlp`.`inv_receive`.`warehouse_id` AS `warehouse_id`,`eel_wlp`.`inv_material`.`type` AS `type`,`eel_wlp`.`inv_material`.`material_id` AS `category_id` from ((`eel_wlp`.`inv_receive` join `eel_wlp`.`inv_receivedetail` on(`eel_wlp`.`inv_receive`.`mrr_no` = `eel_wlp`.`inv_receivedetail`.`mrr_no`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_receivedetail`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_inv_receive`  AS SELECT `eel_wlp`.`inv_receive`.`mrr_no` AS `mrr_no`, `eel_wlp`.`inv_receive`.`mrr_date` AS `mrr_date`, `eel_wlp`.`inv_receive`.`purchase_id` AS `purchase_id`, `eel_wlp`.`inv_receive`.`challanno` AS `challanno`, `eel_wlp`.`inv_receivedetail`.`material_id` AS `material_id`, `eel_wlp`.`inv_receivedetail`.`receive_qty` AS `receive_qty`, `eel_wlp`.`inv_receivedetail`.`unit_price` AS `unit_price`, `eel_wlp`.`inv_receivedetail`.`unit_id` AS `unit_id`, `eel_wlp`.`inv_receivedetail`.`total_receive` AS `total_receive`, `eel_wlp`.`inv_receive`.`warehouse_id` AS `warehouse_id`, `eel_wlp`.`inv_material`.`type` AS `type`, `eel_wlp`.`inv_material`.`material_id` AS `category_id` FROM ((`eel_wlp`.`inv_receive` join `eel_wlp`.`inv_receivedetail` on(`eel_wlp`.`inv_receive`.`mrr_no` = `eel_wlp`.`inv_receivedetail`.`mrr_no`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_receivedetail`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
 
 -- --------------------------------------------------------
 
@@ -9589,7 +9505,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `qry_typewiseconsumption`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_typewiseconsumption`  AS  select `eel_wlp`.`inv_consumption`.`consumption_id` AS `consumption_id`,`eel_wlp`.`inv_consumption`.`consumption_date` AS `consumption_date`,`eel_wlp`.`inv_consumptiondetails`.`material_id` AS `material_id`,`eel_wlp`.`inv_consumptiondetails`.`consumption_qty` AS `consumption_qty`,`eel_wlp`.`inv_consumption`.`warehouse_id` AS `warehouse_id`,`eel_wlp`.`inv_consumption`.`project_id` AS `project_id`,`eel_wlp`.`inv_consumptiondetails`.`package_id` AS `package_id`,`eel_wlp`.`inv_consumptiondetails`.`building_id` AS `building_id`,`eel_wlp`.`inv_material`.`type` AS `type` from ((`eel_wlp`.`inv_consumption` join `eel_wlp`.`inv_consumptiondetails` on(`eel_wlp`.`inv_consumption`.`consumption_id` = `eel_wlp`.`inv_consumptiondetails`.`consumption_id`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_consumptiondetails`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_typewiseconsumption`  AS SELECT `eel_wlp`.`inv_consumption`.`consumption_id` AS `consumption_id`, `eel_wlp`.`inv_consumption`.`consumption_date` AS `consumption_date`, `eel_wlp`.`inv_consumptiondetails`.`material_id` AS `material_id`, `eel_wlp`.`inv_consumptiondetails`.`consumption_qty` AS `consumption_qty`, `eel_wlp`.`inv_consumption`.`warehouse_id` AS `warehouse_id`, `eel_wlp`.`inv_consumption`.`project_id` AS `project_id`, `eel_wlp`.`inv_consumptiondetails`.`package_id` AS `package_id`, `eel_wlp`.`inv_consumptiondetails`.`building_id` AS `building_id`, `eel_wlp`.`inv_material`.`type` AS `type` FROM ((`eel_wlp`.`inv_consumption` join `eel_wlp`.`inv_consumptiondetails` on(`eel_wlp`.`inv_consumption`.`consumption_id` = `eel_wlp`.`inv_consumptiondetails`.`consumption_id`)) join `eel_wlp`.`inv_material` on(`eel_wlp`.`inv_consumptiondetails`.`material_id` = `eel_wlp`.`inv_material`.`material_id_code`)) ;
 
 -- --------------------------------------------------------
 
@@ -9598,7 +9514,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `qry_typewisestock`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_typewisestock`  AS  select `eel_wlp`.`inv_materialbalance`.`mb_ref_id` AS `mb_ref_id`,`eel_wlp`.`inv_materialbalance`.`mb_materialid` AS `mb_materialid`,`eel_wlp`.`inv_materialbalance`.`mb_date` AS `mb_date`,`eel_wlp`.`inv_materialbalance`.`mbin_qty` AS `mbin_qty`,`eel_wlp`.`inv_materialbalance`.`mbin_val` AS `mbin_val`,`eel_wlp`.`inv_materialbalance`.`mbout_qty` AS `mbout_qty`,`eel_wlp`.`inv_materialbalance`.`mbout_val` AS `mbout_val`,`eel_wlp`.`inv_materialbalance`.`mbtype` AS `mbtype`,`eel_wlp`.`inv_materialbalance`.`project_id` AS `project_id`,`eel_wlp`.`inv_materialbalance`.`warehouse_id` AS `warehouse_id`,`eel_wlp`.`inv_materialbalance`.`package_id` AS `package_id`,`eel_wlp`.`inv_material`.`type` AS `type` from (`eel_wlp`.`inv_material` join `eel_wlp`.`inv_materialbalance` on(`eel_wlp`.`inv_material`.`material_id_code` = `eel_wlp`.`inv_materialbalance`.`mb_materialid`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `qry_typewisestock`  AS SELECT `eel_wlp`.`inv_materialbalance`.`mb_ref_id` AS `mb_ref_id`, `eel_wlp`.`inv_materialbalance`.`mb_materialid` AS `mb_materialid`, `eel_wlp`.`inv_materialbalance`.`mb_date` AS `mb_date`, `eel_wlp`.`inv_materialbalance`.`mbin_qty` AS `mbin_qty`, `eel_wlp`.`inv_materialbalance`.`mbin_val` AS `mbin_val`, `eel_wlp`.`inv_materialbalance`.`mbout_qty` AS `mbout_qty`, `eel_wlp`.`inv_materialbalance`.`mbout_val` AS `mbout_val`, `eel_wlp`.`inv_materialbalance`.`mbtype` AS `mbtype`, `eel_wlp`.`inv_materialbalance`.`project_id` AS `project_id`, `eel_wlp`.`inv_materialbalance`.`warehouse_id` AS `warehouse_id`, `eel_wlp`.`inv_materialbalance`.`package_id` AS `package_id`, `eel_wlp`.`inv_material`.`type` AS `type` FROM (`eel_wlp`.`inv_material` join `eel_wlp`.`inv_materialbalance` on(`eel_wlp`.`inv_material`.`material_id_code` = `eel_wlp`.`inv_materialbalance`.`mb_materialid`)) ;
 
 --
 -- Indexes for dumped tables
@@ -10109,7 +10025,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3352;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3353;
 
 --
 -- AUTO_INCREMENT for table `gate_pass`
@@ -10217,7 +10133,7 @@ ALTER TABLE `inv_material`
 -- AUTO_INCREMENT for table `inv_materialbalance`
 --
 ALTER TABLE `inv_materialbalance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32049;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32061;
 
 --
 -- AUTO_INCREMENT for table `inv_materialcategory`
@@ -10271,13 +10187,13 @@ ALTER TABLE `inv_purchasedetail`
 -- AUTO_INCREMENT for table `inv_receive`
 --
 ALTER TABLE `inv_receive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1775;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1780;
 
 --
 -- AUTO_INCREMENT for table `inv_receivedetail`
 --
 ALTER TABLE `inv_receivedetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2648;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2658;
 
 --
 -- AUTO_INCREMENT for table `inv_return`
@@ -10307,7 +10223,7 @@ ALTER TABLE `inv_supplier`
 -- AUTO_INCREMENT for table `inv_supplierbalance`
 --
 ALTER TABLE `inv_supplierbalance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1570;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1575;
 
 --
 -- AUTO_INCREMENT for table `inv_technicianinfo`
@@ -10319,13 +10235,13 @@ ALTER TABLE `inv_technicianinfo`
 -- AUTO_INCREMENT for table `inv_tranferdetail`
 --
 ALTER TABLE `inv_tranferdetail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=424;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=425;
 
 --
 -- AUTO_INCREMENT for table `inv_transfermaster`
 --
 ALTER TABLE `inv_transfermaster`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT for table `inv_voucher`
@@ -10427,7 +10343,7 @@ ALTER TABLE `store`
 -- AUTO_INCREMENT for table `store_transfer`
 --
 ALTER TABLE `store_transfer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sttable`
@@ -10475,7 +10391,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
