@@ -16,6 +16,7 @@
                                         <tr>
 											<th>Product ID</th>
 											<th>Product Name</th>
+											<th>Employee ID</th>
 											<th>Employee Name</th>
 											<th>Division</th>
 											<th>Location</th>
@@ -41,12 +42,13 @@
 														$rowemp=mysqli_fetch_array($resultemp);
 													
 												?>
-												<td><span class="text"><?php echo $rowp['sl_no'] ?></span></td>
-												<td><span class="text"><?php echo $rowp['item_name'] ?></span></td>
-												<td><span class="text"><?php echo $rowemp['employee_name'] ?></span></td>
-												<td><span class="text"><?php echo $rowemp['division'] ?></span></td>
-												<td><span class="text"><?php echo $rowemp['location'] ?></span></td>
-												<td><span class="text"><?php echo $row['assign_date'] ?></span></td>
+												<td><span class="text"><?php echo $rowp['sl_no']; ?></span></td>
+												<td><span class="text"><?php echo $rowp['item_name']; ?></span></td>
+												<td><span class="text"><?php echo $row['employee_id']; ?></span></td>
+												<td><span class="text"><?php echo $rowemp['employee_name']; ?></span></td>
+												<td><span class="text"><?php echo $rowemp['division']; ?></span></td>
+												<td><span class="text"><?php echo $rowemp['location']; ?></span></td>
+												<td><span class="text"><?php echo $row['assign_date']; ?></span></td>
 												<td class='text-center'> 
 												<button onclick="window.location.href = 'assignqrview.php?id=<?php echo $row['id'] ?>'" class='' title="Details"> <i class="fa fa-eye text-success"></i></button>
 												<button onclick="window.location.href = 'handover-receipt.php?id=<?php echo $row['id'] ?>'" class='' title="Handover Receipt"> <i class="fa fa-chart-area text-success"></i></button>
