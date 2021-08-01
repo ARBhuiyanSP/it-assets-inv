@@ -27,10 +27,29 @@
 		<!-- =============================++++ User Area ++++=============================-->
 		<!-- =============================++++ User Area ++++=============================-->
 		<!-- =============================++++ User Area ++++=============================-->
-		<div class="sb-sidenav-menu-heading" style="background-color:#AF4940;color:#ffffff;">User Area</div>
+		<div class="sb-sidenav-menu-heading" style="background-color:#AF4940;color:#ffffff;">Assets</div>
+		
+		
+		<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAssets" aria-expanded="false" aria-controls="collapseAssets">
+			<div class="sb-nav-link-icon"><i class="fas fa-cubes"></i></div>
+			Assets
+			<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+		</a>
+		<div class="collapse" id="collapseAssets" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+			<nav class="sb-sidenav-menu-nested nav">
+				<a class="nav-link" href="assets_entry.php">Assets Entry</a>
+				<a class="nav-link" href="assets-list.php">Assets List</a>
+			</nav>
+		</div>
+		
+		<a class="nav-link" href="assign-list.php">
+			<div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
+			Assign List
+		</a>
+		<div class="sb-sidenav-menu-heading" style="background-color:#AF4940;color:#ffffff;">Consumable Products</div>
 		<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReceive" aria-expanded="false" aria-controls="collapseReceive">
 			<div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
-			Material Receive
+			Receive
 			<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 		</a>
 		<div class="collapse" id="collapseReceive" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -42,7 +61,7 @@
 		
 		<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTransfer" aria-expanded="false" aria-controls="collapseTransfer">
 			<div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
-			Material Transfer
+			Transfer
 			<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 		</a>
 		<div class="collapse" id="collapseTransfer" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -63,23 +82,6 @@
 				<a class="nav-link" href="consumption-list.php">Consumption List</a>
 			</nav>
 		</div>
-		
-		<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAssets" aria-expanded="false" aria-controls="collapseAssets">
-			<div class="sb-nav-link-icon"><i class="fas fa-cubes"></i></div>
-			Assets
-			<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-		</a>
-		<div class="collapse" id="collapseAssets" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-			<nav class="sb-sidenav-menu-nested nav">
-				<a class="nav-link" href="assets_entry.php">Assets Entry</a>
-				<a class="nav-link" href="assets-list.php">Assets List</a>
-			</nav>
-		</div>
-		
-		<a class="nav-link" href="assign-list.php">
-			<div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
-			Assign List
-		</a>
 		
 		<!-- =============================++++ Reports Area ++++=============================-->
 		<!-- =============================++++ Reports Area ++++=============================-->
