@@ -62,6 +62,19 @@ $consumption_id=$_GET['no']; ?>
 													?>
 												</td>
 											</tr>
+											<tr>
+												<th>Employee/User:</th>
+												<td>
+													<?php 
+													
+														$employee_id = $rowd['employee_id'];
+														$sqlemployee	= "select * from `employees` where `employee_id`='$employee_id'";
+														$resultemployee = mysqli_query($conn, $sqlemployee);
+														$rowemployee=mysqli_fetch_array($resultemployee);
+														echo $rowemployee["employee_id"] .'</br>'.$rowemployee["employee_name"];
+													?>
+												</td>
+											</tr>
 										</table>
 									</div>
 								</div>

@@ -34,8 +34,9 @@ if (isset($_POST['consumption_submit']) && !empty($_POST['consumption_submit']))
 				
 				$consumption_date   = $_POST['consumption_date'];
 				$consumption_id     = $_POST['consumption_id'];
-				$project_id         = $_POST['project_id'];
+				$project_id         = $_POST['warehouse_id'];
 				$warehouse_id   	= $_POST['warehouse_id'];
+				$employee_id   		= $_POST['employee_id'];
 				$consumption_by   	= $_POST['consumption_by'];
 				$material_name      = $_POST['material_name'][$count];
 				$material_id        = $_POST['material_id'][$count];
@@ -73,7 +74,7 @@ if (isset($_POST['consumption_submit']) && !empty($_POST['consumption_submit']))
 			/*
 			*  Insert Data Into inv_issue Table:
 			*/
-			$query2 = "INSERT INTO `inv_consumption` (`consumption_id`,`consumption_date`,`remarks`,`project_id`,`warehouse_id`,`consumption_by`) VALUES ('$consumption_id','$consumption_date','$remarks','$project_id','$warehouse_id','$consumption_by')";
+			$query2 = "INSERT INTO `inv_consumption` (`consumption_id`,`consumption_date`,`remarks`,`project_id`,`warehouse_id`,`consumption_by`,`employee_id`) VALUES ('$consumption_id','$consumption_date','$remarks','$project_id','$warehouse_id','$consumption_by','$employee_id')";
 			$result2 = $conn->query($query2);
 			
 			$_SESSION['success']    =   "Consumption process have been successfully completed.";

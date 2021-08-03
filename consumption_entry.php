@@ -17,13 +17,13 @@
 								<div class="form-group">
 									<form action="" method="post" name="add_issue" id="issue_entry_form" enctype="multipart/form-data" onsubmit="showFormIsProcessing('issue_entry_form');">
 										<div class="row" id="div1" style="">
-											<div class="col-xs-3">
+											<div class="col-xs-2">
 												<div class="form-group">
 													<label>Consumption Date</label>
 													<input type="text" autocomplete="off" name="consumption_date" id="issue_date" class="form-control datepicker" value="<?php echo date('Y-m-d'); ?>">
 												</div>
 											</div>
-											<div class="col-xs-3">
+											<div class="col-xs-2">
 												<div class="form-group">
 													<label>Consumption No</label>
 													<?php
@@ -39,7 +39,7 @@
 													<input type="hidden" name="issue_no" id="issue_no" value="<?php echo getDefaultCategoryCodeByWarehouse('inv_consumption', 'consumption_id', '03d', '001', $consumptionCode) ?>">
 												</div>
 											</div>
-											<div class="col-xs-3">
+											<div class="col-xs-2">
 												<div class="form-group">
 													<label>Store </label>
 
@@ -55,36 +55,29 @@
 
 												</div>
 
-												<!-- <div class="form-group">
-						<label>Warehouse</label>
-														
-												<?php
-												if ($_SESSION['logged']['user_type'] == 'whm') {
-													$warehouse_id = $_SESSION['logged']['warehouse_id'];
-													$dataresult = getDataRowByTableAndId('inv_warehosueinfo', $warehouse_id);
-													?>
-															<input type="text" class="form-control" readonly="readonly" value="<?php echo (isset($dataresult) && !empty($dataresult) ? $dataresult->name : ''); ?>">
-															
-															<input type="hidden" name="warehouse_id" id="warehouse_id" class="form-control" readonly="readonly" value="<?php echo $_SESSION['logged']['warehouse_id']; ?>">
-					<?php } else { ?>
-															<select class="form-control" id="warehouse_id" name="warehouse_id" required>
-								<option value="">Select</option>
-													<?php
-													$projectsData = getTableDataByTableName('inv_warehosueinfo');
-													;
-													if (isset($projectsData) && !empty($projectsData)) {
-														foreach ($projectsData as $data) {
-															?>
-												<option value="<?php echo $data['id']; ?>"><?php echo $data['name']; ?></option>
-															<?php
-														}
-													}
-													?>
-							</select>
-					<?php } ?>
-					</div> -->
 											</div>
-											<div class="col-md-3">
+											<div class="col-xs-3">
+												<div class="form-group">
+													<label for="todate">Employee/User</label>
+													<select name="employee_id" class="form-control material_select_2" required>
+														<option value="">Select Employee</option>
+														<?php
+														$sqlvs="SELECT * FROM `employees` ";
+														$resultvs = mysqli_query($conn,$sqlvs);
+														while($rowvs = mysqli_fetch_array($resultvs)) {
+															if($_GET['employee_id'] == $rowvs['employee_id']){
+															$selected	= 'selected';
+															}else{
+															$selected	= '';
+															}
+															
+														?>
+														<option value="<?php echo $rowvs['employee_id']; ?>" <?php echo $selected; ?>><?php echo $rowvs['employee_name'] ?> || <?php echo $rowvs['employee_id'] ?></option>
+														<?php } ?>
+													</select>
+												</div>
+											</div>
+											<div class="col-xs-3">
 												<div class="form-group">
 													<label for="id">Consumption By</label>
 													<?php 
@@ -97,47 +90,6 @@
 													<input name="consumption_by" type="hidden" id="consumption_by" value="<?php echo $rowemployee["employee_id"]; ?>" />
 												</div>
 											</div>
-
-
-											<!------------test-------------
-											<div class="form-group">
-						<label class="control-label col-sm-5" for="parent_code">Package:</label>
-						<div class="col-sm-7">
-							<select class="form-control" id="main_item_id" name="parent_item_id" onchange="getBuildingByPackage(this.value);">
-								<option value="">Select</option>
-											<?php
-											$parentCats = getTableDataByTableName('packages', '', 'name');
-											if (isset($parentCats) && !empty($parentCats)) {
-												foreach ($parentCats as $pcat) {
-													?>
-												<option value="<?php echo $pcat['id'] ?>"><?php echo $pcat['name'] ?></option>
-												<?php }
-											}
-											?>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-5" for="parent_code">Building:</label>
-						<div class="col-sm-7">
-							<select class="form-control" id="building_id" name="sub_item_id">
-								<option value="">Select</option>
-											<?php
-											$parentCats = getTableDataByTableName('buildings', '', 'building_id');
-											if (isset($parentCats) && !empty($parentCats)) {
-												foreach ($parentCats as $pcat) {
-													?>
-												<option value="<?php echo $pcat['id'] ?>"><?php echo $pcat['building_id'] ?></option>
-						<?php }
-					}
-					?>
-							</select>
-						</div>
-					</div>
-											------------test------------->
-
-
-
 										</div>
 										<div class="row" id="div1"  style="padding-top:10px">
 											<div class="table-responsive">

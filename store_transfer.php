@@ -31,7 +31,7 @@
 													$result = mysqli_query($conn, $sql);
 													$row=mysqli_fetch_array($result);
 													$short_name = $row['keyword'];
-													$transferCode= 'CSM-'.$short_name;
+													$transferCode= 'TRN-'.$short_name;
 													?>
 													<input type="text" name="transfer_id" id="transfer_id" class="form-control" readonly="readonly" value="<?php echo getDefaultCategoryCodeByWarehouseT('inv_transfermaster', 'transfer_id', '03d', '001', $transferCode) ?>">
 													<input type="hidden" name="transfer_id" id="transfer_id" value="<?php echo getDefaultCategoryCodeByWarehouseT('inv_transfermaster', 'transfer_id', '03d', '001', $transferCode) ?>">
