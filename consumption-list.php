@@ -43,7 +43,7 @@
 								</td>
 								<td>
 									<span><a class="action-icons c-approve" href="consumption-view.php?no=<?php echo $item['consumption_id']; ?>" title="View"><i class="fas fa-eye text-success"></i></a></span>
-									<span><a class="action-icons c-delete" href="consumption_edit.php?edit_id=<?php echo $item['id']; ?>" title="edit"><i class="fa fa-edit text-info mborder"></i></a></span>
+									<!-- <span><a class="action-icons c-delete" href="consumption_edit.php?edit_id=<?php echo $item['id']; ?>" title="edit"><i class="fa fa-edit text-info mborder"></i></a></span> -->
 									<?php if($_SESSION['logged']['user_type'] == 'superAdmin') {?>
 										<span><a class="action-icons c-delete" href="consumption_approve.php?issue=<?php echo $item['consumption_id']; ?>" title="approve"><i class="fa fa-check text-info mborder"></i></a></span>
 										<?php } ?>
