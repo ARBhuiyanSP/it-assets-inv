@@ -5,7 +5,7 @@
 global $conn;
 $servername = "localhost";
 $username   = "root";
-$password   = "Ms@034571";
+$password   = "";
 $dbname     = "it_assets_inv";
 
 // Create connection
