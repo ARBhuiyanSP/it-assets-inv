@@ -26,7 +26,11 @@ include 'includes/login_process.php';
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">SAIF Power Group - IT Assets</h3></div>
+                                    <div class="card-header">
+										<center></center>
+										<h3 class="text-center font-weight-light my-4"><center><img src="assets/img/logo-wide.png" /></center>SAIF Power Group - IT Assets</h3>
+										
+									</div>
                                     <div class="card-body">
                                         <form id="login_form" name="login_form" method="post">
                                             <div class="form-floating mb-3">
