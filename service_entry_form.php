@@ -138,7 +138,7 @@
 						
 						<input type="hidden" autocomplete="off" name="warranty" id="warranty" class="form-control datepicker" value="<?php if ($warranty!=""){echo $warranty.' Year || Warranty end at : '.$newEndingDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($row['puchase_date'])) . " + ".$warranty." year")).' || Warranty Status : '.$remain_days;}else{ echo $remain_days;}?>">
 						
-						<div class="col-md-2">
+						<div class="col-md-4">
                             <div class="form-group">
                                 <label>Vendor Name</label>
                                 <select id="vendor" name="vendor" class="form-control material_select_2" required >
@@ -159,7 +159,7 @@
                         
 						<input name="store_id" class="form-control" type="hidden" id="store_id" value="<?php echo $store_id = $_SESSION['logged']['store_id']; ?>" />
 						
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="id">Handover By</label>
 								<?php 
