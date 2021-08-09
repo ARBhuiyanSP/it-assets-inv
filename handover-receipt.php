@@ -75,20 +75,7 @@ $id=$_GET['id']; ?>
 														</tr>
 													</table>
 													<table style="" class="table table-bordered">
-														<tr>
-															<td style="width:20%">Handover By:</td>
-																<?php if($row['assigned_by']){ 
-																	
-																		$employee_id = $row['assigned_by'];
-																		$sqlemployee	= "select * from `employees` where `employee_id`='$employee_id'";
-																		$resultemployee = mysqli_query($conn, $sqlemployee);
-																		$rowemployee=mysqli_fetch_array($resultemployee);
-																?>
-															<td><?php echo $row['assigned_by']; ?> || <?php echo $rowemployee["employee_name"]; ?> || <?php echo $rowemployee["division"]; ?>-<?php echo $rowemployee["department"]; ?></td>
-																<?php }else{ ?>
-															<td>---</td>
-															<?php } ?>
-														</tr>
+														
 														<tr>
 															<td style="width:20%">Handover date:</td>
 															<td><?php 
@@ -105,7 +92,7 @@ $id=$_GET['id']; ?>
 															$result4 = mysqli_query($conn, $sql4);
 															$rowe=mysqli_fetch_array($result4);
 															echo $rowe['employee_name'];
-															echo '-'.$row['employee_id'];
+															echo ' || '.$rowe['employee_id'].' || '.$rowe['division'].' || '.$rowe['department'];
 
 															 ?></td>
 														</tr>
