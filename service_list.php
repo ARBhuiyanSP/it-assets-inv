@@ -20,12 +20,10 @@
 								<table id="example" class="table table-striped table-bordered" style="width:100%">
 									<thead>
 										<tr style="background-color:#049458;color:#ffffff;">
-											<th style="min-width:60px;">PID</th>
-											<th style="min-width:100px;">Category</th>
-											<th style="min-width:250px;">Description</th>
-											<th style="min-width:100px;">Model</th>
-											<th style="min-width:150px;">Manufacturing SL</th>
-											<th style="min-width:150px;">Custodian</th>
+											<th style="min-width:60px;">SRV No</th>
+											<th style="min-width:100px;">Assets SL No</th>
+											<th style="min-width:250px;">Vendor</th>
+											<th style="min-width:100px;">Handover date</th>
 											<th style="min-width:100px;">Status</th>
 											<th style="min-width:180px;">Action</th>
 										</tr>
@@ -36,49 +34,36 @@
 											$store_id = $_SESSION['logged']['store_id'];
 											
 											if($role == 'user'){
-												$sql = "select * from ams_products where `current_store`='$store_id'";
+												$sql = "select * from inv_services where `store_id`='$store_id'";
 											}else{
-												$sql = "select * from ams_products";
+												$sql = "select * from inv_services";
 											}
 											
 											//$sql = "select * from ams_products where `store_id`='$store_id'";
 											$result = mysqli_query($conn, $sql);
 											while ($row = mysqli_fetch_array($result)) {
 												
-											if($row['assign_status']=='assigned'){
+											if($row['status']=='at_servicing'){
 												?>
 										<tr class="edit_tr" style="background-color:#F5A143;color:#ffffff;">
 											<?php } else{?>
 										<tr class="edit_tr" style="background-color:#64D55F;color:#ffffff;">
 											<?php } ?>
-												<td><span class="text"><?php echo $row['sl_no'] ?></span></td>
-											<td><span class="text"><?php
-											$cat_id = $row['assets_category'];
-											$sqlc = "select `assets_category` from `assets_categories` where `assets_id`='$cat_id';";
-											$resultc = mysqli_query($conn, $sqlc);
-											$rowc = mysqli_fetch_array($resultc);
-											echo $rowc['assets_category']
-												?></span></td>
-												<td><span class="text"><?php echo $row['assets_description'] ?></span></td>
-												<td><span class="text"><?php echo $row['model'] ?></span></td>
-												<td><span class="text"><?php echo $row['manu_sl'] ?></span></td>
-												<td><span class="text"><?php echo $row['custody'] ?></span></td>
-												<td><span class="text"><?php echo $row['assign_status'] ?></span></td>
+												<td><span class="text"><?php echo $row['srv_no'] ?></span></td>
+												<td><span class="text"><?php echo $row['assets_slno'] ?></span></td>
+												<td><span class="text"><?php echo $row['vendor'] ?></span></td>
+												<td><span class="text"><?php echo $row['handover_date'] ?></span></td>
+												<td><span class="text"><?php echo $row['status'] ?></span></td>
 												<td class='text-center'> 
-													<a href="assets_edit.php?id=<?php echo $row['id'] ?>"><button><i class="fa fa-edit text-success"></i></button></a>
 
-													<!-- <a href="del-product.php?id=<?php echo $row['id'] ?>"><button onclick="" class=''><i class="fa fa-trash text-danger"></i></button></a> -->
-													<button onclick="window.location.href = 'qrview.php?id=<?php echo $row['id'] ?>'" class=''><i class="fa fa-eye text-success"></i></button>
-													<button onclick="window.location.href = 'qrprintview.php?id=<?php echo $row['id'] ?>'" class=''><i class="fa fa-print text-success"></i></button>
+													<button onclick="window.location.href = 'srv-handover-receipt.php?id=<?php echo $row['id'] ?>'" class=''><i class="fa fa-eye text-success"></i></button>
 													
+													<?php if($row['status']=='at_servicing'){ ?>
+													<a href="#"><button><i class="fa fa-edit text-success"></i></button></a>
+													<!-- <a href="assets_edit.php?id=<?php echo $row['id'] ?>"><button><i class="fa fa-edit text-success"></i></button></a> -->
+													<button onclick="window.location.href = 'srv_return.php?id=<?php echo $row['id'] ?>'"  title="Return"><i class="fa fa-outdent text-success"></i></button>
+													<?php }?>
 													
-													<?php if($row['assign_status']=='assigned'){ ?>
-													<button onclick="window.location.href = 'transfer.php?id=<?php echo $row['id'] ?>'" title="Transfer"><i class="fa fa-user text-warning"></i></button>
-													<button onclick="window.location.href = 'refund.php?id=<?php echo $row['id'] ?>'"  title="Return"><i class="fa fa-outdent text-danger"></i></button>
-													<?php }else{ ?>
-													<button onclick="window.location.href = 'product-assign.php?id=<?php echo $row['id'] ?>'" title="Assign"><i class="fa fa-user text-success"></i></button>
-													<button onclick="window.location.href = 'store-transfer.php?id=<?php echo $row['id'] ?>'" title="S2S Transfer"><i class="fa fa-terminal text-warning"></i></button>
-													<?php } ?>
 												</td>
 											</tr>
 

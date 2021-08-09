@@ -310,6 +310,61 @@ if(isset($_POST['return_submit'])){
 		header("location: assets-list.php");
 		exit();
 }
-	
+
+if(isset($_POST['service_submit'])){
+
+	$srv_no			= $_POST['srv_no'];
+	$assets_id 		= $_POST['assets_id'];
+	$assets_slno 	= $_POST['assets_slno'];
+	$warranty 		= $_POST['warranty'];
+	$vendor 		= $_POST['vendor'];
+	$handover_date 	= $_POST['handover_date'];
+	$handover_by 	= $_POST['handover_by'];
+	$status 		= 'at_servicing';
+	$ho_remarks 	= $_POST['ho_remarks'];
+	$store_id 		= $_POST['store_id'];
+
+		/* Insert Data Into product_assign Table: */
+		
+		$query = "INSERT INTO `inv_services`(`srv_no`,`assets_id`,`assets_slno`,`warranty`,`vendor`,`handover_date`,`handover_by`,`status`,`ho_remarks`,`store_id`) VALUES ('$srv_no','$assets_id','$assets_slno','$warranty','$vendor','$handover_date','$handover_by','$status','$ho_remarks','$store_id')";
+        $conn->query($query);
+		
+		
+		/* Update Data Into product_assign Table: */
+		
+		$queryupdate   = "UPDATE `ams_products` set `status`='$status' where `id`='$assets_id'";
+		$conn->query($queryupdate);
+		
+		$_SESSION['success']    =   "Service Entry process have been successfully Completed.";
+		header("location: service_entry.php");
+		exit();
+}	
+
+if(isset($_POST['service_update_submit'])){
+
+	$id				= $_POST['a_id'];
+	$assets_id 		= $_POST['assets_id'];
+	$assets_slno 	= $_POST['assets_slno'];
+	$status 		= $_POST['status'];
+	$receive_date 	= $_POST['receive_date'];
+	$receive_by 	= $_POST['receive_by'];
+	$recv_remarks 	= $_POST['recv_remarks'];
+	$updated_at 	= date("Y-m-d");
+
+		/* Insert Data Into product_assign Table: */
+		
+		$query = "UPDATE `inv_services` set `status`='$status',`receive_date`='$receive_date',`receive_by`='$receive_by',`recv_remarks`='$recv_remarks',`updated_at`='$updated_at' where `id`='$id'";
+        $conn->query($query);
+		
+		
+		/* Update Data Into product_assign Table: */
+		
+		$queryupdate   = "UPDATE `ams_products` set `status`='$status' where `id`='$assets_id'";
+		$conn->query($queryupdate);
+		
+		$_SESSION['success']    =   "Service Update process have been successfully Completed.";
+		header("location: service_entry.php");
+		exit();
+}
 
 ?>
