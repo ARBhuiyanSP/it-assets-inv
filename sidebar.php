@@ -57,10 +57,10 @@
 			Service Area
 		</a>
 		
-		<!-- <a class="nav-link" href="disposal.php">
+		<a class="nav-link" href="disposal.php">
 			<div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
 			Disposal
-		</a> -->
+		</a>
 		<div class="sb-sidenav-menu-heading" style="background-color:#AF4940;color:#ffffff;">Consumable Products</div>
 		<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReceive" aria-expanded="false" aria-controls="collapseReceive">
 			<div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>

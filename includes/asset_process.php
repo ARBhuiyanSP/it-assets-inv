@@ -367,4 +367,30 @@ if(isset($_POST['service_update_submit'])){
 		exit();
 }
 
+if(isset($_POST['disposal_submit'])){
+
+	$product_id 	= $_POST['product_id'];
+	$disposal_date 	= $_POST['disposal_date'];
+	$disposal_value = $_POST['disposal_value'];
+	$reason 		= $_POST['reason'];
+	$remarks 		= $_POST['remarks'];
+	$store_id 		= $_POST['store_id'];
+	$disposal_by 		= $_POST['disposal_by'];
+
+		/* Insert Data Into product_assign Table: */
+		
+		$query = "INSERT INTO `disposals`(`product_id`,`disposal_date`,`disposal_value`,`reason`,`remarks`,`store_id`,`disposal_by`) VALUES ('$product_id','$disposal_date','$disposal_value','$reason','$remarks','$store_id','$disposal_by')";
+        $conn->query($query);
+		
+		
+		/* Update Data Into product_assign Table: */
+		
+		$queryupdate   = "UPDATE `ams_products` set `status`='disposed' where `id`='$product_id'";
+		$conn->query($queryupdate);
+		
+		$_SESSION['success']    =   "disposal entry process have been successfully Completed.";
+		header("location: disposal.php");
+		exit();
+}
+
 ?>
