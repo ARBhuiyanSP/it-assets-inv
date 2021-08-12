@@ -133,6 +133,7 @@
                                             <th>ID</th>
                                             <th>Code</th>
                                             <th>Material</th>
+                                            <th>Device</th>
                                             <th>Material Min Stock</th>
                                             <th>Unit</th>
                                             <th>Action</th>
@@ -160,6 +161,7 @@
                                                     <td><?php echo $item['id']; ?></td>
                                                     <td><?php echo $item['material_id_code']; ?></td>
                                                     <td><?php echo $item['material_description']; ?></td>
+                                                    <td><?php echo $item['brand_name']; ?></td>
                                                     <td><?php echo $item['material_min_stock']; ?></td>
                                                     <td><?php echo getDataRowByTableAndId('inv_item_unit', $item['qty_unit'])->unit_name; ?></td>
                                                     <td>
