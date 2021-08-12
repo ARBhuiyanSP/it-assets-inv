@@ -81,10 +81,11 @@ $consumption_id=$_GET['no']; ?>
 								<table class="table table-bordered" id="material_receive_list"> 
 									<thead>
 										<tr>
-											<th>SL #</th>
+											<th width="5%">SL #</th>
 											<th>Material Name</th>
-											<th>Material Unit</th>
-											<th>Quantity</th>
+											<th>Device Name</th>
+											<th width="10%">Unit</th>
+											<th width="10%">Quantity</th>
 										</tr>
 									</thead>
 									<tbody id="material_receive_list_body">
@@ -101,6 +102,13 @@ $consumption_id=$_GET['no']; ?>
 													echo (isset($dataresult) && !empty($dataresult) ? $dataresult->material_description : '');
 												?>
 											</td>
+											
+											<td>
+												<?php 
+													$dataresult =   getDataRowByTableAndId('inv_material', $row['material_name']);
+													echo (isset($dataresult) && !empty($dataresult) ? $dataresult->brand_name : '');
+												?>
+											</td>
 											<td>
 												<?php 
 												$dataresult =   getDataRowByTableAndId('inv_item_unit', $row['unit']);
@@ -112,7 +120,7 @@ $consumption_id=$_GET['no']; ?>
 										</tr>
 										<?php } ?>
 										<tr>
-											<td colspan="3" class="grand_total">Grand Total:</td>
+											<td colspan="4" class="grand_total">Grand Total:</td>
 											<td>
 												<?php 
 												$sql2 = "SELECT sum(consumption_qty) FROM  `inv_consumptiondetails` where `consumption_id`='$consumption_id'";
@@ -126,7 +134,7 @@ $consumption_id=$_GET['no']; ?>
 											</td>
 										</tr>
 										<tr>
-											<td colspan="4">Remarks:</br>
+											<td colspan="5"><span style="text-decoration:underline">Remarks:</span></br>
 												<?php 
 												echo $rowd['remarks'];
 												?>
