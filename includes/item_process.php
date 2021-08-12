@@ -288,13 +288,13 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == 'material_edit'){
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-5" for="name">Name:</label>
+                <label class="control-label col-sm-5" for="name">Material Name:</label>
                 <div class="col-sm-7">
                     <input type="text" class="form-control" id="edit_item_name" placeholder="name" name="name" value="<?php if(isset($editData->material_description)){ echo $editData->material_description; } ?>">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-5" for="name">Brand Name:</label>
+                <label class="control-label col-sm-5" for="name">Device Name:</label>
                 <div class="col-sm-7">
                     <input type="text" class="form-control" id="edit_item_name" placeholder="brand name" name="brand_name" value="<?php if(isset($editData->brand_name)){ echo $editData->brand_name; } ?>">
                 </div>

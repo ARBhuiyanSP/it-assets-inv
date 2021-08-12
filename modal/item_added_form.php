@@ -48,13 +48,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-5" for="name">Name:</label>
+                            <label class="control-label col-sm-5" for="name">Material Name:</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="item_name" placeholder="name" name="name" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-5" for="name">Brand Name:</label>
+                            <label class="control-label col-sm-5" for="name">Device Name:</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="brand_name" placeholder="brand name" name="brand_name">
                             </div>
