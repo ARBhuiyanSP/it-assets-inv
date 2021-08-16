@@ -110,6 +110,10 @@
 			<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 			Employee's History
 		</a>
+		<a class="nav-link" href="handover_report.php">
+			<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+			Handover Report
+		</a>
 		<a class="nav-link" href="stock_report.php">
 			<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 			Material Stock

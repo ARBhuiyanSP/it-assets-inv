@@ -20,11 +20,22 @@
 				</thead>
 				<tbody>
 					<?php
-					if($_SESSION['logged']['user_type'] == 'whm') {
+					
+					$role = $_SESSION['logged']['role'];
+					$store_id = $_SESSION['logged']['store_id'];
+					if($role == 'user'){
 						$item_details = getTableDataByTableNameWid('inv_consumption', '', 'id');
 					}else{
 						$item_details = getTableDataByTableName('inv_consumption', '', 'id');
 					}
+					
+					/* if($_SESSION['logged']['user_type'] == 'whm') {
+						$item_details = getTableDataByTableNameWid('inv_consumption', '', 'id');
+					}else{
+						$item_details = getTableDataByTableName('inv_consumption', '', 'id');
+					} */
+					
+					
 					if (isset($item_details) && !empty($item_details)) {
 						foreach ($item_details as $item) {
 							if($item['approval_status'] == 0){
