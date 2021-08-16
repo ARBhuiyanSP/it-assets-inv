@@ -93,16 +93,16 @@
 													<h5>From <?php echo $from_date; ?> To <?php echo $to_date; ?></h5>
 													<table class="table" style="width:50%">
 														<tr>
-															<td>Name</td>
-															<td><?php echo $row['employee_name']; ?></td>
-														</tr>
-														<tr>
-															<td>Employee ID</td>
-															<td><?php echo $row['employee_id']; ?></td>
+															<td>Handover To</td>
+															<td><?php echo $row['employee_name']; ?> || <?php echo $row['employee_id']; ?></td>
 														</tr>
 														<tr>
 															<td>Division</td>
 															<td><?php echo $row['division']; ?></td>
+														</tr>
+														<tr>
+															<td>Department</td>
+															<td><?php echo $row['department']; ?></td>
 														</tr>
 														<tr>
 															<td>Company</td>
@@ -162,7 +162,7 @@
 												</div>
 											</div>			
 										</div>
-										<center><button class="btn btn-default" onclick="printDiv('printableArea')"><i class="fa fa-print" aria-hidden="true" style="    font-size: 17px;"> Print</i></button></center>
+										<center><button class="btn btn-success mt-4" onclick="printDiv('printableArea')"><i class="fa fa-print"> </i>Print</button></center>
 								</center>
 								<?php }?>
 								<script>
@@ -178,9 +178,6 @@
 								}
 								</script>
 								<!--- Search Result--->
-								
-								
-								
                             </div>
                         </div>
                     </div>
