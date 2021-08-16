@@ -21,12 +21,22 @@
 				</thead>
 				<tbody>
 					<?php
-					
-					if($_SESSION['logged']['user_type'] == 'whm') {
+					$role = $_SESSION['logged']['role'];
+					$store_id = $_SESSION['logged']['store_id'];
+					if($role == 'user'){
 						$item_details = getTableDataByTableNameTid('inv_transfermaster', '', 'id');
 					}else{
 						$item_details = getTableDataByTableName('inv_transfermaster', '', 'id');
 					}
+					
+					
+					
+					
+					/* if($_SESSION['logged']['user_type'] == 'whm') {
+						$item_details = getTableDataByTableNameTid('inv_transfermaster', '', 'id');
+					}else{
+						$item_details = getTableDataByTableName('inv_transfermaster', '', 'id');
+					} */
 					if (isset($item_details) && !empty($item_details)) {
 						foreach ($item_details as $item) {
 							?>
