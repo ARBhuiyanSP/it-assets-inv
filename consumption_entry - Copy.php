@@ -136,7 +136,7 @@
 																</select>
 															</td>
 															<td><input type="text" name="material_total_stock[]" id="material_total_stock0" class="form-control" readonly ></td>
-															<td><input type="text" name="quantity[]" id="quantity0" onchange="sum(0)" class="form-control common_issue_quantity" required></td>
+															<td><input type="text" name="quantity[]" id="quantity0" onchange="sum(0)" onkeyup="check_stock_quantity_validation(0)" class="form-control common_issue_quantity" required></td>
 															<td><button type="button" name="add" id="add" class="btn" style="background-color:#198754;color:#ffffff;">+</button></td>
 														</tr>
 													</tbody>
