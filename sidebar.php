@@ -21,6 +21,7 @@
 				<a class="nav-link" href="material.php">Material</a>
 				<a class="nav-link" href="vendors.php">Vendors</a>
 				<a class="nav-link" href="assets-category.php">Assets Category</a>
+				<a class="nav-link" href="companies.php">Company Setup</a>
 			</nav>
 		</div>
 		<?php } ?>

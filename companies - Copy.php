@@ -1,19 +1,18 @@
 <?php 
 include('header.php');
-include ('action.php');
 ?>
                 <main>
                     <div class="container-fluid px-4">
 						<!--  +++++++++++++++ Url/Breadcrumb ++++++++++++++ -->
                         <ol class="breadcrumb mt-4 mb-4">
                             <li class="breadcrumb-item">Dashboard</li>
-                            <li class="breadcrumb-item active">Vendors</li>
+                            <li class="breadcrumb-item active">Company List</li>
                         </ol>
 						<!--  +++++++++++++++ Url/Breadcrumb ++++++++++++++ -->
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Vendors
+                                Company list
                             </div>
                             <div class="card-body">
                                 <div class="row justify-content-center">
@@ -28,7 +27,7 @@ include ('action.php');
 								</div>
 								<div class="row">
 								  <div class="col-md-4">
-									<h3 class="text-center">Add New Vendor</h3>
+									<h3 class="text-center">Add New Company</h3>
 									<form action="action.php" method="post">
 									  <input type="hidden" name="id" value="<?= $id; ?>">
 									  
