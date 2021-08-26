@@ -103,7 +103,59 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <input type="text" autocomplete="off" name="purchase_date" id="requisition_date" class="form-control datepicker" value="<?php echo (isset($dataresult) && !empty($dataresult) ? $dataresult->puchase_date : ''); ?>">
                             </div>
                         </div>
-						
+					</div>
+					<div class="row" id="div1" style="">
+						<div class="col-md-3">
+                            <div class="form-group">
+                                <label>Company</label>
+                                <select name="company_id" class="form-control" id="company" required>
+									<option value="">Select Company</option>
+									<?php
+									$query = "SELECT * FROM companies";
+									$result = $conn->query($query);
+									if ($result->num_rows > 0) {
+									while ($row = $result->fetch_assoc()) {
+										if($company_id == $row['id']){
+											$selected	= 'selected';
+											}else{
+											$selected	= '';
+											}
+										
+									echo '<option value="'.$row['id'].'" '.$selected.'>'.$row['company_name'].'</option>';
+									}
+									}else{
+									echo '<option value="">Company not available</option>';
+									}
+									?>
+								</select>	
+                            </div>
+                        </div>
+						<div class="col-md-3">
+                            <div class="form-group">
+                                <label>Division</label>
+                                <select name="division_id" class="form-control" id="division" required>
+									<option value="">Select Division</option>
+								</select>	
+                            </div>
+                        </div>
+						<div class="col-md-3">
+                            <div class="form-group">
+                                <label>Department</label>
+                                <select name="department_id" class="form-control" id="department" required>
+									<option value="">Select Department</option>
+								</select>	
+                            </div>
+                        </div>
+						<div class="col-md-3">
+                            <div class="form-group">
+                                <label>Project/Location</label>
+                                <select name="proloc_id" class="form-control" id="proloc">
+									<option value="">Select Project/Location</option>
+								</select>	
+                            </div>
+                        </div>
+					</div>
+					<div class="row" id="div1" style="">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Assets Name</label>
@@ -359,6 +411,54 @@ if ($.inArray(ext, ['gif','png','jpg','jpeg']) == -1){
  $('input:submit').attr('disabled',false);
  }
 }
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+// Company dependent ajax
+$("#company").on("change",function(){
+	var companyId = $(this).val();
+	$.ajax({
+	url :"getcompany.php",
+	type:"POST",
+	cache:false,
+	data:{companyId:companyId},
+	success:function(data){
+	$("#division").html(data);
+	$('#department').html('<option value="">Select department</option>');
+	}
+	});
+	});
+
+// division dependent ajax
+$("#division").on("change", function(){
+	var divisionId = $(this).val();
+	$.ajax({
+	url :"getcompany.php",
+	type:"POST",
+	cache:false,
+	data:{divisionId:divisionId},
+	success:function(data){
+	$("#department").html(data);
+	$('#proloc').html('<option value="">Select project/location</option>');
+	}
+	});
+	});
+	
+// department dependent ajax
+$("#department").on("change", function(){
+	var departmentId = $(this).val();
+	$.ajax({
+	url :"getcompany.php",
+	type:"POST",
+	cache:false,
+	data:{departmentId:departmentId},
+	success:function(data){
+	$("#proloc").html(data);
+	}
+	});
+	});
+	
 });
 </script>
                 <?php include('footer.php'); ?>

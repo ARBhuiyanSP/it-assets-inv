@@ -53,6 +53,13 @@ if (isset($_POST['asset_submit']) && !empty($_POST['asset_submit'])) {
     
 
 	$sl_no 				= $_POST['sl_no'];
+	
+	
+	$company_id			= $_POST['company_id'];
+	$division_id		= $_POST['division_id'];
+	$department_id		= $_POST['department_id'];
+	$proloc_id			= $_POST['proloc_id'];
+	
 	$store_id 			= $_POST['store_id'];
 	$received_by 		= $_POST['received_by'];
 	$assets_category 	= $_POST['assets_category'];
@@ -93,7 +100,7 @@ if (isset($_POST['asset_submit']) && !empty($_POST['asset_submit'])) {
 		
 		
                
-        $query = "INSERT INTO `ams_products`(`sl_no`,`assets_category`,`item_name`,`assets_description`,`brand`,`model`,`manu_sl`,`rlp_no`,`purchase_order`,`delivery_challam`,`vendor_name`,`puchase_date`,`warrenty`,`purchase_value`,`origin`,`custody`,`status`,`conditions`,`photo`,`pro_photo`,`qr_image`,`store_id`,`current_store`,`received_by`) VALUES ('$sl_no','$assets_category','$item_name','$assets_description','$brand','$model','$manufacturing_sl','$rlp_no','$purchase_order','$delivery_chalan','$vendor_name','$purchase_date','$warrenty','$purchase_value','$origin','$custody','$status','$condition','$slimg','$proimg','$pngAbsoluteFilePath','$store_id','$store_id','$received_by')";
+        $query = "INSERT INTO `ams_products`(`sl_no`,`company_id`,`division_id`,`department_id`,`proloc_id`,`assets_category`,`item_name`,`assets_description`,`brand`,`model`,`manu_sl`,`rlp_no`,`purchase_order`,`delivery_challam`,`vendor_name`,`puchase_date`,`warrenty`,`purchase_value`,`origin`,`custody`,`status`,`conditions`,`photo`,`pro_photo`,`qr_image`,`store_id`,`current_store`,`received_by`) VALUES ('$sl_no','$company_id','$division_id','$department_id','$proloc_id','$assets_category','$item_name','$assets_description','$brand','$model','$manufacturing_sl','$rlp_no','$purchase_order','$delivery_chalan','$vendor_name','$purchase_date','$warrenty','$purchase_value','$origin','$custody','$status','$condition','$slimg','$proimg','$pngAbsoluteFilePath','$store_id','$store_id','$received_by')";
         $conn->query($query);
 		
 		
@@ -172,6 +179,13 @@ if(isset($_POST['asset_update_submit']) && !empty($_POST['asset_update_submit'])
 		
 
 		$sl_no 				= $_POST['sl_no'];
+		
+		$company_id			= $_POST['company_id'];
+		$division_id		= $_POST['division_id'];
+		$department_id		= $_POST['department_id'];
+		$proloc_id			= $_POST['proloc_id'];
+	
+	
 		$store_id 			= $_POST['store_id'];
 		$received_by 		= $_POST['received_by'];
 		$assets_category 	= $_POST['assets_category'];
@@ -216,7 +230,7 @@ if(isset($_POST['asset_update_submit']) && !empty($_POST['asset_update_submit'])
 		
 		/* Update Data Into ams_products Table: */
 		
-		$queryupdate   = "UPDATE `ams_products` SET `sl_no`='$sl_no',`assets_category`='$assets_category',`item_name`='$item_name',`assets_description`='$assets_description',`brand`='$brand',`model`='$model',`manu_sl`='$manufacturing_sl',`rlp_no`='$rlp_no', `purchase_order`='$purchase_order',`delivery_challam`='$delivery_chalan',`vendor_name`='$vendor_name',`puchase_date`='$purchase_date',`warrenty`='$warrenty',`purchase_value`='$purchase_value',`origin`='$origin',`custody`='$custody',`status`='$status',`conditions`='$condition',`photo`='$slimg',`pro_photo`='$proimg',`qr_image`='$pngAbsoluteFilePath',`store_id`='$store_id',`current_store`='$store_id',`received_by`='$received_by' WHERE `id`='$id'";
+		$queryupdate   = "UPDATE `ams_products` SET `sl_no`='$sl_no',`company_id`='$company_id',`division_id`='$division_id',`department_id`='$department_id',`proloc_id`='$proloc_id',`assets_category`='$assets_category',`item_name`='$item_name',`assets_description`='$assets_description',`brand`='$brand',`model`='$model',`manu_sl`='$manufacturing_sl',`rlp_no`='$rlp_no', `purchase_order`='$purchase_order',`delivery_challam`='$delivery_chalan',`vendor_name`='$vendor_name',`puchase_date`='$purchase_date',`warrenty`='$warrenty',`purchase_value`='$purchase_value',`origin`='$origin',`custody`='$custody',`status`='$status',`conditions`='$condition',`photo`='$slimg',`pro_photo`='$proimg',`qr_image`='$pngAbsoluteFilePath',`store_id`='$store_id',`current_store`='$store_id',`received_by`='$received_by' WHERE `id`='$id'";
 		$resultupdate = $conn->query($queryupdate);
 		
 		$_SESSION['success']    =   "Asset UPDATE process have been successfully updated.";
