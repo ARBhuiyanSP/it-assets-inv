@@ -19,7 +19,7 @@ include 'connection/connect.php';
 		$email			=	$_POST['email'];
 		$phone			=	$_POST['phone'];
 		$web			=	$_POST['web'];
-		$date			=	date('Y-m-d');
+		//$date			=	date('Y-m-d');
 		$status			=	'1';
 
 		
@@ -60,7 +60,7 @@ include 'connection/connect.php';
 		$email			=	$row['email'];
 		$phone			=	$row['phone'];
 		$web			=	$row['web'];
-		$date			=	$row['date'];
+		//$date			=	$row['date'];
 		$status			=	$row['status'];
 
 		$update=true;
@@ -74,7 +74,7 @@ include 'connection/connect.php';
 		$email			=	$_POST['email'];
 		$phone			=	$_POST['phone'];
 		$web			=	$_POST['web'];
-		$date			=	date('Y-m-d');
+		//$date			=	date('Y-m-d');
 		$status			=	'1';
 		
 		 /*
